@@ -8,7 +8,7 @@ default:
     suites:
         web:
             contexts:
-                - FeatureContext
+                - Resources\Behat\WebContext
 
     extensions:
         Behat\MinkExtension:
