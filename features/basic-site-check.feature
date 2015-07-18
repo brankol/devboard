@@ -4,14 +4,14 @@ Feature: Basic site check
 	I need to check few pages around
 
   Scenario: Check that homepage works
-    Given I am on "/"
-    And I click "devboardxyz"
-    Then I should see "Hello, world!"
-    And I should be on "/"
+	Given I am on "/"
+	And I click "devboardxyz"
+	Then I should see "Have all relevant github projects info in one place"
+	And I should be on "/"
 
   @javascript
   Scenario: Check that homepage works using selenium engine
     Given I am on "/"
     And I click "devboardxyz"
-    Then I should see "Hello, world!"
-    And I should be on "/"
+	Then I should see "Have all relevant github projects info in one place"
+	And I should be on "/"

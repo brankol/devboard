@@ -4,21 +4,18 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
         <div class="container">
-            <h1>Hello, world!</h1>
-            <p>This is a template.</p>
-            <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+            <h1>Devboard</h1>
+
+            <h2>Have all relevant github projects info in one place</h2>
+
+            <p>
+                <a class="btn btn-primary btn-lg" role="button" id="sign-up"
+                   href="https://github.com/login/oauth/authorize?scope=user&client_id={{ github_client_id }}">
+                    Sign up using Github
+                </a>
+            </p>
         </div>
     </div>
-    <p>
-        Well, hello there!
-    </p>
-    <p>
-        We're going to now talk to the GitHub API. Ready?
-        <a href="https://github.com/login/oauth/authorize?scope=user&client_id={{ github_client_id }}">Click here</a> to begin!</a>
-    </p>
-    <p>
-        If that link doesn't work, remember to provide your own <a href="/v3/oauth/#web-application-flow">Client ID</a>!
-    </p>
 
 {% endblock %}
 

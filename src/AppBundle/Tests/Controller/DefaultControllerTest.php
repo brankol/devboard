@@ -16,7 +16,6 @@ class DefaultControllerTest extends WebTestCase
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
-        $this->assertTrue($crawler->filter('html:contains("Hello, world!")')->count() > 0);
-        $this->assertTrue($crawler->filter('html:contains("Heading")')->count() > 0);
+        $this->assertTrue($crawler->filter('html:contains("Have all relevant github projects info in one place")')->count() > 0);
     }
 }
