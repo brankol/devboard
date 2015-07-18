@@ -9,24 +9,24 @@ parameters:
   apache:
     port: 81
   applications:
-    - name:       project_name
+    - name:       devboardxyz
       template:   symfony2-dev-application
-      domain:     www.project_name.loc
-      path:       /var/www/sites/www.project_name.loc
-    - name:       test_project_name
+      domain:     www.devboardxyz.loc
+      path:       /var/www/sites/www.devboardxyz.loc
+    - name:       test_devboardxyz
       template:   symfony2-test-application
-      domain:     test.project_name.loc
-      path:       /var/www/sites/www.project_name.loc
+      domain:     www.devboardxyz.loc
+      path:       /var/www/sites/www.devboardxyz.loc
   mysql:
     ip: 127.0.0.1
     root_password: n0p455
   databases:
-    - name: project_name_dev
-    - name: project_name_test
+    - name: devboardxyz_dev
+    - name: devboardxyz_test
   database_users:
-    - username: project_name
+    - username: devboardxyz
       password: n0p455
-      db_name: project_name_%
+      db_name: devboardxyz_%
   git:
     rate_limit_token:   ADD-YOUR-OWN
   selenium:
