@@ -1,0 +1,4 @@
+services:
+#    null_dev_user.example:
+#        class: NullDev\UserBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
