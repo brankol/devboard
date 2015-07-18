@@ -1,3 +1,7 @@
+null_dev_github_api:
+    resource: "@NullDevGithubApiBundle/Resources/config/routing.yml"
+    prefix:   /
+
 null_dev_user:
     resource: "@NullDevUserBundle/Resources/config/routing.yml"
     prefix:   /

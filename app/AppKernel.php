@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new NullDev\UserBundle\NullDevUserBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
+            new NullDev\GithubApiBundle\NullDevGithubApiBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'])) {
