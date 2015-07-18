@@ -54,8 +54,7 @@
                             <li><a href="#">Hi {{ app.user.username }}!</a></li>
                             <li><a href="{{ path('fos_user_security_logout') }}">Logout</a></li>
                         {% else %}
-                            <li><a href="{{ path('fos_user_security_login') }}" id="sign-in">Sign in</a></li>
-                            <li><a href="{{ path('fos_user_registration_register') }}" id="sign-up">Join</a></li>
+                            <li> <a href="https://github.com/login/oauth/authorize?scope=user&client_id={{ github_client_id }}" id="sign-in">Sign in with Github</a></li>
                         {% endif %}
                     {% endblock %}
                 </ul>
