@@ -9,6 +9,7 @@ default:
         web:
             contexts:
                 - Resources\Behat\WebContext
+                - UserContext
 
     extensions:
         Behat\MinkExtension:
