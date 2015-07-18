@@ -1,0 +1,4 @@
+services:
+#    null_dev_github_api.example:
+#        class: NullDev\GithubApiBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

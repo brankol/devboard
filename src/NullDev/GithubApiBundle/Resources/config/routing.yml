@@ -1,0 +1,3 @@
+null_dev_github_api_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: NullDevGithubApiBundle:Default:index }
