@@ -38,6 +38,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+        github_client_id: %github_client_id%
 
 # Assetic Configuration
 assetic:
