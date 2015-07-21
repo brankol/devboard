@@ -6,3 +6,8 @@ services:
         class: NullDev\UserBundle\Security\Core\User\FOSUBUserProvider
         #this is the place where the properties are passed to the UserProvider - see config.yml
         arguments: [@fos_user.user_manager,{github: githubId}]
+
+    nulldev.user.service.current:
+        class: NullDev\UserBundle\Service\CurrentUserService
+        arguments:
+            - @security.token_storage
