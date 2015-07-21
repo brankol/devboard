@@ -1,0 +1,4 @@
+services:
+#    dev_board_github.example:
+#        class: DevBoard\GithubBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
