@@ -20,6 +20,7 @@ build:
       - 'cp etc/scrutinizer-ci/web/.htaccess web/.htaccess'
       - 'cp etc/scrutinizer-ci/behat.yml behat.yml'
     after:
+      - php app/console doctrine:database:create --env=dev
       - php app/console doctrine:database:create --env=test
       - 'php app/console doctrine:migrations:migrate --env=test --no-interaction'
       - 'php app/console doctrine:fixtures:load --env=test --no-interaction'
