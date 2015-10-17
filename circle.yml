@@ -40,8 +40,8 @@ dependencies:
     - "bin"
 test:
   override:
-    - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
     - ./bin/phpunit
+    - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
     - ./bin/phpspec run
     - sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
     - ./bin/behat --strict
