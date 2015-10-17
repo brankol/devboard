@@ -20,6 +20,7 @@ code_coverage:
     - src/*/*Bundle/Form
     - src/*/*Bundle/Tests
     - src/Resources
+    - src/DevBoard/Github/User/Behat
   blacklist_files:
     - src/AppBundle/AppBundle.php
     - src/DevBoard/CoreBundle/DevBoardCoreBundle.php
