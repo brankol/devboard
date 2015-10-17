@@ -6,10 +6,18 @@ default:
             snippets: false
 
     suites:
+        githubuser:
+            contexts:
+                - DevBoard\Github\User\Behat\FixtureContext
+                - DevBoard\Github\User\Behat\GithubUserContext
+            filters:
+                tags: "@githubUser"
         web:
             contexts:
                 - Resources\Behat\WebContext
                 - UserContext
+            filters:
+                tags: "~@githubUser"
 
     extensions:
         Behat\MinkExtension:

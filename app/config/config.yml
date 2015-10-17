@@ -74,8 +74,16 @@ doctrine:
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
-        auto_mapping: true
-
+        entity_managers:
+            default:
+                auto_mapping: true
+                mappings:
+                    DevBoardGithubUser:
+                        type: annotation
+                        is_bundle: false
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/User
+                        prefix: DevBoard\Github\User
+                        alias: GhUser
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
