@@ -19,6 +19,12 @@ code_coverage:
     - src/*/*Bundle/DependencyInjection
     - src/*/*Bundle/Form
     - src/*/*Bundle/Tests
+    - src/Resources
   blacklist_files:
+    - src/AppBundle/AppBundle.php
+    - src/DevBoard/CoreBundle/DevBoardCoreBundle.php
+    - src/DevBoard/GithubBundle/DevBoardGithubBundle.php
+    - src/NullDev/GithubApiBundle/NullDevGithubApiBundle.php
+    - src/NullDev/UserBundle/NullDevUserBundle.php
     - src/*/*Bundle.php
     - src/*/*Bundle/*Bundle.php
