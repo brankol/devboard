@@ -25,6 +25,10 @@ class WebContext extends MinkContext implements SnippetAcceptingContext
 
     /**
      * @Then I should see :text in the output
+     *
+     * @param $text
+     *
+     * @throws \Exception
      */
     public function iShouldSeeInTheOutput($text)
     {
@@ -35,6 +39,8 @@ class WebContext extends MinkContext implements SnippetAcceptingContext
 
     /**
      * @When I click :text
+     *
+     * @param $text
      */
     public function iClick($text)
     {
@@ -43,6 +49,10 @@ class WebContext extends MinkContext implements SnippetAcceptingContext
 
     /**
      * @Then /^I should see "([^"]+)" on page headline$/
+     *
+     * @param $text
+     *
+     * @throws \Exception
      */
     public function iShouldSeeTextOnPageHeadline($text)
     {
@@ -58,6 +68,10 @@ class WebContext extends MinkContext implements SnippetAcceptingContext
      * Checks, that URL is equal to specified.
      *
      * @Then /^url is "(?P<url>[^"]+)"$/
+     *
+     * @param $url
+     *
+     * @throws \Exception
      */
     public function assertUrl($url)
     {
@@ -75,6 +89,9 @@ class WebContext extends MinkContext implements SnippetAcceptingContext
      * Attaches file to field with specified xpath.
      *
      * @When /^(?:|I )attach the file "(?P<path>[^"]*)" using xpath to "(?P<field>(?:[^"]|\\")*)"$/
+     *
+     * @param $field
+     * @param $path
      */
     public function iAttachTheFileUsingXpathToInputType($field, $path)
     {

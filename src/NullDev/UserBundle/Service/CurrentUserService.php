@@ -4,10 +4,16 @@ namespace NullDev\UserBundle\Service;
 use Exception;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
+/**
+ * Class CurrentUserService.
+ */
 class CurrentUserService
 {
     protected $tokenStorage;
 
+    /**
+     * @param TokenStorage $tokenStorage
+     */
     public function __construct(TokenStorage $tokenStorage)
     {
         $this->tokenStorage = $tokenStorage;

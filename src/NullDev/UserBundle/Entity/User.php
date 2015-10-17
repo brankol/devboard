@@ -47,12 +47,20 @@ class User extends BaseUser
     /** @ORM\Column(name="githubAccessToken", type="string", length=255, nullable=true, unique=true) */
     protected $githubAccessToken;
 
+    /**
+     *
+     */
     public function __construct()
     {
         parent::__construct();
         // your own logic
     }
 
+    /**
+     * @param string $email
+     *
+     * @return $this
+     */
     public function setEmail($email)
     {
         if (empty($email)) {
@@ -64,6 +72,11 @@ class User extends BaseUser
         return $this;
     }
 
+    /**
+     * @param string $emailCanonical
+     *
+     * @return $this
+     */
     public function setEmailCanonical($emailCanonical)
     {
         if (empty($emailCanonical)) {

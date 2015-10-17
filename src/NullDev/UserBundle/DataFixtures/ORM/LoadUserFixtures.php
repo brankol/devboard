@@ -6,6 +6,9 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use NullDev\UserBundle\Entity\User;
 
+/**
+ * Class LoadUserFixtures.
+ */
 class LoadUserFixtures extends AbstractFixture implements OrderedFixtureInterface
 {
     /**

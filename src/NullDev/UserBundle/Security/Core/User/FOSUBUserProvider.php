@@ -8,6 +8,9 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\UserInterface;
 
+/**
+ * Class FOSUBUserProvider.
+ */
 class FOSUBUserProvider extends BaseClass
 {
     /**
@@ -37,6 +40,11 @@ class FOSUBUserProvider extends BaseClass
         return $user;
     }
 
+    /**
+     * @param $response
+     *
+     * @return \FOS\UserBundle\Model\UserInterface
+     */
     protected function doRegistration($response)
     {
         $identifier  = $response->getUsername();
