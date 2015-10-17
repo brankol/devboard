@@ -61,7 +61,7 @@ before_script:
 script:
   - ./bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage --coverage-php build/cov/coverage.cov src/
   - sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
-  - ./bin/behat
+  #- ./bin/behat
   - ./bin/phpspec run
   - ./bin/phpmd src/ xml phpmd.xml --reportfile shippable/phpmd.xml
   - ./bin/phpcs --standard=phpcs.xml src/ -n --report=xml --report-file=shippable/phpcs.xml
@@ -71,7 +71,7 @@ script:
 notifications:
      email:
          recipients:
-             - miro+sf2-starter-edition@mirosvrtan.me
+             - miro+devboard@mirosvrtan.me
          on_success: change
          on_failure: change
 

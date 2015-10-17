@@ -53,9 +53,9 @@ before_script:
   - php app/console assetic:dump --env=prod --no-debug
 
 script:
-  - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
+  #- sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
   - ./bin/phpunit
-  - sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
+  #- sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
   - ./bin/behat
   - ./bin/phpspec run
   - ./bin/phpmd src/ text phpmd.xml
