@@ -8,8 +8,8 @@ code_coverage:
     - php
   output:
     html: build/phpspec/coverage
-    clover: build/phpspec/clover.xml
-    php: build/phpspec/coverage.cov
+    clover: build/logs/clover.xml
+    php: build/cov/coverage.cov
   blacklist:
     - src/*/Controller
     - src/*/DataFixtures
