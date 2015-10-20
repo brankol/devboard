@@ -38,8 +38,14 @@ class User extends BaseUser
      */
     protected $id;
 
-    /** @ORM\Column(name="profileName", type="string", length=255, nullable=true, unique=true) */
+    /** @ORM\Column(name="profileName", type="string", length=255, nullable=true) */
     protected $profileName;
+
+    /** @ORM\Column(name="githubProfileName", type="string", length=255, nullable=true) */
+    protected $githubProfileName;
+
+    /** @ORM\Column(name="githubUserName", type="string", length=255, nullable=true, unique=true) */
+    protected $githubUserName;
 
     /** @ORM\Column(name="githubId", type="string", length=255, nullable=true, unique=true) */
     protected $githubId;
@@ -102,6 +108,38 @@ class User extends BaseUser
     public function setProfileName($profileName)
     {
         $this->profileName = $profileName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGithubProfileName()
+    {
+        return $this->githubProfileName;
+    }
+
+    /**
+     * @param mixed $githubProfileName
+     */
+    public function setGithubProfileName($githubProfileName)
+    {
+        $this->githubProfileName = $githubProfileName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGithubUserName()
+    {
+        return $this->githubUserName;
+    }
+
+    /**
+     * @param mixed $githubUserName
+     */
+    public function setGithubUserName($githubUserName)
+    {
+        $this->githubUserName = $githubUserName;
     }
 
     /**
