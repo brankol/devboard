@@ -78,6 +78,30 @@ doctrine:
             default:
                 auto_mapping: true
                 mappings:
+                    DevBoardProject:
+                        type: annotation
+                        is_bundle: false
+                        dir: %kernel.root_dir%/../src/DevBoard/Core/Project
+                        prefix: DevBoard\Core\Project
+                        alias: DevBoardProject
+                    DevBoardGithubRepo:
+                        type: annotation
+                        is_bundle: false
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/Repo
+                        prefix: DevBoard\Github\Repo
+                        alias: GhRepo
+                    DevBoardGithubBranch:
+                        type: annotation
+                        is_bundle: false
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/Branch
+                        prefix: DevBoard\Github\Branch
+                        alias: GhBranch
+                    DevBoardGithubCommit:
+                        type: annotation
+                        is_bundle: false
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/Commit
+                        prefix: DevBoard\Github\Commit
+                        alias: GhCommit
                     DevBoardGithubUser:
                         type: annotation
                         is_bundle: false
