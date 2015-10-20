@@ -73,43 +73,10 @@ class ProjectSpec extends ObjectBehavior
         $this->getGithubRepos()->shouldReturn($collection);
     }
 
-    public function it_supports_collection_of_users()
+    public function it_can_only_have_one_user_per_project(User $user)
     {
-        $this->getUsers()->shouldReturnAnInstanceOf('Doctrine\Common\Collections\ArrayCollection');
-    }
-
-    public function it_supports_setting_and_getting_collection_of_users(ArrayCollection $collection)
-    {
-        $this->setUsers($collection);
-        $this->getUsers()->shouldReturn($collection);
-        $this->getUsers()->shouldReturnAnInstanceOf('Doctrine\Common\Collections\ArrayCollection');
-    }
-
-    /**
-     * @param NullDev\UserBundle\Entity\User $user1
-     * @param NullDev\UserBundle\Entity\User $user2
-     */
-    public function it_supports_that_one_project_can_have_more_users($user1, $user2)
-    {
-        $this->addUser($user1);
-        $this->addUser($user2);
-        $this->getUsers()->count()->shouldReturn(2);
-    }
-
-    /**
-     * @param NullDev\UserBundle\Entity\User              $user1
-     * @param NullDev\UserBundle\Entity\User              $user2
-     * @param Doctrine\Common\Collections\ArrayCollection $collection
-     */
-    public function it_will_overwrite_exiting_users_when_setting_new_ones($user1, $user2, $collection)
-    {
-        $this->addUser($user1);
-        $this->getUsers()->count()->shouldReturn(1);
-
-        $collection->add($user2);
-
-        $this->setUsers($collection);
-        $this->getUsers()->shouldReturn($collection);
+        $this->setUser($user);
+        $this->getUser()->shouldReturn($user);
     }
 
     public function it_holds_when_project_was_created(\DateTime $created)
@@ -123,6 +90,7 @@ class ProjectSpec extends ObjectBehavior
         $this->setUpdatedAt($updated);
         $this->getUpdatedAt()->shouldReturn($updated);
     }
+
     public function it_sets_created_and_updated_datetimes_when_creating_project()
     {
         $this->getCreatedAt()->shouldReturn(null);
