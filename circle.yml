@@ -42,7 +42,7 @@ test:
   override:
     - ./bin/phpunit
     - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
-    - ./bin/phpspec run
+    - ./bin/phpspec run --no-interaction
     - sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
     - ./bin/behat --strict
     - ./bin/phpmd src/ text phpmd.xml
