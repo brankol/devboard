@@ -6,7 +6,34 @@ default:
             snippets: false
 
     suites:
-        githubuser:
+        project:
+            contexts:
+                - DevBoard\Core\Project\Behat\FixtureContext
+                - DevBoard\Core\Project\Behat\ProjectContext
+            filters:
+                tags: "@project"
+        githubBranch:
+            contexts:
+                - DevBoard\Github\Branch\Behat\FixtureContext
+                - DevBoard\Github\Branch\Behat\GithubBranchContext
+                - DevBoard\Github\Repo\Behat\FixtureContext
+            filters:
+                tags: "@githubBranch"
+        githubCommit:
+            contexts:
+                - DevBoard\Github\Branch\Behat\FixtureContext
+                - DevBoard\Github\Commit\Behat\FixtureContext
+                - DevBoard\Github\Commit\Behat\GithubCommitContext
+                - DevBoard\Github\Repo\Behat\FixtureContext
+            filters:
+                tags: "@githubCommit"
+        githubRepo:
+            contexts:
+                - DevBoard\Github\Repo\Behat\FixtureContext
+                - DevBoard\Github\Repo\Behat\GithubRepoContext
+            filters:
+                tags: "@githubRepo"
+        githubUser:
             contexts:
                 - DevBoard\Github\User\Behat\FixtureContext
                 - DevBoard\Github\User\Behat\GithubUserContext
@@ -17,7 +44,7 @@ default:
                 - Resources\Behat\WebContext
                 - UserContext
             filters:
-                tags: "~@githubUser"
+                tags: "~@project && ~@githubBranch && ~@githubCommit && ~@githubRepo && ~@githubUser"
 
     extensions:
         Behat\MinkExtension:
