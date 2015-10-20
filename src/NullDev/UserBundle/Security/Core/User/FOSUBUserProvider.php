@@ -67,14 +67,18 @@ class FOSUBUserProvider extends BaseClass
         }
 
         //when the user is registering.
-        $service     = $response->getResourceOwner()->getName();
-        $setter      = 'set'.ucfirst($service);
-        $setterId    = $setter.'Id';
-        $setterToken = $setter.'AccessToken';
+        $service           = $response->getResourceOwner()->getName();
+        $setter            = 'set'.ucfirst($service);
+        $setterProfileName = $setter.'ProfileName';
+        $setterUserName    = $setter.'UserName';
+        $setterId          = $setter.'Id';
+        $setterToken       = $setter.'AccessToken';
 
         // create new user here
         $user = $this->userManager->createUser();
 
+        $user->$setterProfileName($profileName);
+        $user->$setterUserName($username);
         $user->$setterId($identifier);
 
         $user->$setterToken($response->getAccessToken());
