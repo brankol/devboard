@@ -35,7 +35,7 @@ before_script:
 
   - cp etc/shippable-ci/app/config/parameters.yml app/config/parameters.yml
   - cp etc/shippable-ci/web/app_test.php web/app_test.php
-  - cp etc/shippable-ci/behat.yml behat.yml
+  - cp etc/ci/behat.yml behat.yml
 
   - composer self-update
   - sudo chmod 777 -R app/cache/
@@ -62,7 +62,7 @@ script:
   - ./bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage --coverage-php build/cov/coverage.cov src/
   - sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
   #- ./bin/behat
-  - ./bin/phpspec run
+  - ./bin/phpspec run --no-interaction
   - ./bin/phpmd src/ xml phpmd.xml --reportfile shippable/phpmd.xml
   - ./bin/phpcs --standard=phpcs.xml src/ -n --report=xml --report-file=shippable/phpcs.xml
   - ./bin/php-cs-fixer fix spec/ --dry-run --diff --level=symfony --fixers=short_array_syntax,align_double_arrow,align_equals,no_blank_lines_before_namespace,ordered_use,phpdoc_order,-unused_use,-empty_return

@@ -41,7 +41,7 @@ before_script:
   - cp etc/travis-ci/app/config/parameters.yml app/config/parameters.yml
   - cp etc/travis-ci/web/app_test.php web/app_test.php
   - cp etc/travis-ci/web/.htaccess web/.htaccess
-  - cp etc/travis-ci/behat.yml behat.yml
+  - cp etc/ci/behat.yml behat.yml
 
   - composer install
   - php app/console assetic:dump --env=prod --no-debug
@@ -57,7 +57,7 @@ script:
   - ./bin/phpunit
   #- sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
   - ./bin/behat
-  - ./bin/phpspec run
+  - ./bin/phpspec run --no-interaction
   - ./bin/phpmd src/ text phpmd.xml
   - ./bin/phpmd app/ text phpmd.xml
   - ./bin/phpcs --standard=phpcs.xml src/ -n
