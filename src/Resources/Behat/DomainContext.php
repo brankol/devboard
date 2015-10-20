@@ -2,6 +2,7 @@
 namespace Resources\Behat;
 
 use Behat\Behat\Context\SnippetAcceptingContext;
+use Behat\Gherkin\Node\TableNode;
 use Behat\MinkExtension\Context\RawMinkContext;
 use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Resources\Behat\DefaultContext;
@@ -23,6 +24,19 @@ class DomainContext extends DefaultContext
      * @var array
      */
     private $errors = [];
+
+    /**
+     * @When I fill in:
+     *
+     * @param TableNode $table
+     */
+    public function iFillIn(TableNode $table)
+    {
+        foreach ($table as $row) {
+            $propertySetter = 'set'.ucfirst($row['property']);
+            $this->target->$propertySetter($row['value']);
+        }
+    }
 
     /**
      * @Transform :setProperty

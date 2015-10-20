@@ -22,7 +22,7 @@ trait CleanDbTrait
     protected function cleanDb()
     {
         $em            = $this->getEntityManager();
-        $orderedTables = ['GithubUsers'];
+        $orderedTables = ['GithubBranches', 'GithubCommits', 'GithubRepos', 'GithubUsers', 'Projects'];
 
         $em->getConnection()->executeUpdate('SET foreign_key_checks = 0;');
         $platform = $em->getConnection()->getDatabasePlatform();

@@ -1,6 +1,7 @@
 <?php
 namespace Resources\Behat;
 
+use NullDev\UserBundle\Entity\User;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
@@ -16,7 +17,7 @@ trait LoginDomainTrait
      */
     public function iAmLoggedInAs($username)
     {
-        $this->logUserIn($username);
+        $this->logUserIn($this->loadUserByUsername($username));
     }
 
     /**
