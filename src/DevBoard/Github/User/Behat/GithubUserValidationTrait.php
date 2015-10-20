@@ -17,7 +17,7 @@ trait GithubUserValidationTrait
     /**
      * @Then I should see validation error that githubId already in use
      */
-    public function iShouldSeeValidationErrorThatGithubidAlreadyInUse()
+    public function iShouldSeeValidationErrorThatGithubIdAlreadyInUse()
     {
         $this->assertHasValidationError('githubId', 'This value is already used.');
     }

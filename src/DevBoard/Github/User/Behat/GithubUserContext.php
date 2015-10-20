@@ -22,19 +22,6 @@ class GithubUserContext extends DomainContext
     }
 
     /**
-     * @When I fill in:
-     *
-     * @param TableNode $table
-     */
-    public function iFillIn(TableNode $table)
-    {
-        foreach ($table as $row) {
-            $propertySetter = 'set'.lcfirst($row['property']);
-            $this->target->$propertySetter($row['value']);
-        }
-    }
-
-    /**
      * @Then there should be user with :username username in system
      *
      * @param $username

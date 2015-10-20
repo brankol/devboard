@@ -32,6 +32,8 @@ trait DataTrait
         if (!$user) {
             throw new \Exception('Cant find github user with username:'.$username);
         }
+
+        return $user;
     }
 
     /**

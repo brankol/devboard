@@ -33,7 +33,7 @@ class CurrentUserServiceSpec extends ObjectBehavior
 
     /**
      */
-    public function it_should_throw_exception_if_no_token_found($tokenStorage)
+    public function it_should_throw_exception_if_no_token_found()
     {
         $this->shouldThrow('Exception')->duringGetUser();
     }
