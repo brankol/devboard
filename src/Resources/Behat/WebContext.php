@@ -12,6 +12,7 @@ use Behat\MinkExtension\Context\MinkContext;
 class WebContext extends MinkContext implements SnippetAcceptingContext
 {
     private $output;
+    use ScreenshotTrait;
 
     /**
      * Initializes context.
