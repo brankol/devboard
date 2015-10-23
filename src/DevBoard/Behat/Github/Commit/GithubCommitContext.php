@@ -19,6 +19,16 @@ class GithubCommitContext extends DomainContext
     use BranchDataTrait;
 
     /**
+     * @var GithubRepo
+     */
+    private $repo;
+
+    /**
+     * @var GithubBranch
+     */
+    private $branch;
+
+    /**
      * @Given I am adding new github commit to :branchName branch of :githubRepoFullName repo
      *
      * @param $branchName

@@ -341,7 +341,7 @@ class GithubCommit
     /**
      * Set updatedAt.
      *
-     * @param DateTime|string $updatedAt
+     * @param DateTime $updatedAt
      *
      * @return GithubCommit
      */
