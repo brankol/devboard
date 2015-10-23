@@ -39,12 +39,18 @@ default:
                 - DevBoard\Behat\Github\User\GithubUserContext
             filters:
                 tags: "@githubUser"
+        user:
+            contexts:
+                - DevBoard\Behat\NullDev\User\UserContext
+                - DevBoard\Behat\NullDev\User\FrontContext
+            filters:
+                tags: "@user"
         web:
             contexts:
                 - Resources\Behat\WebContext
-                - UserContext
+                - DevBoard\Behat\NullDev\User\UserContext
             filters:
-                tags: "~@project && ~@githubBranch && ~@githubCommit && ~@githubRepo && ~@githubUser"
+                tags: "~@project && ~@githubBranch && ~@githubCommit && ~@githubRepo && ~@githubUser && ~@user"
 
     extensions:
         Behat\MinkExtension:
@@ -57,4 +63,8 @@ default:
             browser_name: firefox
             show_auto:    false
             files_path: /vagrant/
+            selenium2:
+                wd_host: http://127.0.0.1:4444/wd/hub
+                capabilities:
+                    version: ''
         Behat\Symfony2Extension: ~
