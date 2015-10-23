@@ -1,5 +1,5 @@
 <?php
-namespace DevBoard\Github\Repo\Behat;
+namespace DevBoard\Behat\Github\Repo;
 
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;

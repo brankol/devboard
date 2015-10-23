@@ -1,5 +1,5 @@
 <?php
-namespace DevBoard\Github\Branch\Behat;
+namespace DevBoard\Behat\Github\Branch;
 
 /**
  * Class GithubBranchValidationTrait.

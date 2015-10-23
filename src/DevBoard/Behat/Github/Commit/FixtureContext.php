@@ -1,5 +1,5 @@
 <?php
-namespace DevBoard\Github\Commit\Behat;
+namespace DevBoard\Behat\Github\Commit;
 
 use Behat\Gherkin\Node\TableNode;
 use DevBoard\Github\Commit\GithubCommit;

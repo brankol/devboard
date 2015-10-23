@@ -1,5 +1,5 @@
 <?php
-namespace DevBoard\Core\Project\Behat;
+namespace DevBoard\Behat\Core\Project;
 
 /**
  * Class ProjectValidationTrait.

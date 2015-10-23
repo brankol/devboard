@@ -1,5 +1,5 @@
 <?php
-namespace DevBoard\Github\User\Behat;
+namespace DevBoard\Behat\Github\User;
 
 /**
  * Class GithubUserValidationTrait.

@@ -1,9 +1,9 @@
 <?php
-namespace DevBoard\Github\Branch\Behat;
+namespace DevBoard\Behat\Github\Branch;
 
 use Behat\Gherkin\Node\TableNode;
+use DevBoard\Behat\Github\Repo\DataTrait as RepoDataTrait;
 use DevBoard\Github\Branch\GithubBranch;
-use DevBoard\Github\Repo\Behat\DataTrait as RepoDataTrait;
 use Resources\Behat\DefaultContext;
 
 /**

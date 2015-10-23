@@ -1,11 +1,11 @@
 <?php
-namespace DevBoard\Github\Commit\Behat;
+namespace DevBoard\Behat\Github\Commit;
 
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
-use DevBoard\Github\Branch\Behat\DataTrait as BranchDataTrait;
+use DevBoard\Behat\Github\Branch\DataTrait as BranchDataTrait;
+use DevBoard\Behat\Github\Repo\DataTrait as RepoDataTrait;
 use DevBoard\Github\Commit\GithubCommit;
-use DevBoard\Github\Repo\Behat\DataTrait as RepoDataTrait;
 use Resources\Behat\DomainContext;
 
 /**

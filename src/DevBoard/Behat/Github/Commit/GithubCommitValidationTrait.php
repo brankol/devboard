@@ -1,5 +1,5 @@
 <?php
-namespace DevBoard\Github\Commit\Behat;
+namespace DevBoard\Behat\Github\Commit;
 
 /**
  * Class GithubCommitValidationTrait.

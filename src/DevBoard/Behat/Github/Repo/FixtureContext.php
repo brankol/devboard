@@ -1,5 +1,5 @@
 <?php
-namespace DevBoard\Github\Repo\Behat;
+namespace DevBoard\Behat\Github\Repo;
 
 use Behat\Gherkin\Node\TableNode;
 use DevBoard\Github\Repo\GithubRepo;
