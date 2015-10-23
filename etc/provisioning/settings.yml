@@ -15,7 +15,7 @@ parameters:
       path:       /var/www/sites/www.devboardxyz.loc
     - name:       test_devboardxyz
       template:   symfony2-test-application
-      domain:     www.devboardxyz.loc
+      domain:     test.devboardxyz.loc
       path:       /var/www/sites/www.devboardxyz.loc
   mysql:
     ip: 127.0.0.1
