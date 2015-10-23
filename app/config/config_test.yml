@@ -16,5 +16,19 @@ web_profiler:
     toolbar: false
     intercept_redirects: false
 
+# Twig Configuration
+twig:
+    globals:
+        github_client_id: %github_client_id_test%
+        github_default_scope: "user,read:org,repo"
+
 swiftmailer:
     disable_delivery: true
+hwi_oauth:
+    # name of the firewall in which this bundle is active, this setting MUST be set
+    firewall_name: main
+    resource_owners:
+        github:
+            type:                github
+            client_id:           %github_client_id_test%
+            client_secret:       %github_client_secret_test%
