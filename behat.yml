@@ -48,7 +48,7 @@ default:
 
     extensions:
         Behat\MinkExtension:
-            base_url: http://www.devboardxyz.loc/app_test.php/
+            base_url: https://test.devboardxyz.loc/
             sessions:
                 default:
                     symfony2: ~
