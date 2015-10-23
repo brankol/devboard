@@ -1,8 +1,9 @@
 @user
 Feature: User registration
-  In order to use site
-  As a new user
-  I need to register
+  In order to increase security
+  As a user
+  I need to disallow any kind of user registering on site
 
-  Scenario: Sign up
-    Given I am on homepage
+  Scenario: Check that registration redirects to home page
+    Given I am on "/register"
+    Then I should be on homepage
