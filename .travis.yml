@@ -50,6 +50,8 @@ before_script:
   - php app/console doctrine:database:create --env=test
   - php app/console doctrine:migrations:migrate --env=test --no-interaction
   - php app/console doctrine:fixtures:load --env=test --no-interaction
+  - sed -i 's/FAKE-GITHUB-ID-TEST/"'$GITHUB_ID'"/' app/config/parameters.yml
+  - sed -i 's/FAKE-GITHUB-SECRET-TEST/"'$GITHUB_SECRET'"/' app/config/parameters.yml
   - php app/console assetic:dump --env=prod --no-debug
 
 script:

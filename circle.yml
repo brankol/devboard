@@ -35,6 +35,8 @@ dependencies:
     - wget http://selenium-release.storage.googleapis.com/2.46/selenium-server-standalone-2.46.0.jar
     - java -jar selenium-server-standalone-2.46.0.jar:
         background: true
+    - sed -i 's/FAKE-GITHUB-ID-TEST/'"$GITHUB_ID"'/' app/config/parameters.yml
+    - sed -i 's/FAKE-GITHUB-SECRET-TEST/'"$GITHUB_SECRET"'/' app/config/parameters.yml
   cache_directories:
     - "vendor"
     - "bin"
