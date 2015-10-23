@@ -8,35 +8,35 @@ default:
     suites:
         project:
             contexts:
-                - DevBoard\Core\Project\Behat\FixtureContext
-                - DevBoard\Core\Project\Behat\ProjectContext
+                - DevBoard\Behat\Core\Project\FixtureContext
+                - DevBoard\Behat\Core\Project\ProjectContext
             filters:
                 tags: "@project"
         githubBranch:
             contexts:
-                - DevBoard\Github\Branch\Behat\FixtureContext
-                - DevBoard\Github\Branch\Behat\GithubBranchContext
-                - DevBoard\Github\Repo\Behat\FixtureContext
+                - DevBoard\Behat\Github\Branch\FixtureContext
+                - DevBoard\Behat\Github\Branch\GithubBranchContext
+                - DevBoard\Behat\Github\Repo\FixtureContext
             filters:
                 tags: "@githubBranch"
         githubCommit:
             contexts:
-                - DevBoard\Github\Branch\Behat\FixtureContext
-                - DevBoard\Github\Commit\Behat\FixtureContext
-                - DevBoard\Github\Commit\Behat\GithubCommitContext
-                - DevBoard\Github\Repo\Behat\FixtureContext
+                - DevBoard\Behat\Github\Branch\FixtureContext
+                - DevBoard\Behat\Github\Commit\FixtureContext
+                - DevBoard\Behat\Github\Commit\GithubCommitContext
+                - DevBoard\Behat\Github\Repo\FixtureContext
             filters:
                 tags: "@githubCommit"
         githubRepo:
             contexts:
-                - DevBoard\Github\Repo\Behat\FixtureContext
-                - DevBoard\Github\Repo\Behat\GithubRepoContext
+                - DevBoard\Behat\Github\Repo\FixtureContext
+                - DevBoard\Behat\Github\Repo\GithubRepoContext
             filters:
                 tags: "@githubRepo"
         githubUser:
             contexts:
-                - DevBoard\Github\User\Behat\FixtureContext
-                - DevBoard\Github\User\Behat\GithubUserContext
+                - DevBoard\Behat\Github\User\FixtureContext
+                - DevBoard\Behat\Github\User\GithubUserContext
             filters:
                 tags: "@githubUser"
         web:
