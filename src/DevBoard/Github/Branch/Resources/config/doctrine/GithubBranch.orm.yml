@@ -18,7 +18,7 @@ DevBoard\Github\Branch\Entity\GithubBranch:
       type: datetime
   manyToOne:
     repo:
-      targetEntity: DevBoard\Github\Repo\GithubRepo
+      targetEntity: DevBoard\Github\Repo\Entity\GithubRepo
       inversedBy: branches
       joinColumn:
         name: repoId

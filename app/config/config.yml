@@ -85,10 +85,10 @@ doctrine:
                         prefix: DevBoard\Core\Project\Entity
                         alias: DevBoardProject
                     DevBoardGithubRepo:
-                        type: annotation
+                        type: yml
                         is_bundle: false
-                        dir: %kernel.root_dir%/../src/DevBoard/Github/Repo
-                        prefix: DevBoard\Github\Repo
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/Repo/Resources/config/doctrine
+                        prefix: DevBoard\Github\Repo\Entity
                         alias: GhRepo
                     DevBoardGithubBranch:
                         type: yml

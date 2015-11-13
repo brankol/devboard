@@ -2,7 +2,7 @@
 namespace spec\DevBoard\Github\Branch\Entity;
 
 use DevBoard\Github\Commit\GithubCommit;
-use DevBoard\Github\Repo\GithubRepo;
+use DevBoard\Github\Repo\Entity\GithubRepo;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

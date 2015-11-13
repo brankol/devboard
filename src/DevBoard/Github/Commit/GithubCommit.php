@@ -2,7 +2,7 @@
 namespace DevBoard\Github\Commit;
 
 use DateTime;
-use DevBoard\Github\Repo\GithubRepo;
+use DevBoard\Github\Repo\Entity\GithubRepo;
 use DevBoard\Github\User\GithubUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -27,7 +27,7 @@ class GithubCommit
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="DevBoard\Github\Repo\GithubRepo", inversedBy="commits")
+     * @ORM\ManyToOne(targetEntity="DevBoard\Github\Repo\Entity\GithubRepo", inversedBy="commits")
      * @ORM\JoinColumn(name="githubRepoId", referencedColumnName="id")
      */
     protected $githubRepo;

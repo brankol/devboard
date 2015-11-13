@@ -27,7 +27,7 @@ DevBoard\Core\Project\Entity\Project:
         referencedColumnName: id
   manyToMany:
     githubRepos:
-      targetEntity: DevBoard\Github\Repo\GithubRepo
+      targetEntity: DevBoard\Github\Repo\Entity\GithubRepo
       inversedBy: repos
       joinTable:
         name: ProjectGithubRepos

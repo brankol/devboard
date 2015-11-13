@@ -1,7 +1,7 @@
 <?php
 namespace spec\DevBoard\Core\Project\Entity;
 
-use DevBoard\Github\Repo\GithubRepo;
+use DevBoard\Github\Repo\Entity\GithubRepo;
 use Doctrine\Common\Collections\ArrayCollection;
 use NullDev\UserBundle\Entity\User;
 use PhpSpec\ObjectBehavior;
@@ -44,8 +44,8 @@ class ProjectSpec extends ObjectBehavior
     }
 
     /**
-     * @param DevBoard\Github\Repo\GithubRepo $githubRepo1
-     * @param DevBoard\Github\Repo\GithubRepo $githubRepo2
+     * @param DevBoard\Github\Repo\Entity\GithubRepo $githubRepo1
+     * @param DevBoard\Github\Repo\Entity\GithubRepo $githubRepo2
      */
     public function it_supports_that_one_project_can_have_more_github_repos($githubRepo1, $githubRepo2)
     {
@@ -55,8 +55,8 @@ class ProjectSpec extends ObjectBehavior
     }
 
     /**
-     * @param DevBoard\Github\Repo\GithubRepo             $githubRepo1
-     * @param DevBoard\Github\Repo\GithubRepo             $githubRepo2
+     * @param DevBoard\Github\Repo\Entity\GithubRepo      $githubRepo1
+     * @param DevBoard\Github\Repo\Entity\GithubRepo      $githubRepo2
      * @param Doctrine\Common\Collections\ArrayCollection $collection
      */
     public function it_will_overwrite_exiting_github_repos_when_setting_new_ones(

@@ -4,7 +4,7 @@ namespace spec\DevBoard\Github\Commit;
 use DateTime;
 use DevBoard\Github\Commit\GithubStatus;
 use DevBoard\Github\Commit\InternalStatus;
-use DevBoard\Github\Repo\GithubRepo;
+use DevBoard\Github\Repo\Entity\GithubRepo;
 use DevBoard\Github\User\GithubUser;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;

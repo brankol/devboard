@@ -1,0 +1,64 @@
+DevBoard\Github\Repo\Entity\GithubRepo:
+  type: entity
+  table: GithubRepos
+  repositoryClass: DevBoard\Github\Repo\Entity\GithubRepoRepository
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: fullName
+  id:
+    id:
+      type: guid
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    githubId:
+      type: integer
+    owner:
+      type: string
+      length: '255'
+    name:
+      type: string
+      length: '255'
+    fullName:
+      type: string
+      length: '255'
+      unique: true
+    htmlUrl:
+      type: string
+      length: '255'
+    description:
+      type: text
+    fork:
+      type: integer
+    defaultBranch:
+      type: string
+      length: '255'
+    githubPrivate:
+      type: integer
+    gitUrl:
+      type: string
+      length: '255'
+    sshUrl:
+      type: string
+      length: '255'
+    githubCreatedAt:
+      type: datetime
+    githubUpdatedAt:
+      type: datetime
+    githubPushedAt:
+      type: datetime
+    createdAt:
+      type: datetime
+    updatedAt:
+      type: datetime
+  oneToMany:
+    branches:
+      targetEntity: DevBoard\Github\Branch\Entity\GithubBranch
+      mappedBy: repo
+  manyToMany:
+    projects:
+      targetEntity: DevBoard\Core\Project\Entity\Project
+      mappedBy: githubRepos
+  lifecycleCallbacks:
+    prePersist: ['doCreatedValue']
+    preUpdate: ['doUpdatedValue']

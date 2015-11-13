@@ -1,5 +1,5 @@
 <?php
-namespace spec\DevBoard\Github\Repo;
+namespace spec\DevBoard\Github\Repo\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
@@ -9,7 +9,7 @@ class GithubRepoSpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {
-        $this->shouldHaveType('DevBoard\Github\Repo\GithubRepo');
+        $this->shouldHaveType('DevBoard\Github\Repo\Entity\GithubRepo');
     }
 
     public function it_should_allow_access_to_local_github_repo_id()
