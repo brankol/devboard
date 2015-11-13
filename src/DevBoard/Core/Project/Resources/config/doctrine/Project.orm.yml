@@ -1,0 +1,36 @@
+DevBoard\Core\Project\Entity\Project:
+  type: entity
+  table: Projects
+  repositoryClass: DevBoard\Core\Project\Entity\ProjectRepository
+  id:
+    id:
+      type: guid
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    projectName:
+      type: string
+      length: '255'
+    active:
+      type: integer
+    createdAt:
+      type: datetime
+    updatedAt:
+      type: datetime
+  manyToOne:
+    user:
+      targetEntity: NullDev\UserBundle\Entity\User
+      inversedBy: projects
+      joinColumn:
+        name: userId
+        referencedColumnName: id
+  manyToMany:
+    githubRepos:
+      targetEntity: DevBoard\Github\Repo\Entity\GithubRepo
+      inversedBy: repos
+      joinTable:
+        name: ProjectGithubRepos
+  lifecycleCallbacks:
+    prePersist: ['doCreatedValue']
+    preUpdate: ['doUpdatedValue']

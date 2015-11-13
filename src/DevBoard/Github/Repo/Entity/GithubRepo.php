@@ -1,31 +1,21 @@
 <?php
-namespace DevBoard\Github\Repo;
+namespace DevBoard\Github\Repo\Entity;
 
-use DevBoard\Core\Project\Project;
-use DevBoard\Github\Branch\GithubBranch;
+use DateTime;
+use DevBoard\Core\Project\Entity\Project;
+use DevBoard\Github\Branch\Entity\GithubBranch;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Resources\Entity\BaseEntity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * GithubRepo.
  *
- * @ORM\Table(name="GithubRepos")
- * @ORM\Entity(repositoryClass="DevBoard\Github\Repo\GithubRepoRepository")
  * @UniqueEntity("fullName")
- * @ORM\HasLifecycleCallbacks()
  */
-class GithubRepo
+class GithubRepo extends BaseEntity
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="guid")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="UUID")
-     */
-    private $id;
-
     /**
      * @var int
      *
@@ -125,28 +115,14 @@ class GithubRepo
     private $githubPushedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="DevBoard\Core\Project\Project", mappedBy="githubRepos")
+     * @ORM\ManyToMany(targetEntity="DevBoard\Core\Project\Entity\Project", mappedBy="githubRepos")
      */
     protected $projects;
 
     /**
-     * @ORM\OneToMany(targetEntity="DevBoard\Github\Branch\GithubBranch", mappedBy="repo")
+     * @ORM\OneToMany(targetEntity="DevBoard\Github\Branch\Entity\GithubBranch", mappedBy="repo")
      */
     protected $branches;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="createdAt", type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="updatedAt", type="datetime")
-     */
-    private $updatedAt;
 
     /**
      *
@@ -155,16 +131,6 @@ class GithubRepo
     {
         $this->projects = new ArrayCollection();
         $this->branches = new ArrayCollection();
-    }
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -452,54 +418,6 @@ class GithubRepo
     }
 
     /**
-     * Set createdAt.
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return GithubRepo
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt.
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt.
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return GithubRepo
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt.
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
      * Set defaultBranch.
      *
      * @param string $defaultBranch
@@ -629,23 +547,6 @@ class GithubRepo
         }
 
         return null;
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function doCreatedValue()
-    {
-        $this->setCreatedAt(new \DateTime());
-        $this->setUpdatedAt(new \DateTime());
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function doUpdatedValue()
-    {
-        $this->setUpdatedAt(new \DateTime());
     }
 
     /**

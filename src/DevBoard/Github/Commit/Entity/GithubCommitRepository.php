@@ -1,5 +1,5 @@
 <?php
-namespace DevBoard\Github\Commit;
+namespace DevBoard\Github\Commit\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

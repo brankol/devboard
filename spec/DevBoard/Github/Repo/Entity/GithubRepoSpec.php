@@ -1,5 +1,5 @@
 <?php
-namespace spec\DevBoard\Github\Repo;
+namespace spec\DevBoard\Github\Repo\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
@@ -9,7 +9,7 @@ class GithubRepoSpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {
-        $this->shouldHaveType('DevBoard\Github\Repo\GithubRepo');
+        $this->shouldHaveType('DevBoard\Github\Repo\Entity\GithubRepo');
     }
 
     public function it_should_allow_access_to_local_github_repo_id()
@@ -114,8 +114,8 @@ class GithubRepoSpec extends ObjectBehavior
     }
 
     /**
-     * @param DevBoard\Core\Project\Project $project1
-     * @param DevBoard\Core\Project\Project $project2
+     * @param DevBoard\Core\Project\Entity\Project $project1
+     * @param DevBoard\Core\Project\Entity\Project $project2
      */
     public function it_supports_that_one_repo_can_be_used_in_multiple_projects($project1, $project2)
     {
@@ -132,8 +132,8 @@ class GithubRepoSpec extends ObjectBehavior
     }
 
     /**
-     * @param DevBoard\Github\Branch\GithubBranch $branch1
-     * @param DevBoard\Github\Branch\GithubBranch $branch2
+     * @param DevBoard\Github\Branch\Entity\GithubBranch $branch1
+     * @param DevBoard\Github\Branch\Entity\GithubBranch $branch2
      */
     public function it_supports_that_one_repo_will_have_multiple_branches($branch1, $branch2)
     {
@@ -156,8 +156,8 @@ class GithubRepoSpec extends ObjectBehavior
     }
 
     /**
-     * @param DevBoard\Github\Branch\GithubBranch         $masterBranch
-     * @param DevBoard\Github\Branch\GithubBranch         $devBranch
+     * @param DevBoard\Github\Branch\Entity\GithubBranch  $masterBranch
+     * @param DevBoard\Github\Branch\Entity\GithubBranch  $devBranch
      * @param Doctrine\Common\Collections\ArrayCollection $collection
      */
     public function it_can_return_branch_if_exists_on_repo($masterBranch, $devBranch, $collection)

@@ -5,7 +5,7 @@ use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
 use DevBoard\Behat\Github\Branch\DataTrait as BranchDataTrait;
 use DevBoard\Behat\Github\Repo\DataTrait as RepoDataTrait;
-use DevBoard\Github\Commit\GithubCommit;
+use DevBoard\Github\Commit\Entity\GithubCommit;
 use Resources\Behat\DomainContext;
 
 /**

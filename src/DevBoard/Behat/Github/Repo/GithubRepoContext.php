@@ -3,7 +3,7 @@ namespace DevBoard\Behat\Github\Repo;
 
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
-use DevBoard\Github\Repo\GithubRepo;
+use DevBoard\Github\Repo\Entity\GithubRepo;
 use Resources\Behat\DomainContext;
 
 /**

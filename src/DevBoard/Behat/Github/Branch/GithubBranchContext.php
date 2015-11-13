@@ -4,7 +4,7 @@ namespace DevBoard\Behat\Github\Branch;
 use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Gherkin\Node\TableNode;
 use DevBoard\Behat\Github\Repo\DataTrait as RepoDataTrait;
-use DevBoard\Github\Branch\GithubBranch;
+use DevBoard\Github\Branch\Entity\GithubBranch;
 use Resources\Behat\DomainContext;
 
 /**

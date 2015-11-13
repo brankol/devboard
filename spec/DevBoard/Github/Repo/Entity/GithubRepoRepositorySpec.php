@@ -1,16 +1,16 @@
 <?php
-namespace spec\DevBoard\Github\Branch;
+namespace spec\DevBoard\Github\Repo\Entity;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
-class GithubBranchRepositorySpec extends ObjectBehavior
+class GithubRepoRepositorySpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {
-        $this->shouldHaveType('DevBoard\Github\Branch\GithubBranchRepository');
+        $this->shouldHaveType('DevBoard\Github\Repo\Entity\GithubRepoRepository');
     }
 
     public function let(EntityManager $em, ClassMetadata $classMetadata)

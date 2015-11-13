@@ -1,114 +1,44 @@
 <?php
-namespace DevBoard\Github\Commit;
+namespace DevBoard\Github\Commit\Entity;
 
 use DateTime;
-use DevBoard\Github\Repo\GithubRepo;
-use DevBoard\Github\User\GithubUser;
+use DevBoard\Github\Repo\Entity\GithubRepo;
+use DevBoard\Github\User\Entity\GithubUser;
 use Doctrine\ORM\Mapping as ORM;
+use Resources\Entity\BaseEntity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * GithubCommit.
- *
- * @ORM\Table(name="GithubCommits", uniqueConstraints={@ORM\UniqueConstraint(name="uniq_repo_sha",
- *                                 columns={"githubRepoId", "sha"})})
- * @ORM\Entity(repositoryClass="DevBoard\Github\Commit\GithubCommitRepository")
- * @ORM\HasLifecycleCallbacks()
  */
-class GithubCommit
+class GithubCommit extends BaseEntity
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="guid")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="UUID")
-     */
-    private $id;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="DevBoard\Github\Repo\GithubRepo", inversedBy="commits")
-     * @ORM\JoinColumn(name="githubRepoId", referencedColumnName="id")
-     */
+    /** @var GithubRepo */
     protected $githubRepo;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="sha", type="string", length=255)
-     */
+    /** @var string */
     private $sha;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="DevBoard\Github\User\GithubUser", inversedBy="authored",cascade={"persist"})
-     * @ORM\JoinColumn(name="authorId", referencedColumnName="id")
-     */
+    /** @var GithubUser */
     private $author;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="authorDate", type="datetime")
-     */
+    /** @var DateTime */
     private $authorDate;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="DevBoard\Github\User\GithubUser", inversedBy="committed",cascade={"persist"})
-     * @ORM\JoinColumn(name="committerId", referencedColumnName="id")
-     */
+    /** @var GithubUser */
     private $committer;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="committerDate", type="datetime")
-     */
+    /** @var DateTime */
     private $committerDate;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="message", type="string", length=255)
-     */
+    /** @var string */
     private $message;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="internalStatus", type="integer", nullable=true)
-     */
+    /** @var string */
     private $internalStatus;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="githubStatus", type="integer", nullable=true)
-     */
+    /** @var string */
     private $githubStatus;
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="createdAt", type="datetime")
-     */
-    private $createdAt;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="updatedAt", type="datetime")
-     */
-    private $updatedAt;
-
-    /**
-     * Get id.
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
      * @return GithubRepo
@@ -181,7 +111,7 @@ class GithubCommit
     /**
      * Set authorDate.
      *
-     * @param \DateTime $authorDate
+     * @param DateTime $authorDate
      *
      * @return GithubCommit
      */
@@ -195,7 +125,7 @@ class GithubCommit
     /**
      * Get authorDate.
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getAuthorDate()
     {
@@ -229,7 +159,7 @@ class GithubCommit
     /**
      * Set committerDate.
      *
-     * @param \DateTime $committerDate
+     * @param DateTime $committerDate
      *
      * @return GithubCommit
      */
@@ -243,7 +173,7 @@ class GithubCommit
     /**
      * Get committerDate.
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getCommitterDate()
     {
@@ -312,71 +242,6 @@ class GithubCommit
         $this->githubStatus = $githubStatus;
 
         return $this;
-    }
-
-    /**
-     * Set createdAt.
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return GithubCommit
-     */
-    public function setCreatedAt(DateTime $createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt.
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt.
-     *
-     * @param DateTime $updatedAt
-     *
-     * @return GithubCommit
-     */
-    public function setUpdatedAt(DateTime $updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt.
-     *
-     * @return string
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * @ORM\PrePersist
-     */
-    public function doCreatedValue()
-    {
-        $this->setCreatedAt(new \DateTime());
-        $this->setUpdatedAt(new \DateTime());
-    }
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function doUpdatedValue()
-    {
-        $this->setUpdatedAt(new \DateTime());
     }
 
     /**

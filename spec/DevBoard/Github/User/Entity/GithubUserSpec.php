@@ -1,5 +1,5 @@
 <?php
-namespace spec\DevBoard\Github\User;
+namespace spec\DevBoard\Github\User\Entity;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
@@ -8,7 +8,7 @@ class GithubUserSpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {
-        $this->shouldHaveType('DevBoard\Github\User\GithubUser');
+        $this->shouldHaveType('DevBoard\Github\User\Entity\GithubUser');
     }
 
     public function it_has_local_id()

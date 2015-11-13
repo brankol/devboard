@@ -79,34 +79,34 @@ doctrine:
                 auto_mapping: true
                 mappings:
                     DevBoardProject:
-                        type: annotation
+                        type: yml
                         is_bundle: false
-                        dir: %kernel.root_dir%/../src/DevBoard/Core/Project
-                        prefix: DevBoard\Core\Project
+                        dir: %kernel.root_dir%/../src/DevBoard/Core/Project/Resources/config/doctrine
+                        prefix: DevBoard\Core\Project\Entity
                         alias: DevBoardProject
                     DevBoardGithubRepo:
-                        type: annotation
+                        type: yml
                         is_bundle: false
-                        dir: %kernel.root_dir%/../src/DevBoard/Github/Repo
-                        prefix: DevBoard\Github\Repo
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/Repo/Resources/config/doctrine
+                        prefix: DevBoard\Github\Repo\Entity
                         alias: GhRepo
                     DevBoardGithubBranch:
-                        type: annotation
+                        type: yml
                         is_bundle: false
-                        dir: %kernel.root_dir%/../src/DevBoard/Github/Branch
-                        prefix: DevBoard\Github\Branch
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/Branch/Resources/config/doctrine
+                        prefix: DevBoard\Github\Branch\Entity
                         alias: GhBranch
                     DevBoardGithubCommit:
-                        type: annotation
+                        type: yml
                         is_bundle: false
-                        dir: %kernel.root_dir%/../src/DevBoard/Github/Commit
-                        prefix: DevBoard\Github\Commit
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/Commit/Resources/config/doctrine
+                        prefix: DevBoard\Github\Commit\Entity
                         alias: GhCommit
                     DevBoardGithubUser:
-                        type: annotation
+                        type: yml
                         is_bundle: false
-                        dir: %kernel.root_dir%/../src/DevBoard/Github/User
-                        prefix: DevBoard\Github\User
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/User/Resources/config/doctrine
+                        prefix: DevBoard\Github\User\Entity
                         alias: GhUser
 # Swiftmailer Configuration
 swiftmailer:

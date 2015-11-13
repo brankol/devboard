@@ -1,7 +1,7 @@
 <?php
 namespace DevBoard\Behat\Github\Repo;
 
-use DevBoard\Github\Repo\GithubRepo;
+use DevBoard\Github\Repo\Entity\GithubRepo;
 
 /**
  * Class DataTrait.
