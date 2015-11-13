@@ -1,5 +1,5 @@
 <?php
-namespace DevBoard\Github\User;
+namespace DevBoard\Github\User\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

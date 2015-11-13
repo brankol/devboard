@@ -103,10 +103,10 @@ doctrine:
                         prefix: DevBoard\Github\Commit
                         alias: GhCommit
                     DevBoardGithubUser:
-                        type: annotation
+                        type: yml
                         is_bundle: false
-                        dir: %kernel.root_dir%/../src/DevBoard/Github/User
-                        prefix: DevBoard\Github\User
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/User/Resources/config/doctrine
+                        prefix: DevBoard\Github\User\Entity
                         alias: GhUser
 # Swiftmailer Configuration
 swiftmailer:

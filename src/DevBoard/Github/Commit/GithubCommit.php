@@ -3,7 +3,7 @@ namespace DevBoard\Github\Commit;
 
 use DateTime;
 use DevBoard\Github\Repo\Entity\GithubRepo;
-use DevBoard\Github\User\GithubUser;
+use DevBoard\Github\User\Entity\GithubUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -40,7 +40,7 @@ class GithubCommit
     private $sha;
 
     /**
-     * @ORM\ManyToOne(targetEntity="DevBoard\Github\User\GithubUser", inversedBy="authored",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="DevBoard\Github\User\Entity\GithubUser", inversedBy="authored",cascade={"persist"})
      * @ORM\JoinColumn(name="authorId", referencedColumnName="id")
      */
     private $author;
@@ -53,7 +53,7 @@ class GithubCommit
     private $authorDate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="DevBoard\Github\User\GithubUser", inversedBy="committed",cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="DevBoard\Github\User\Entity\GithubUser", inversedBy="committed",cascade={"persist"})
      * @ORM\JoinColumn(name="committerId", referencedColumnName="id")
      */
     private $committer;

@@ -5,7 +5,7 @@ use DateTime;
 use DevBoard\Github\Commit\GithubStatus;
 use DevBoard\Github\Commit\InternalStatus;
 use DevBoard\Github\Repo\Entity\GithubRepo;
-use DevBoard\Github\User\GithubUser;
+use DevBoard\Github\User\Entity\GithubUser;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

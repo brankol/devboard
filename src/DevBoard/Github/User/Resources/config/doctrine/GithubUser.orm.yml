@@ -1,0 +1,44 @@
+DevBoard\Github\User\Entity\GithubUser:
+  type: entity
+  table: GithubUsers
+  repositoryClass: DevBoard\Github\User\Entity\GithubUserRepository
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: githubId
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: username
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+  id:
+    id:
+      type: guid
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    githubId:
+      type: string
+      length: '255'
+      nullable: true
+      unique: true
+    username:
+      type: string
+      length: '255'
+      nullable: true
+      unique: true
+    email:
+      type: string
+      length: '255'
+      nullable: true
+      unique: true
+    name:
+      type: string
+      length: '255'
+    avatarUrl:
+      type: string
+      length: '255'
+      nullable: true
+    createdAt:
+      type: datetime
+    updatedAt:
+      type: datetime
+  lifecycleCallbacks:
+    prePersist: ['doCreatedValue']
+    preUpdate: ['doUpdatedValue']
