@@ -1,5 +1,5 @@
 <?php
-namespace spec\DevBoard\Github\Commit;
+namespace spec\DevBoard\Github\Commit\Entity;
 
 use DateTime;
 use DevBoard\Github\Commit\GithubStatus;
@@ -13,7 +13,7 @@ class GithubCommitSpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {
-        $this->shouldHaveType('DevBoard\Github\Commit\GithubCommit');
+        $this->shouldHaveType('DevBoard\Github\Commit\Entity\GithubCommit');
     }
 
     public function it_has_local_commit_id()

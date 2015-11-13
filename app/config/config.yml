@@ -97,10 +97,10 @@ doctrine:
                         prefix: DevBoard\Github\Branch\Entity
                         alias: GhBranch
                     DevBoardGithubCommit:
-                        type: annotation
+                        type: yml
                         is_bundle: false
-                        dir: %kernel.root_dir%/../src/DevBoard/Github/Commit
-                        prefix: DevBoard\Github\Commit
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/Commit/Resources/config/doctrine
+                        prefix: DevBoard\Github\Commit\Entity
                         alias: GhCommit
                     DevBoardGithubUser:
                         type: yml

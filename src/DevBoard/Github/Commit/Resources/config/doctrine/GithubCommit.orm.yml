@@ -1,0 +1,58 @@
+DevBoard\Github\Commit\Entity\GithubCommit:
+  type: entity
+  table: GithubCommits
+  repositoryClass: DevBoard\Github\Commit\Entity\GithubCommitRepository
+  id:
+    id:
+      type: guid
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    sha:
+      type: string
+      length: '255'
+    authorDate:
+      type: datetime
+    committerDate:
+      type: datetime
+    message:
+      type: string
+      length: '255'
+    internalStatus:
+      type: integer
+      nullable: true
+    githubStatus:
+      type: integer
+      nullable: true
+    createdAt:
+      type: datetime
+    updatedAt:
+      type: datetime
+  uniqueConstraints:
+    uniq_repo_sha:
+      columns: ["githubRepoId", "sha"]
+  manyToOne:
+    githubRepo:
+      targetEntity: DevBoard\Github\Repo\Entity\GithubRepo
+      inversedBy: commits
+      joinColumn:
+        name: githubRepoId
+        referencedColumnName: id
+    author:
+      targetEntity: DevBoard\Github\User\Entity\GithubUser
+      inversedBy: authored
+      cascade: ["persist"]
+      joinColumn:
+        name: authorId
+        referencedColumnName: id
+    committer:
+      targetEntity: DevBoard\Github\User\Entity\GithubUser
+      inversedBy: committed
+      cascade: ["persist"]
+      joinColumn:
+        name: committerId
+        referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: ['doCreatedValue']
+    preUpdate: ['doUpdatedValue']
