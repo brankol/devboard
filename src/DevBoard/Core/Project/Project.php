@@ -45,13 +45,10 @@ class Project
     protected $githubRepos;
 
     /**
-     * @ORM\ManyToMany(targetEntity="NullDev\UserBundle\Entity\User", inversedBy="projects")
-     * @ORM\JoinTable(name="ProjectUsers",
-     *     joinColumns={@ORM\JoinColumn(name="project_id", referencedColumnName="id")},
-     *     inverseJoinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")}
-     * )
+     * @ORM\ManyToOne(targetEntity="NullDev\UserBundle\Entity\User", inversedBy="projects")
+     * @ORM\JoinColumn(name="userId",referencedColumnName="id")
      */
-    protected $users;
+    protected $user;
 
     /**
      * @var \DateTime
@@ -73,7 +70,6 @@ class Project
     public function __construct()
     {
         $this->githubRepos = new ArrayCollection();
-        $this->users       = new ArrayCollection();
     }
 
     /**
@@ -169,33 +165,17 @@ class Project
     /**
      * @return mixed
      */
-    public function getUsers()
+    public function getUser()
     {
-        return $this->users;
+        return $this->user;
     }
 
     /**
-     * @param mixed $users
-     *
-     * @return $this
+     * @param mixed $user
      */
-    public function setUsers(ArrayCollection $users)
+    public function setUser($user)
     {
-        $this->users = $users;
-
-        return $this;
-    }
-
-    /**
-     * @param User $user
-     *
-     * @return $this
-     */
-    public function addUser(User $user)
-    {
-        $this->users[] = $user;
-
-        return $this;
+        $this->user = $user;
     }
 
     /**
