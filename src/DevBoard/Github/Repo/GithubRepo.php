@@ -1,7 +1,7 @@
 <?php
 namespace DevBoard\Github\Repo;
 
-use DevBoard\Core\Project\Project;
+use DevBoard\Core\Project\Entity\Project;
 use DevBoard\Github\Branch\GithubBranch;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
@@ -125,7 +125,7 @@ class GithubRepo
     private $githubPushedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="DevBoard\Core\Project\Project", mappedBy="githubRepos")
+     * @ORM\ManyToMany(targetEntity="DevBoard\Core\Project\Entity\Project", mappedBy="githubRepos")
      */
     protected $projects;
 

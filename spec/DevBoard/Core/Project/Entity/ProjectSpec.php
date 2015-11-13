@@ -1,5 +1,5 @@
 <?php
-namespace spec\DevBoard\Core\Project;
+namespace spec\DevBoard\Core\Project\Entity;
 
 use DevBoard\Github\Repo\GithubRepo;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -11,7 +11,7 @@ class ProjectSpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {
-        $this->shouldHaveType('DevBoard\Core\Project\Project');
+        $this->shouldHaveType('DevBoard\Core\Project\Entity\Project');
     }
 
     public function it_should_allow_access_to_project_id()

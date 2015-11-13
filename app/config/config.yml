@@ -79,10 +79,10 @@ doctrine:
                 auto_mapping: true
                 mappings:
                     DevBoardProject:
-                        type: annotation
+                        type: yml
                         is_bundle: false
-                        dir: %kernel.root_dir%/../src/DevBoard/Core/Project
-                        prefix: DevBoard\Core\Project
+                        dir: %kernel.root_dir%/../src/DevBoard/Core/Project/Resources/config/doctrine
+                        prefix: DevBoard\Core\Project\Entity
                         alias: DevBoardProject
                     DevBoardGithubRepo:
                         type: annotation

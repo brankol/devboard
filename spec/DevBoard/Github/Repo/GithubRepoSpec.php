@@ -114,8 +114,8 @@ class GithubRepoSpec extends ObjectBehavior
     }
 
     /**
-     * @param DevBoard\Core\Project\Project $project1
-     * @param DevBoard\Core\Project\Project $project2
+     * @param DevBoard\Core\Project\Entity\Project $project1
+     * @param DevBoard\Core\Project\Entity\Project $project2
      */
     public function it_supports_that_one_repo_can_be_used_in_multiple_projects($project1, $project2)
     {
