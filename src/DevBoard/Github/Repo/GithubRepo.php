@@ -2,7 +2,7 @@
 namespace DevBoard\Github\Repo;
 
 use DevBoard\Core\Project\Entity\Project;
-use DevBoard\Github\Branch\GithubBranch;
+use DevBoard\Github\Branch\Entity\GithubBranch;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -130,7 +130,7 @@ class GithubRepo
     protected $projects;
 
     /**
-     * @ORM\OneToMany(targetEntity="DevBoard\Github\Branch\GithubBranch", mappedBy="repo")
+     * @ORM\OneToMany(targetEntity="DevBoard\Github\Branch\Entity\GithubBranch", mappedBy="repo")
      */
     protected $branches;
 

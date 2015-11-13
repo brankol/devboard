@@ -1,0 +1,35 @@
+DevBoard\Github\Branch\Entity\GithubBranch:
+  type: entity
+  table: GithubBranches
+  repositoryClass: DevBoard\Github\Branch\Entity\GithubBranchRepository
+  id:
+    id:
+      type: guid
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    name:
+      type: string
+      length: '255'
+    createdAt:
+      type: datetime
+    updatedAt:
+      type: datetime
+  manyToOne:
+    repo:
+      targetEntity: DevBoard\Github\Repo\GithubRepo
+      inversedBy: branches
+      joinColumn:
+        name: repoId
+        referencedColumnName: id
+    lastCommit:
+      targetEntity: DevBoard\Github\Commit\GithubCommit
+      inversedBy: commits
+      cascade: ["persist"]
+      joinColumn:
+        name: lastCommitId
+        referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: ['doCreatedValue']
+    preUpdate: ['doUpdatedValue']

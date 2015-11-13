@@ -1,5 +1,5 @@
 <?php
-namespace spec\DevBoard\Github\Branch;
+namespace spec\DevBoard\Github\Branch\Entity;
 
 use DevBoard\Github\Commit\GithubCommit;
 use DevBoard\Github\Repo\GithubRepo;
@@ -10,7 +10,7 @@ class GithubBranchSpec extends ObjectBehavior
 {
     public function it_is_initializable()
     {
-        $this->shouldHaveType('DevBoard\Github\Branch\GithubBranch');
+        $this->shouldHaveType('DevBoard\Github\Branch\Entity\GithubBranch');
     }
 
     public function it_should_allow_access_to_local_branch_id()

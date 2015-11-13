@@ -91,10 +91,10 @@ doctrine:
                         prefix: DevBoard\Github\Repo
                         alias: GhRepo
                     DevBoardGithubBranch:
-                        type: annotation
+                        type: yml
                         is_bundle: false
-                        dir: %kernel.root_dir%/../src/DevBoard/Github/Branch
-                        prefix: DevBoard\Github\Branch
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/Branch/Resources/config/doctrine
+                        prefix: DevBoard\Github\Branch\Entity
                         alias: GhBranch
                     DevBoardGithubCommit:
                         type: annotation

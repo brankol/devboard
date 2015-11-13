@@ -132,8 +132,8 @@ class GithubRepoSpec extends ObjectBehavior
     }
 
     /**
-     * @param DevBoard\Github\Branch\GithubBranch $branch1
-     * @param DevBoard\Github\Branch\GithubBranch $branch2
+     * @param DevBoard\Github\Branch\Entity\GithubBranch $branch1
+     * @param DevBoard\Github\Branch\Entity\GithubBranch $branch2
      */
     public function it_supports_that_one_repo_will_have_multiple_branches($branch1, $branch2)
     {
@@ -156,8 +156,8 @@ class GithubRepoSpec extends ObjectBehavior
     }
 
     /**
-     * @param DevBoard\Github\Branch\GithubBranch         $masterBranch
-     * @param DevBoard\Github\Branch\GithubBranch         $devBranch
+     * @param DevBoard\Github\Branch\Entity\GithubBranch  $masterBranch
+     * @param DevBoard\Github\Branch\Entity\GithubBranch  $devBranch
      * @param Doctrine\Common\Collections\ArrayCollection $collection
      */
     public function it_can_return_branch_if_exists_on_repo($masterBranch, $devBranch, $collection)
