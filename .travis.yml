@@ -44,8 +44,6 @@ before_script:
   - cp etc/ci/behat.yml behat.yml
 
   - composer install
-  - php app/console assetic:dump --env=prod --no-debug
-  - cp etc/travis-ci/app/config/parameters.yml app/config/parameters.yml
   - php app/console doctrine:database:create --env=dev
   - php app/console doctrine:database:create --env=test
   - php app/console doctrine:migrations:migrate --env=test --no-interaction
