@@ -14,6 +14,7 @@ imports:
 #        query_cache_driver: apc
 
 monolog:
+    channels: ["ghnotifictation"]
     handlers:
         main:
             type:         fingers_crossed
@@ -25,3 +26,8 @@ monolog:
             level: debug
         console:
             type:  console
+        ghnotifictationlog:
+            type: stream
+            path: "%kernel.logs_dir%/gh-notification.log"
+            level: info
+            channels: [ghnotifictation]
