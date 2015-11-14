@@ -4,7 +4,7 @@ Feature: User sign up
   As a new user
   I need to sign up using Github
 
-  @javascript
+  @javascript @integration
   Scenario: Sign up using Github OAuth2
     Given I am on homepage
     And I click "Sign in with Github"
