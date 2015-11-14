@@ -91,6 +91,6 @@ abstract class BaseEntity
     /** @return string */
     public function __toString()
     {
-        return $this->getId();
+        return (string) $this->id;
     }
 }
