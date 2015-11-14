@@ -44,13 +44,13 @@ default:
                 - DevBoard\Behat\NullDev\User\UserContext
                 - DevBoard\Behat\NullDev\User\FrontContext
             filters:
-                tags: "@user"
+                tags: "@user && ~@integration"
         web:
             contexts:
                 - Resources\Behat\WebContext
                 - DevBoard\Behat\NullDev\User\UserContext
             filters:
-                tags: "~@project && ~@githubBranch && ~@githubCommit && ~@githubRepo && ~@githubUser && ~@user"
+                tags: "~@project && ~@githubBranch && ~@githubCommit && ~@githubRepo && ~@githubUser && ~@user && ~@integration"
 
     extensions:
         Behat\MinkExtension:
