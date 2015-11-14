@@ -1,3 +1,6 @@
 dev_board_github_homepage:
     path:     /hello/{name}
     defaults: { _controller: DevBoardGithubBundle:Default:index }
+github_notification:
+    path:     /note/
+    defaults: { _controller: DevBoardGithubBundle:Notification:incoming }
