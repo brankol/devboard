@@ -28,3 +28,4 @@ parameters:
     github_client_id_test:  "FAKE-GITHUB-ID-TEST"
     github_client_secret_test:  "FAKE-GITHUB-SECRET-TEST"
     github_default_scope_test: "user,read:org,repo"
+    github_webhook_secret: "FAKE-WEBHOOK-SECRET"

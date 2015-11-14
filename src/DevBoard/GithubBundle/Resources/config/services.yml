@@ -1,4 +1,9 @@
 services:
-#    dev_board_github.example:
-#        class: DevBoard\GithubBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+    github.webhook.security_checker:
+        class: DevBoard\Github\WebHook\WebHookSecurityChecker
+        arguments: [ %github_webhook_secret% ]
+    github.webhook.factory:
+        class: DevBoard\Github\WebHook\WebHookFactory
+        arguments: [ @github.webhook.signature.factory ]
+    github.webhook.signature.factory:
+        class: DevBoard\Github\WebHook\WebHookSignatureFactory
