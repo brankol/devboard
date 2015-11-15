@@ -2,3 +2,6 @@ services:
 #    null_dev_github_api.example:
 #        class: NullDev\GithubApiBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+    null_dev_github_api.client.authenticated.factory.token:
+        class: NullDev\GithubApi\Client\Authenticated\TokenAuthenticatedClientFactory
