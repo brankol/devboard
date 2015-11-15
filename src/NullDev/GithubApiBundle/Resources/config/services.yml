@@ -6,7 +6,11 @@ services:
     null_dev_github_api.client.authenticated.factory.token:
         class: NullDev\GithubApi\Client\Authenticated\TokenAuthenticatedClientFactory
 
+    null_dev_github_api.repo.data.factory:
+        class: NullDev\GithubApi\Repo\GithubRepoDataFactory
+
     null_dev_github_api.repo.service:
         class: NullDev\GithubApi\Repo\RemoteGithubRepoService
         arguments:
           - @null_dev_github_api.client.authenticated.factory.token
+          - @null_dev_github_api.repo.data.factory

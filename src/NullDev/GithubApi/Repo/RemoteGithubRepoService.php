@@ -10,15 +10,20 @@ use NullDev\UserBundle\Entity\User;
 class RemoteGithubRepoService
 {
     private $clientFactory;
+    private $githubRepoDataFactory;
 
     /**
      * RemoteGithubRepoService constructor.
      *
      * @param AuthenticatedClientFactoryInterface $clientFactory
+     * @param GithubRepoDataFactory               $githubRepoDataFactory
      */
-    public function __construct(AuthenticatedClientFactoryInterface $clientFactory)
-    {
-        $this->clientFactory = $clientFactory;
+    public function __construct(
+        AuthenticatedClientFactoryInterface $clientFactory,
+        GithubRepoDataFactory $githubRepoDataFactory
+    ) {
+        $this->clientFactory         = $clientFactory;
+        $this->githubRepoDataFactory = $githubRepoDataFactory;
     }
 
     /**
@@ -31,13 +36,15 @@ class RemoteGithubRepoService
     {
         $client = $this->createClient($user);
 
-        return $client->api('repository')->show($githubRepo->getOwner(), $githubRepo->getName());
+        $remoteData = $client->api('repository')->show($githubRepo->getOwner(), $githubRepo->getName());
+
+        return $this->githubRepoDataFactory->create($remoteData);
     }
 
     /**
      * @param User $user
      *
-     * @return Client
+     * @return \Github\Client
      */
     private function createClient(User $user)
     {
