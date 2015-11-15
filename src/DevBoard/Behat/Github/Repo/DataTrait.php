@@ -37,7 +37,7 @@ trait DataTrait
     }
 
     /**
-     * @param $fullName
+     * @param string $fullName
      *
      * @throws \Exception
      */
@@ -53,10 +53,26 @@ trait DataTrait
     }
 
     /**
-     * @return mixed
+     * @return GithubRepo
      */
     private function getGithubRepoRepository()
     {
         return $this->getEntityManager()->getRepository('GhRepo:GithubRepo');
+    }
+
+    /**
+     * @param string $fullName
+     *
+     * @return GithubRepo
+     */
+    private function createRepoObjectFromFullName($fullName)
+    {
+        list($owner, $name) = explode('/', $fullName);
+
+        $githubRepo = new GithubRepo();
+        $githubRepo->setOwner($owner);
+        $githubRepo->setName($name);
+
+        return $githubRepo;
     }
 }

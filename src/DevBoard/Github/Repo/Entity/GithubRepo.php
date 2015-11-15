@@ -6,6 +6,7 @@ use DevBoard\Core\Project\Entity\Project;
 use DevBoard\Github\Branch\Entity\GithubBranch;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use NullDev\GithubApi\Repo\GithubRepoDataInterface;
 use Resources\Entity\BaseEntity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -14,7 +15,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  *
  * @UniqueEntity("fullName")
  */
-class GithubRepo extends BaseEntity
+class GithubRepo extends BaseEntity implements GithubRepoDataInterface
 {
     /**
      * @var int
