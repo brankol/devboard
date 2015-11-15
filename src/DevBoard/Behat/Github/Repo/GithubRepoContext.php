@@ -24,7 +24,7 @@ class GithubRepoContext extends DomainContext
      */
     public function iAmFetchingRemoteRepoDataFromGithub()
     {
-        $this->service = $this->getService('null_dev_github_api.repo.service');
+        $this->setupGithubApiRepoService();
     }
 
     /**
@@ -42,13 +42,7 @@ class GithubRepoContext extends DomainContext
      */
     public function iLookForDetailsOn($fullName)
     {
-        $githubRepo = $this->createRepoObjectFromFullName($fullName);
-
-        try {
-            $this->target = $this->service->fetch($githubRepo, $this->getCurrentUser());
-        } catch (Exception $exception) {
-            $this->error = $exception;
-        }
+        $this->fetchRemoteRepoDetailsFor($fullName);
     }
 
     /**
@@ -59,6 +53,22 @@ class GithubRepoContext extends DomainContext
     public function iFillInDetailsForGithubRepo($fullName)
     {
         $this->target = $this->fillRepoWithDetails($this->target, $fullName);
+    }
+
+    /**
+     * @When I create :fullName github repo
+     *
+     * @param string $fullName
+     */
+    public function iCreateGithubRepo($fullName)
+    {
+        $service = $this->getService('github.repo.service');
+
+        try {
+            $this->target = $service->create($fullName, $this->getCurrentUser());
+        } catch (Exception $exception) {
+            $this->error = $exception;
+        }
     }
 
     /**
@@ -101,6 +111,25 @@ class GithubRepoContext extends DomainContext
 
         if ('Not Found' !== $this->error->getMessage()) {
             throw new Exception('Expected exception with "Not Found" message.');
+        }
+    }
+
+    private function setupGithubApiRepoService()
+    {
+        $this->service = $this->getService('null_dev_github_api.repo.service');
+    }
+
+    /**
+     * @param $fullName
+     */
+    private function fetchRemoteRepoDetailsFor($fullName)
+    {
+        $githubRepo = $this->createRepoObjectFromFullName($fullName);
+
+        try {
+            $this->target = $this->service->fetch($githubRepo, $this->getCurrentUser());
+        } catch (Exception $exception) {
+            $this->error = $exception;
         }
     }
 }
