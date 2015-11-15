@@ -17,112 +17,52 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class GithubRepo extends BaseEntity implements GithubRepoDataInterface
 {
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="githubId", type="integer")
-     */
+    /** @var int */
     private $githubId;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="owner", type="string", length=255)
-     */
+    /** @var string */
     private $owner;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="name", type="string", length=255)
-     */
+    /** @var string */
     private $name;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="fullName", type="string", length=255,unique=true)
-     */
+    /** @var string */
     private $fullName;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="htmlUrl", type="string", length=255)
-     */
+    /** @var string */
     private $htmlUrl;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="description", type="text")
-     */
+    /** @var string */
     private $description;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="fork", type="integer")
-     */
+    /** @var int */
     private $fork;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="defaultBranch", type="string", length=255)
-     */
+    /** @var string */
     private $defaultBranch;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="githubPrivate", type="integer")
-     */
+    /** @var int */
     private $githubPrivate;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="gitUrl", type="string", length=255)
-     */
+    /** @var string */
     private $gitUrl;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="sshUrl", type="string", length=255)
-     */
+    /** @var string */
     private $sshUrl;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="githubCreatedAt", type="datetime")
-     */
+    /** @var DateTime */
     private $githubCreatedAt;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="githubUpdatedAt", type="datetime")
-     */
+    /** @var DateTime */
     private $githubUpdatedAt;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="githubPushedAt", type="datetime")
-     */
+    /** @var DateTime */
     private $githubPushedAt;
 
-    /**
-     * @ORM\ManyToMany(targetEntity="DevBoard\Core\Project\Entity\Project", mappedBy="githubRepos")
-     */
+    /** @var ArrayCollection */
     protected $projects;
 
-    /**
-     * @ORM\OneToMany(targetEntity="DevBoard\Github\Branch\Entity\GithubBranch", mappedBy="repo")
-     */
+    /** @var ArrayCollection */
     protected $branches;
 
     /**
@@ -301,11 +241,11 @@ class GithubRepo extends BaseEntity implements GithubRepoDataInterface
     /**
      * Set githubCreatedAt.
      *
-     * @param \DateTime $githubCreatedAt
+     * @param DateTime $githubCreatedAt
      *
      * @return GithubRepo
      */
-    public function setGithubCreatedAt(\DateTime $githubCreatedAt)
+    public function setGithubCreatedAt(DateTime $githubCreatedAt)
     {
         $this->githubCreatedAt = $githubCreatedAt;
 
@@ -315,7 +255,7 @@ class GithubRepo extends BaseEntity implements GithubRepoDataInterface
     /**
      * Get githubCreatedAt.
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getGithubCreatedAt()
     {
@@ -325,11 +265,11 @@ class GithubRepo extends BaseEntity implements GithubRepoDataInterface
     /**
      * Set githubUpdatedAt.
      *
-     * @param \DateTime $githubUpdatedAt
+     * @param DateTime $githubUpdatedAt
      *
      * @return GithubRepo
      */
-    public function setGithubUpdatedAt(\DateTime $githubUpdatedAt)
+    public function setGithubUpdatedAt(DateTime $githubUpdatedAt)
     {
         $this->githubUpdatedAt = $githubUpdatedAt;
 
@@ -339,7 +279,7 @@ class GithubRepo extends BaseEntity implements GithubRepoDataInterface
     /**
      * Get githubUpdatedAt.
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getGithubUpdatedAt()
     {
@@ -349,11 +289,11 @@ class GithubRepo extends BaseEntity implements GithubRepoDataInterface
     /**
      * Set githubPushedAt.
      *
-     * @param \DateTime $githubPushedAt
+     * @param DateTime $githubPushedAt
      *
      * @return GithubRepo
      */
-    public function setGithubPushedAt(\DateTime $githubPushedAt)
+    public function setGithubPushedAt(DateTime $githubPushedAt)
     {
         $this->githubPushedAt = $githubPushedAt;
 
@@ -363,7 +303,7 @@ class GithubRepo extends BaseEntity implements GithubRepoDataInterface
     /**
      * Get githubPushedAt.
      *
-     * @return \DateTime
+     * @return DateTime
      */
     public function getGithubPushedAt()
     {
