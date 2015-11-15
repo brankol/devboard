@@ -34,6 +34,8 @@ class LoadUserFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $visitor1->setUsername('visitor1');
         $visitor1->setEmail('testing+visitor1@nulldevelopment.hr');
         $visitor1->setPlainPassword('pass123');
+        $visitor1->setGithubUserName(getenv('GITHUB_USERNAME'));
+        $visitor1->setGithubAccessToken(getenv('GITHUB_ACCESS_TOKEN'));
         $visitor1->setRoles(['ROLE_USER']);
         $visitor1->setEnabled(true);
 
