@@ -9,10 +9,6 @@ use Resources\Entity\BaseEntity;
 
 /**
  * Project.
- *
- * @ORM\Table(name="Projects")
- * @ORM\Entity(repositoryClass="DevBoard\Core\Project\Entity\ProjectRepository")
- * @ORM\HasLifecycleCallbacks()
  */
 class Project extends BaseEntity
 {
