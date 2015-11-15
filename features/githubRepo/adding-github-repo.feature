@@ -9,6 +9,10 @@ Feature: Creating github repo
 
   Scenario: Creating new github repo
     Given I am adding new github repo
-    When I fill in details for "AcmeDude542/BreakingBad" github repo
-    And I save changes
-    Then there should be github repo with "AcmeDude542/BreakingBad" as full name in system
+    When I create "devboard/test-hitman" github repo
+    Then there should be github repo with "devboard/test-hitman" as full name in system
+
+  Scenario: Creating new github repo that doesnt exist
+    Given I am adding new github repo
+    When I create "AcmeDude542/BreakingBad" github repo
+    Then I will get an error that repo doesnt exist

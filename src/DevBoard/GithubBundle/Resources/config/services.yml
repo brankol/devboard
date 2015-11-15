@@ -1,4 +1,16 @@
 services:
+    github.repo.factory:
+        class: DevBoard\Github\Repo\Entity\GithubRepoFactory
+    github.repo.mapper.remote_to_entity:
+        class: DevBoard\Github\Repo\Mapper\RemoteToEntityMapper
+    github.repo.service:
+        class: DevBoard\Github\Repo\GithubRepoService
+        arguments:
+          - @github.repo.factory
+          - @null_dev_github_api.repo.service
+          - @github.repo.mapper.remote_to_entity
+          - @doctrine.orm.entity_manager
+
     github.webhook.security_checker:
         class: DevBoard\Github\WebHook\WebHookSecurityChecker
         arguments: [ %github_webhook_secret% ]
