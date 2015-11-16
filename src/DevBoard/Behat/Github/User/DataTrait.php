@@ -1,6 +1,8 @@
 <?php
 namespace DevBoard\Behat\Github\User;
 
+use DevBoard\Github\User\Entity\GithubUser;
+
 /**
  * Class DataTrait.
  */
@@ -42,5 +44,19 @@ trait DataTrait
     private function getGithubUserRepository()
     {
         return $this->getEntityManager()->getRepository('GhUser:GithubUser');
+    }
+
+    /**
+     * @param string $username
+     *
+     * @return GithubUser
+     */
+    private function createUserObjectFromUsername($username)
+    {
+        $githubUser = new GithubUser();
+
+        $githubUser->setUsername($username);
+
+        return $githubUser;
     }
 }

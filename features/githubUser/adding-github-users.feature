@@ -5,7 +5,8 @@ Feature: Github user data
   I need to add github user data
 
   Background:
-    Given there is github user with:
+    Given I am logged in as "visitor1"
+    And there is github user with:
       | property  | value                      |
       | githubId  | 2                          |
       | username  | batman2134                 |
@@ -25,13 +26,13 @@ Feature: Github user data
     And I save changes
     Then there should be user with "superhero9009" username in system
 
-  Scenario: Name is only 'must have' info on user
+  Scenario: Username is only 'must have' info on user
     Given I am adding new github user
     When I fill in:
-      | property | value   |
-      | name     | Who Lee |
+      | property | value  |
+      | username | WhoLee |
     And I save changes
-    Then there should be user with "Who Lee" name in system
+    Then there should be user with "WhoLee" username in system
 
 
   Scenario: Username is unique
@@ -46,9 +47,9 @@ Feature: Github user data
   Scenario: GithubId is unique
     Given I am adding new github user
     When I fill in:
-      | property | value    |
-      | githubId | 2        |
-      | name     | Jack Doe |
+      | property | value   |
+      | githubId | 2       |
+      | username | JackDoe |
     And I save changes
     Then I should see validation error that githubId already in use
 
@@ -57,6 +58,17 @@ Feature: Github user data
     When I fill in:
       | property | value                  |
       | email    | batman2134@example.com |
-      | name     | Jack Doe               |
+      | username | JackDoe                |
     And I save changes
     Then I should see validation error that email already in use
+
+
+  Scenario: Creating new github user
+    Given I am adding new github user
+    When I create "msvrtan" github user
+    Then there should be user with "msvrtan" username in system
+
+  Scenario: Creating new github user that doesnt exist
+    Given I am adding new github user
+    When I create "AcmeDude542" github user
+    Then I will get an error that user doesnt exist
