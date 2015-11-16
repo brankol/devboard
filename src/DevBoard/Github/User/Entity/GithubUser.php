@@ -3,6 +3,7 @@ namespace DevBoard\Github\User\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use NullDev\GithubApi\User\GithubUserDataInterface;
 use Resources\Entity\BaseEntity;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -13,31 +14,21 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity("username")
  * @UniqueEntity("email")
  */
-class GithubUser extends BaseEntity
+class GithubUser extends BaseEntity implements GithubUserDataInterface
 {
-    /**
-     * @var string
-     */
+    /** @var string */
     private $githubId;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $username;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $email;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $name;
 
-    /**
-     * @var string
-     */
+    /** @var string */
     private $avatarUrl;
 
     /**

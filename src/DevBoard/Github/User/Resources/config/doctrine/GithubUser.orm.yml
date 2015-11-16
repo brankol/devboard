@@ -21,7 +21,6 @@ DevBoard\Github\User\Entity\GithubUser:
     username:
       type: string
       length: '255'
-      nullable: true
       unique: true
     email:
       type: string
@@ -31,6 +30,7 @@ DevBoard\Github\User\Entity\GithubUser:
     name:
       type: string
       length: '255'
+      nullable: true
     avatarUrl:
       type: string
       length: '255'

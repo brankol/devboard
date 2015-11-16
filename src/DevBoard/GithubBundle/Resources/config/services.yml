@@ -11,6 +11,20 @@ services:
           - @github.repo.mapper.remote_to_entity
           - @doctrine.orm.entity_manager
 
+
+    github.user.factory:
+        class: DevBoard\Github\User\Entity\GithubUserFactory
+    github.user.mapper.remote_to_entity:
+        class: DevBoard\Github\User\Mapper\RemoteToEntityMapper
+    github.user.service:
+        class: DevBoard\Github\User\GithubUserService
+        arguments:
+          - @github.user.factory
+          - @null_dev_github_api.user.service
+          - @github.user.mapper.remote_to_entity
+          - @doctrine.orm.entity_manager
+
+
     github.webhook.security_checker:
         class: DevBoard\Github\WebHook\WebHookSecurityChecker
         arguments: [ %github_webhook_secret% ]
