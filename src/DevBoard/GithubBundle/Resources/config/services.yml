@@ -10,7 +10,13 @@ services:
     class: DevBoard\GithubEvent\EventHandler
     arguments:
       - @github.event.payload.factory
+      - @github.event.push.handler
+
+  github.event.push.handler:
+    class: DevBoard\GithubEvent\Push\PushHandler
+    arguments:
       - @github.event.push.branch.handler
+      - @github.event.push.tag.handler
 
   github.event.payload.factory:
     class: DevBoard\GithubEvent\Payload\PayloadFactory
