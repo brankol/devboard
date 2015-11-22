@@ -1,8 +1,6 @@
 <?php
 namespace spec\DevBoard\Github\Commit;
 
-use DevBoard\Github\Commit\GithubState;
-use DevBoard\Github\Commit\GithubStatus;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

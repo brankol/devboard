@@ -1,35 +1,53 @@
+imports:
+  - { resource: services/repo.yml }
+  - { resource: services/branch.yml }
+  - { resource: services/commit.yml }
+  - { resource: services/user.yml }
+  - { resource: services/webhook.yml }
 services:
-    github.repo.factory:
-        class: DevBoard\Github\Repo\Entity\GithubRepoFactory
-    github.repo.mapper.remote_to_entity:
-        class: DevBoard\Github\Repo\Mapper\RemoteToEntityMapper
-    github.repo.service:
-        class: DevBoard\Github\Repo\GithubRepoService
-        arguments:
-          - @github.repo.factory
-          - @null_dev_github_api.repo.service
-          - @github.repo.mapper.remote_to_entity
-          - @doctrine.orm.entity_manager
+
+  github.event.handler:
+    class: DevBoard\GithubEvent\EventHandler
+    arguments:
+      - @github.event.payload.factory
+      - @github.event.push.branch.handler
+
+  github.event.payload.factory:
+    class: DevBoard\GithubEvent\Payload\PayloadFactory
 
 
-    github.user.factory:
-        class: DevBoard\Github\User\Entity\GithubUserFactory
-    github.user.mapper.remote_to_entity:
-        class: DevBoard\Github\User\Mapper\RemoteToEntityMapper
-    github.user.service:
-        class: DevBoard\Github\User\GithubUserService
-        arguments:
-          - @github.user.factory
-          - @null_dev_github_api.user.service
-          - @github.user.mapper.remote_to_entity
-          - @doctrine.orm.entity_manager
+  github.event.push.branch.data.repo.factory:
+    class: DevBoard\GithubEvent\Push\Branch\Data\RepoFactory
+  github.event.push.branch.data.branch.factory:
+    class: DevBoard\GithubEvent\Push\Branch\Data\BranchFactory
+  github.event.push.branch.data.commit.factory:
+    class: DevBoard\GithubEvent\Push\Branch\Data\CommitFactory
+  github.event.push.branch.data.commit_author.factory:
+    class: DevBoard\GithubEvent\Push\Branch\Data\CommitAuthorFactory
+  github.event.push.branch.data.commit_committer.factory:
+    class: DevBoard\GithubEvent\Push\Branch\Data\CommitCommitterFactory
 
 
-    github.webhook.security_checker:
-        class: DevBoard\Github\WebHook\WebHookSecurityChecker
-        arguments: [ %github_webhook_secret% ]
-    github.webhook.factory:
-        class: DevBoard\Github\WebHook\WebHookFactory
-        arguments: [ @github.webhook.signature.factory ]
-    github.webhook.signature.factory:
-        class: DevBoard\Github\WebHook\WebHookSignatureFactory
+
+  github.event.push.branch.handler:
+    class: DevBoard\GithubEvent\Push\Branch\BranchHandler
+    arguments:
+      - @github.event.push.branch.data.repo.factory
+      - @github.event.push.branch.data.branch.factory
+      - @github.event.push.branch.data.commit.factory
+      - @github.event.push.branch.data.commit_author.factory
+      - @github.event.push.branch.data.commit_committer.factory
+      - @github.repo.facade
+      - @github.branch.facade
+      - @github.commit.facade
+      - @github.user.facade
+      - @doctrine.orm.entity_manager
+
+  github.event.push.tag.handler:
+    class: DevBoard\GithubEvent\Push\Tag\TagHandler
+
+  github.event.push.handler:
+    class: DevBoard\GithubEvent\Push\PushHandler
+    arguments:
+      - @github.event.push.branch.handler
+      - @github.event.push.tag.handler

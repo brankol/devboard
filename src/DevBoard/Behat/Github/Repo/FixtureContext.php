@@ -1,7 +1,6 @@
 <?php
 namespace DevBoard\Behat\Github\Repo;
 
-use Behat\Gherkin\Node\TableNode;
 use DevBoard\Github\Repo\Entity\GithubRepo;
 use Resources\Behat\DefaultContext;
 

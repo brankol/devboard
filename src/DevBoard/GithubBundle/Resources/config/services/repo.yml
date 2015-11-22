@@ -1,0 +1,30 @@
+services:
+  github.repo.repository:
+    class: Doctrine\ORM\EntityRepository
+    factory_service: doctrine.orm.default_entity_manager
+    factory_method: getRepository
+    arguments:
+      - DevBoard\Github\Repo\Entity\GithubRepo
+
+  github.repo.factory:
+    class: DevBoard\Github\Repo\Entity\GithubRepoFactory
+    arguments:
+      - @github.repo.mapper.remote_to_entity
+
+  github.repo.mapper.remote_to_entity:
+    class: DevBoard\Github\Repo\Mapper\RemoteToEntityMapper
+
+  github.repo.facade:
+    class: DevBoard\Github\Repo\GithubRepoFacade
+    arguments:
+      - @github.repo.repository
+      - @github.repo.factory
+      - @doctrine.orm.entity_manager
+
+  github.repo.service:
+    class: DevBoard\Github\Repo\GithubRepoService
+    arguments:
+      - @github.repo.factory
+      - @null_dev_github_api.repo.service
+      - @github.repo.mapper.remote_to_entity
+      - @doctrine.orm.entity_manager

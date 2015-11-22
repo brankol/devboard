@@ -7,4 +7,12 @@ namespace NullDev\GithubApi\User;
 interface GithubUserDataInterface
 {
     public function getUsername();
+
+    public function getGithubId();
+
+    public function getEmail();
+
+    public function getName();
+
+    public function getAvatarUrl();
 }

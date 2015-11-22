@@ -1,8 +1,6 @@
 <?php
 namespace DevBoard\Behat\Github\Commit;
 
-use Behat\Behat\Tester\Exception\PendingException;
-use Behat\Gherkin\Node\TableNode;
 use DevBoard\Behat\Github\Branch\DataTrait as BranchDataTrait;
 use DevBoard\Behat\Github\Repo\DataTrait as RepoDataTrait;
 use DevBoard\Github\Commit\Entity\GithubCommit;
@@ -19,12 +17,12 @@ class GithubCommitContext extends DomainContext
     use BranchDataTrait;
 
     /**
-     * @var GithubRepo
+     * @var \DevBoard\Github\Repo\Entity\GithubRepo
      */
     private $repo;
 
     /**
-     * @var GithubBranch
+     * @var \DevBoard\Github\Branch\Entity\GithubBranch
      */
     private $branch;
 
@@ -38,8 +36,8 @@ class GithubCommitContext extends DomainContext
      */
     public function iAmAddingNewGithubCommitToBranchOfRepo($branchName, $githubRepoFullName)
     {
-        $this->branch = $this->getGithubBranchByName($branchName);
         $this->repo   = $this->getGithubRepoByFullName($githubRepoFullName);
+        $this->branch = $this->getGithubBranchByName($branchName);
         $this->target = new GithubCommit();
     }
 
@@ -58,17 +56,5 @@ class GithubCommitContext extends DomainContext
 
         $this->branch->setLastCommit($this->target);
         $this->validateAndSave($this->branch);
-    }
-
-    /**
-     * @Then there should be github commit with message :message in system
-     *
-     * @param $message
-     *
-     * @throws \Exception
-     */
-    public function thereShouldBeGithubCommitWithMessageInSystem($message)
-    {
-        $this->getGithubCommitByMessage($message);
     }
 }

@@ -1,7 +1,6 @@
 <?php
 namespace DevBoard\Behat\Github\User;
 
-use Behat\Gherkin\Node\TableNode;
 use DevBoard\Github\User\Entity\GithubUser;
 use Exception;
 use Resources\Behat\DomainContext;
@@ -46,6 +45,8 @@ class GithubUserContext extends DomainContext
 
     /**
      * @When I create :username github user
+     *
+     * @param $username
      */
     public function iCreateGithubUser($username)
     {
@@ -66,18 +67,6 @@ class GithubUserContext extends DomainContext
     public function thereShouldBeUserWithUsernameInSystem($username)
     {
         $this->getGithubUserByUsername($username);
-    }
-
-    /**
-     * @Then there should be user with :name name in system
-     *
-     * @param $name
-     *
-     * @throws \Exception
-     */
-    public function thereShouldBeUserWithNameInSystem($name)
-    {
-        $this->getGithubUserByName($name);
     }
 
     /**

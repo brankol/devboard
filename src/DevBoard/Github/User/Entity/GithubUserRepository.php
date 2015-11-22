@@ -8,4 +8,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class GithubUserRepository extends EntityRepository
 {
+    /**
+     * @param $username
+     *
+     * @return mixed
+     * @codeCoverageIgnore
+     */
+    public function findOneByUsername($username)
+    {
+        return parent::findOneByUsername($username);
+    }
 }

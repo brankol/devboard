@@ -4,7 +4,6 @@ namespace DevBoard\Core\Project\Entity;
 use DevBoard\Github\Repo\Entity\GithubRepo;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use NullDev\UserBundle\Entity\User;
 use Resources\Entity\BaseEntity;
 
 /**

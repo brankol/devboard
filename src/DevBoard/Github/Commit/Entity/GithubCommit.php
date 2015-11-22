@@ -5,13 +5,13 @@ use DateTime;
 use DevBoard\Github\Repo\Entity\GithubRepo;
 use DevBoard\Github\User\Entity\GithubUser;
 use Doctrine\ORM\Mapping as ORM;
+use NullDev\GithubApi\Commit\GithubCommitDataInterface;
 use Resources\Entity\BaseEntity;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * GithubCommit.
  */
-class GithubCommit extends BaseEntity
+class GithubCommit extends BaseEntity implements GithubCommitDataInterface
 {
     /** @var GithubRepo */
     protected $githubRepo;

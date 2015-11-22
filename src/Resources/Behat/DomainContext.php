@@ -1,11 +1,7 @@
 <?php
 namespace Resources\Behat;
 
-use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\TableNode;
-use Behat\MinkExtension\Context\RawMinkContext;
-use Behat\Symfony2Extension\Context\KernelAwareContext;
-use Resources\Behat\DefaultContext;
 
 /**
  * Behat context class.
@@ -75,8 +71,6 @@ class DomainContext extends DefaultContext
      *
      * @param $setProperty
      * @param $propertyValue
-     *
-     * @internal param $property
      */
     public function iFillWith($setProperty, $propertyValue)
     {

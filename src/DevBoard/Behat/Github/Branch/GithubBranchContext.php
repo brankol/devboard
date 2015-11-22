@@ -1,8 +1,6 @@
 <?php
 namespace DevBoard\Behat\Github\Branch;
 
-use Behat\Behat\Tester\Exception\PendingException;
-use Behat\Gherkin\Node\TableNode;
 use DevBoard\Behat\Github\Repo\DataTrait as RepoDataTrait;
 use DevBoard\Github\Branch\Entity\GithubBranch;
 use Resources\Behat\DomainContext;
@@ -36,27 +34,5 @@ class GithubBranchContext extends DomainContext
     {
         $this->target->setName($branchName)
             ->setRepo($this->getGithubRepoByFullName($githubRepoFullName));
-    }
-
-    /**
-     * @Then there should be github branch :branchName for :githubRepoFullName in system
-     *
-     * @param $branchName
-     * @param $githubRepoFullName
-     *
-     * @throws \Exception
-     */
-    public function thereShouldBeGithubBranchForInSystem($branchName, $githubRepoFullName)
-    {
-        $branch = $this->getGithubBranchRepository()->findOneBy(
-            [
-                'name' => $branchName,
-                'repo' => $this->getGithubRepoByFullName($githubRepoFullName),
-            ]
-        );
-
-        if (!$branch) {
-            throw new \Exception('Cant find github branch with name:'.$branchName.' for repo '.$githubRepoFullName);
-        }
     }
 }

@@ -1,7 +1,6 @@
 <?php
 namespace DevBoard\Github\User\Entity;
 
-use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use NullDev\GithubApi\User\GithubUserDataInterface;
 use Resources\Entity\BaseEntity;

@@ -6,6 +6,16 @@ default:
             snippets: false
 
     suites:
+        push:
+            contexts:
+                - DevBoard\Behat\GithubEvent\Push\GithubEventPushContext
+                - DevBoard\Behat\Github\Repo\FixtureContext
+                - DevBoard\Behat\Github\Branch\FixtureContext
+                - DevBoard\Behat\Github\Branch\GithubBranchDataContext
+                - DevBoard\Behat\Github\Commit\GithubCommitDataContext
+                - DevBoard\Behat\Github\User\GithubUserDataContext
+            filters:
+                tags: "@push"
         project:
             contexts:
                 - DevBoard\Behat\Core\Project\FixtureContext
@@ -16,6 +26,7 @@ default:
             contexts:
                 - DevBoard\Behat\Github\Branch\FixtureContext
                 - DevBoard\Behat\Github\Branch\GithubBranchContext
+                - DevBoard\Behat\Github\Branch\GithubBranchDataContext
                 - DevBoard\Behat\Github\Repo\FixtureContext
             filters:
                 tags: "@githubBranch"
@@ -24,6 +35,7 @@ default:
                 - DevBoard\Behat\Github\Branch\FixtureContext
                 - DevBoard\Behat\Github\Commit\FixtureContext
                 - DevBoard\Behat\Github\Commit\GithubCommitContext
+                - DevBoard\Behat\Github\Commit\GithubCommitDataContext
                 - DevBoard\Behat\Github\Repo\FixtureContext
             filters:
                 tags: "@githubCommit"
@@ -37,6 +49,7 @@ default:
             contexts:
                 - DevBoard\Behat\Github\User\FixtureContext
                 - DevBoard\Behat\Github\User\GithubUserContext
+                - DevBoard\Behat\Github\User\GithubUserDataContext
             filters:
                 tags: "@githubUser"
         user:
@@ -50,7 +63,7 @@ default:
                 - Resources\Behat\WebContext
                 - DevBoard\Behat\NullDev\User\UserContext
             filters:
-                tags: "~@project && ~@githubBranch && ~@githubCommit && ~@githubRepo && ~@githubUser && ~@user && ~@integration"
+                tags: "~@push && ~@project && ~@githubBranch && ~@githubCommit && ~@githubRepo && ~@githubUser && ~@user && ~@integration"
 
     extensions:
         Behat\MinkExtension:

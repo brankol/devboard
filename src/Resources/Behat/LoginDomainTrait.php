@@ -2,7 +2,6 @@
 namespace Resources\Behat;
 
 use NullDev\UserBundle\Entity\User;
-use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 /**
