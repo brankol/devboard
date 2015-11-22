@@ -29,7 +29,7 @@ class NotificationController extends Controller
         } else {
             $payload = $this->get('github.event.payload.factory')->create($event);
 
-            $this->get('github.event.handler')->handle($payload);
+            $this->get('github.event.handler')->handle($event);
 
             $repo = $payload->repository->full_name;
 
