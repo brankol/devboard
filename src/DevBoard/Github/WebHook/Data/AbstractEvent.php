@@ -41,6 +41,6 @@ abstract class AbstractEvent
      */
     public function getPayload()
     {
-        return json_decode($this->rawPayload);
+        return json_decode($this->rawPayload, true);
     }
 }
