@@ -16,6 +16,14 @@ imports:
 monolog:
     channels: ["ghnotifictation"]
     handlers:
+        mail:
+            type:         fingers_crossed
+            # 500 errors are logged at the critical level
+            action_level: error
+            handler:      buffered
+        buffered:
+            type:    buffer
+            handler: swift
         main:
             type:         fingers_crossed
             action_level: error
@@ -31,3 +39,9 @@ monolog:
             path: "%kernel.logs_dir%/gh-notification.log"
             level: info
             channels: [ghnotifictation]
+        swift:
+            type:       swift_mailer
+            from_email: error@devboard.xyz
+            to_email:   miro+devboarderr@mirosvrtan.me
+            subject:    An Error Occurred!
+            level:      debug
