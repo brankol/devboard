@@ -2,6 +2,7 @@
 namespace DevBoard\Core\Project\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use NullDev\UserBundle\Entity\User;
 
 /**
  * Class ProjectRepository.

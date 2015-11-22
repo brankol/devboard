@@ -8,7 +8,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use NullDev\GithubApi\Repo\GithubRepoDataInterface;
 use Resources\Entity\BaseEntity;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * GithubRepo.
@@ -430,8 +429,6 @@ class GithubRepo extends BaseEntity implements GithubRepoDataInterface
      * @param Project $project
      *
      * @return $this
-     *
-     * @internal param mixed $projects
      */
     public function addProject(Project $project)
     {
@@ -464,8 +461,6 @@ class GithubRepo extends BaseEntity implements GithubRepoDataInterface
      * @param GithubBranch $branch
      *
      * @return $this
-     *
-     * @internal param mixed $branches
      */
     public function addBranch(GithubBranch $branch)
     {

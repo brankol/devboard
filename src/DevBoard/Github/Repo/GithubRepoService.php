@@ -5,7 +5,6 @@ use DevBoard\Github\Repo\Entity\GithubRepo;
 use DevBoard\Github\Repo\Entity\GithubRepoFactory;
 use DevBoard\Github\Repo\Mapper\RemoteToEntityMapper;
 use Doctrine\ORM\EntityManager;
-use Exception;
 use NullDev\GithubApi\Repo\RemoteGithubRepoService;
 use NullDev\UserBundle\Entity\User;
 
