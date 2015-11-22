@@ -4,12 +4,13 @@ namespace DevBoard\Github\Branch\Entity;
 use DevBoard\Github\Commit\Entity\GithubCommit;
 use DevBoard\Github\Repo\Entity\GithubRepo;
 use Doctrine\ORM\Mapping as ORM;
+use NullDev\GithubApi\Branch\GithubBranchDataInterface;
 use Resources\Entity\BaseEntity;
 
 /**
  * GithubBranch.
  */
-class GithubBranch extends BaseEntity
+class GithubBranch extends BaseEntity implements GithubBranchDataInterface
 {
     /** @var GithubRepo */
     private $repo;

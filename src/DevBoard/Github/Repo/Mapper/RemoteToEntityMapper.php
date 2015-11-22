@@ -3,6 +3,7 @@ namespace DevBoard\Github\Repo\Mapper;
 
 use DevBoard\Github\Repo\Entity\GithubRepo;
 use NullDev\GithubApi\Repo\GithubRepoData;
+use NullDev\GithubApi\Repo\GithubRepoDataInterface;
 
 /**
  * Class RemoteToEntityMapper.
@@ -10,12 +11,12 @@ use NullDev\GithubApi\Repo\GithubRepoData;
 class RemoteToEntityMapper
 {
     /**
-     * @param GithubRepoData $remote
-     * @param GithubRepo     $entity
+     * @param GithubRepoData|GithubRepoDataInterface $remote
+     * @param GithubRepo                             $entity
      *
      * @return bool
      */
-    public function map(GithubRepoData $remote, GithubRepo $entity)
+    public function map(GithubRepoDataInterface $remote, GithubRepo $entity)
     {
         $entity->setGithubId($remote->getGithubId());
         $entity->setOwner($remote->getOwner());

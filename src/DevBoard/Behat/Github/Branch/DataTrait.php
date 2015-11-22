@@ -13,7 +13,11 @@ trait DataTrait
      */
     private function getGithubBranchByName($name)
     {
-        $branch = $this->getGithubBranchRepository()->findOneByName($name);
+        $branch = $this->getGithubBranchRepository()
+            ->findOneByName(
+                $this->repo,
+                $name
+            );
 
         if (!$branch) {
             throw new \Exception('Cant find github branch with name:'.$name);

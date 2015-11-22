@@ -1,0 +1,9 @@
+services:
+  github.webhook.security_checker:
+    class: DevBoard\Github\WebHook\WebHookSecurityChecker
+    arguments: [ %github_webhook_secret% ]
+  github.webhook.factory:
+    class: DevBoard\Github\WebHook\WebHookFactory
+    arguments: [ @github.webhook.signature.factory ]
+  github.webhook.signature.factory:
+    class: DevBoard\Github\WebHook\WebHookSignatureFactory

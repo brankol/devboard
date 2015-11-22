@@ -114,8 +114,8 @@ class GithubRepoSpec extends ObjectBehavior
     }
 
     /**
-     * @param DevBoard\Core\Project\Entity\Project $project1
-     * @param DevBoard\Core\Project\Entity\Project $project2
+     * @param \DevBoard\Core\Project\Entity\Project $project1
+     * @param \DevBoard\Core\Project\Entity\Project $project2
      */
     public function it_supports_that_one_repo_can_be_used_in_multiple_projects($project1, $project2)
     {
@@ -132,8 +132,8 @@ class GithubRepoSpec extends ObjectBehavior
     }
 
     /**
-     * @param DevBoard\Github\Branch\Entity\GithubBranch $branch1
-     * @param DevBoard\Github\Branch\Entity\GithubBranch $branch2
+     * @param \DevBoard\Github\Branch\Entity\GithubBranch $branch1
+     * @param \DevBoard\Github\Branch\Entity\GithubBranch $branch2
      */
     public function it_supports_that_one_repo_will_have_multiple_branches($branch1, $branch2)
     {
@@ -156,9 +156,9 @@ class GithubRepoSpec extends ObjectBehavior
     }
 
     /**
-     * @param DevBoard\Github\Branch\Entity\GithubBranch  $masterBranch
-     * @param DevBoard\Github\Branch\Entity\GithubBranch  $devBranch
-     * @param Doctrine\Common\Collections\ArrayCollection $collection
+     * @param \DevBoard\Github\Branch\Entity\GithubBranch  $masterBranch
+     * @param \DevBoard\Github\Branch\Entity\GithubBranch  $devBranch
+     * @param \Doctrine\Common\Collections\ArrayCollection $collection
      */
     public function it_can_return_branch_if_exists_on_repo($masterBranch, $devBranch, $collection)
     {
@@ -180,7 +180,7 @@ class GithubRepoSpec extends ObjectBehavior
     }
 
     /**
-     * @param Doctrine\Common\Collections\ArrayCollection $collection
+     * @param \Doctrine\Common\Collections\ArrayCollection $collection
      */
     public function it_will_return_null_if_no_branch_with_name_exists_on_repo($collection)
     {

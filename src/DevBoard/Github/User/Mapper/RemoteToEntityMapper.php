@@ -3,6 +3,7 @@ namespace DevBoard\Github\User\Mapper;
 
 use DevBoard\Github\User\Entity\GithubUser;
 use NullDev\GithubApi\User\GithubUserData;
+use NullDev\GithubApi\User\GithubUserDataInterface;
 
 /**
  * Class RemoteToEntityMapper.
@@ -10,12 +11,12 @@ use NullDev\GithubApi\User\GithubUserData;
 class RemoteToEntityMapper
 {
     /**
-     * @param GithubUserData $remote
-     * @param GithubUser     $entity
+     * @param GithubUserData|GithubUserDataInterface $remote
+     * @param GithubUser                             $entity
      *
      * @return bool
      */
-    public function map(GithubUserData $remote, GithubUser $entity)
+    public function map(GithubUserDataInterface $remote, GithubUser $entity)
     {
         if (null !== $remote->getGithubId()) {
             $entity->setGithubId($remote->getGithubId());

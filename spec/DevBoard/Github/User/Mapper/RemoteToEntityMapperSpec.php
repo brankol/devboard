@@ -2,7 +2,7 @@
 namespace spec\DevBoard\Github\User\Mapper;
 
 use DevBoard\Github\User\Entity\GithubUser;
-use NullDev\GithubApi\User\GithubUserData;
+use NullDev\GithubApi\User\GithubUserDataInterface;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -14,7 +14,7 @@ class RemoteToEntityMapperSpec extends ObjectBehavior
     }
 
     public function it_will_map_property_values_from_remote_to_entity(
-        GithubUserData $remote,
+        GithubUserDataInterface $remote,
         GithubUser $entity,
         $githubId,
         $username,
@@ -39,7 +39,7 @@ class RemoteToEntityMapperSpec extends ObjectBehavior
     }
 
     public function it_will_map_property_values_from_remote_to_entity_even_if_only_username_exists(
-        GithubUserData $remote,
+        GithubUserDataInterface $remote,
         GithubUser $entity,
         $username
 

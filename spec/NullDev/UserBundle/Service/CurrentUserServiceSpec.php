@@ -12,7 +12,7 @@ class CurrentUserServiceSpec extends ObjectBehavior
     }
 
     /**
-     * @param Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage $tokenStorage
+     * @param \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage $tokenStorage
      */
     public function let($tokenStorage)
     {
@@ -20,8 +20,8 @@ class CurrentUserServiceSpec extends ObjectBehavior
     }
 
     /**
-     * @param Symfony\Component\Security\Core\Authentication\Token\TokenInterface $token
-     * @param NullDev\UserBundle\Entity\User                                      $user
+     * @param \Symfony\Component\Security\Core\Authentication\Token\TokenInterface $token
+     * @param \NullDev\UserBundle\Entity\User                                      $user
      */
     public function it_should_return_current_user($token, $user, $tokenStorage)
     {
@@ -39,7 +39,7 @@ class CurrentUserServiceSpec extends ObjectBehavior
     }
 
     /**
-     * @param Symfony\Component\Security\Core\Authentication\Token\TokenInterface $token
+     * @param \Symfony\Component\Security\Core\Authentication\Token\TokenInterface $token
      */
     public function it_should_throw_exception_if_no_user_found($token, $tokenStorage)
     {
