@@ -27,6 +27,8 @@ class NotificationController extends Controller
         if (!$securityChecker->check($event)) {
             $logger->error('Signatures dont match!');
         } else {
+            $logger->info('Data:'.var_export($event->getRawPayload(), true));
+
             $payload = $this->get('github.event.payload.factory')->create($event);
 
             $this->get('github.event.handler')->handle($event);

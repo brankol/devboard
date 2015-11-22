@@ -31,9 +31,9 @@ class RepoFactory
             $data['private'],
             $data['git_url'],
             $data['ssh_url'],
-            new DateTime(strtotime($data['created_at'])),
+            DateTime::createFromFormat('U', $data['created_at']),
             new DateTime($data['updated_at']),
-            new DateTime(strtotime($data['pushed_at']))
+            DateTime::createFromFormat('U', $data['pushed_at'])
         );
     }
 }
