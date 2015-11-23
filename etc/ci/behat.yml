@@ -20,8 +20,24 @@ default:
             contexts:
                 - DevBoard\Behat\Core\Project\FixtureContext
                 - DevBoard\Behat\Core\Project\ProjectContext
+                - DevBoard\Behat\Core\Project\ProjectDataContext
+                - DevBoard\Behat\Github\Repo\GithubRepoDataContext
+                - DevBoard\Behat\Github\Branch\GithubBranchDataContext
+                - DevBoard\Behat\Github\Commit\GithubCommitDataContext
+                - DevBoard\Behat\Github\User\GithubUserDataContext
             filters:
                 tags: "@project"
+        project_front:
+            contexts:
+                - DevBoard\Behat\Core\Project\FixtureContext
+                - DevBoard\Behat\Core\Project\FrontContext
+                - DevBoard\Behat\Core\Project\ProjectDataContext
+                - DevBoard\Behat\Github\Repo\GithubRepoDataContext
+                - DevBoard\Behat\Github\Branch\GithubBranchDataContext
+                - DevBoard\Behat\Github\Commit\GithubCommitDataContext
+                - DevBoard\Behat\Github\User\GithubUserDataContext
+            filters:
+                tags: "@project && @front"
         githubBranch:
             contexts:
                 - DevBoard\Behat\Github\Branch\FixtureContext
@@ -43,6 +59,7 @@ default:
             contexts:
                 - DevBoard\Behat\Github\Repo\FixtureContext
                 - DevBoard\Behat\Github\Repo\GithubRepoContext
+                - DevBoard\Behat\Github\Repo\GithubRepoDataContext
             filters:
                 tags: "@githubRepo"
         githubUser:

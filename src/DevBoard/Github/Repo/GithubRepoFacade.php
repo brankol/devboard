@@ -5,6 +5,7 @@ use DevBoard\Github\Repo\Entity\GithubRepoFactory;
 use DevBoard\Github\Repo\Entity\GithubRepoRepository;
 use DevBoard\GithubRemote\ValueObject\Repo\Repo;
 use Doctrine\ORM\EntityManager;
+use NullDev\GithubApi\Repo\GithubRepoDataInterface;
 
 /**
  * Class GithubRepoFacade.
@@ -33,21 +34,21 @@ class GithubRepoFacade
     }
 
     /**
-     * @param Repo $repoValueObject
+     * @param Repo|GithubRepoDataInterface $repoValueObject
      *
      * @return mixed
      */
-    public function get(Repo $repoValueObject)
+    public function get(GithubRepoDataInterface $repoValueObject)
     {
         return $this->repository->findOneByFullName($repoValueObject->getFullName());
     }
 
     /**
-     * @param Repo $repoValueObject
+     * @param Repo|GithubRepoDataInterface $repoValueObject
      *
      * @return Entity\GithubRepo
      */
-    public function create(Repo $repoValueObject)
+    public function create(GithubRepoDataInterface $repoValueObject)
     {
         $entity = $this->factory->createFromValueObject($repoValueObject);
 
@@ -58,11 +59,11 @@ class GithubRepoFacade
     }
 
     /**
-     * @param Repo $repoValueObject
+     * @param Repo|GithubRepoDataInterface $repoValueObject
      *
      * @return Entity\GithubRepo|mixed
      */
-    public function getOrCreate(Repo $repoValueObject)
+    public function getOrCreate(GithubRepoDataInterface $repoValueObject)
     {
         $entity = $this->get($repoValueObject);
 

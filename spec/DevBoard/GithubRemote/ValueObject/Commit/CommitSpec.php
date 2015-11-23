@@ -12,20 +12,16 @@ class CommitSpec extends ObjectBehavior
         $this->shouldHaveType('DevBoard\GithubRemote\ValueObject\Commit\Commit');
     }
 
-    public function let(DateTime $timestamp)
+    public function let(DateTime $authorDate, DateTime $committerDate)
     {
-        $this->beConstructedWith('sha', $timestamp, 'Message');
+        $this->beConstructedWith('sha', $authorDate, $committerDate, 'Message');
     }
 
-    public function it_exposes_sha_and_message()
+    public function it_exposes_sha_and_message($authorDate, $committerDate)
     {
         $this->getSha()->shouldReturn('sha');
         $this->getMessage()->shouldReturn('Message');
-    }
-
-    public function it_exposes_timestamp_as_author_date_and_committer_dates($timestamp)
-    {
-        $this->getAuthorDate()->shouldReturn($timestamp);
-        $this->getCommitterDate()->shouldReturn($timestamp);
+        $this->getAuthorDate()->shouldReturn($authorDate);
+        $this->getCommitterDate()->shouldReturn($committerDate);
     }
 }

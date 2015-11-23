@@ -70,18 +70,6 @@ class GithubRepoContext extends DomainContext
     }
 
     /**
-     * @Then there should be github repo with :fullName as full name in system
-     *
-     * @param $fullName
-     *
-     * @throws \Exception
-     */
-    public function thereShouldBeGithubRepoWithAsFullNameInSystem($fullName)
-    {
-        $this->getGithubRepoByFullName($fullName);
-    }
-
-    /**
      * @Then I will get repo details
      */
     public function iWillGetRepoDetails()

@@ -1,4 +1,13 @@
 services:
-#    dev_board_core.example:
-#        class: DevBoard\CoreBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
+  core.project.factory:
+    class: DevBoard\Core\Project\Entity\ProjectFactory
+  core.project.create.handler:
+    class: DevBoard\Core\CreateProject\CreateProjectHandler
+    arguments:
+      - @nulldev.user.service.current
+      - @github.repo.factory
+      - @null_dev_github_api.repo.service
+      - @github.repo.facade
+      - @core.project.factory
+      - @doctrine.orm.entity_manager
+      - @github.sync.branches.handler

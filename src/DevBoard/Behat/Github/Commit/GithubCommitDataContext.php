@@ -49,6 +49,7 @@ class GithubCommitDataContext extends DefaultContext
      * @Then there should be github commit with message :message on :githubRepoFullName repo in system
      *
      * @param $message
+     * @param $githubRepoFullName
      *
      * @throws \Exception
      */

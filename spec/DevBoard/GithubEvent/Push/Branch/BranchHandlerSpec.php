@@ -156,25 +156,14 @@ class BranchHandlerSpec extends ObjectBehavior
     public function it_will_delete(
         $repoFactory,
         $branchFactory,
-        $commitFactory,
-        $commitAuthorFactory,
-        $commitCommitterFactory,
         $githubRepoFacade,
         $githubBranchFacade,
-        $githubCommitFacade,
-        $githubUserFacade,
         $em,
         PushPayload $pushPayload,
         Repo $repoValueObject,
         Branch $branchValueObject,
-        Commit $commitValueObject,
-        CommitAuthor $commitAuthorValueObject,
-        CommitCommitter $commitCommitterValueObject,
         GithubRepo $githubRepoEntity,
-        GithubBranch $githubBranchEntity,
-        GithubCommit $githubCommitEntity,
-        GithubUser $authorEntity,
-        GithubUser $committerEntity
+        GithubBranch $githubBranchEntity
     ) {
         $repoFactory->create($pushPayload)->willReturn($repoValueObject);
         $branchFactory->create($pushPayload)->willReturn($branchValueObject);

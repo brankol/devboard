@@ -21,4 +21,14 @@ class GithubUserDataFactorySpec extends ObjectBehavior
 
         $this->create($arr)->shouldReturnAnInstanceOf('NullDev\GithubApi\User\GithubUserData');
     }
+
+    public function it_will_create_new_instance_using_array_from_github_commit()
+    {
+        $arr = [
+            'login' => 'username',
+            'id'    => 123,
+        ];
+
+        $this->create($arr)->shouldReturnAnInstanceOf('NullDev\GithubApi\User\GithubUserData');
+    }
 }
