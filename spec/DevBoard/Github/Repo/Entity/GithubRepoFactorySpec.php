@@ -18,7 +18,7 @@ class GithubRepoFactorySpec extends ObjectBehavior
         $this->beConstructedWith($mapper);
     }
 
-    public function it_will_create_instance_using_full_name($fullName)
+    public function it_will_create_instance_using_full_name()
     {
         $this->create('owner/name')->shouldReturnAnInstanceOf('DevBoard\Github\Repo\Entity\GithubRepo');
     }

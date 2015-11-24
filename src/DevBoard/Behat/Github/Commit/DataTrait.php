@@ -1,6 +1,7 @@
 <?php
 namespace DevBoard\Behat\Github\Commit;
 
+use DevBoard\Github\Commit\Entity\GithubCommit;
 use DevBoard\Github\Repo\Entity\GithubRepo;
 
 /**
@@ -52,5 +53,20 @@ trait DataTrait
     private function getGithubCommitRepository()
     {
         return $this->getEntityManager()->getRepository('GhCommit:GithubCommit');
+    }
+
+    /**
+     * @param GithubRepo $githubRepo
+     * @param            $sha
+     *
+     * @return GithubCommit
+     */
+    private function createCommitObjectFromSha(GithubRepo $githubRepo, $sha)
+    {
+        $commit = new GithubCommit();
+        $commit->setGithubRepo($githubRepo);
+        $commit->setSha($sha);
+
+        return $commit;
     }
 }

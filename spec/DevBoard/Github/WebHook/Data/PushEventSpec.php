@@ -29,6 +29,6 @@ class PushEventSpec extends ObjectBehavior
 
     public function it_exposes_json_decoded_payload()
     {
-        $result = $this->getPayload()->shouldReturn([]);
+        $this->getPayload()->shouldReturn([]);
     }
 }

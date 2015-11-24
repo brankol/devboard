@@ -22,6 +22,7 @@ class CommitFactory
         return new Commit(
             $data['id'],
             new DateTime($data['timestamp']),
+            new DateTime($data['timestamp']),
             $data['message']
         );
     }

@@ -49,8 +49,7 @@ class GithubRepoServiceSpec extends ObjectBehavior
         $repoFactory,
         $remoteService,
         User $user,
-        GithubRepo $repo,
-        GithubRepoData $githubRepoData
+        GithubRepo $repo
     ) {
         $repoFactory->create('owner/name')->willReturn($repo);
         $remoteService->fetch($repo, $user)->willThrow(new \Exception());
@@ -63,8 +62,7 @@ class GithubRepoServiceSpec extends ObjectBehavior
         $repoFactory,
         $remoteService,
         User $user,
-        GithubRepo $repo,
-        GithubRepoData $githubRepoData
+        GithubRepo $repo
     ) {
         $repoFactory->create('owner/name')->willReturn($repo);
         $remoteService->fetch($repo, $user)->willThrow(new \Exception());

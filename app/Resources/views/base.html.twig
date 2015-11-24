@@ -46,7 +46,10 @@
                     <a class="navbar-brand" href="{{ path('homepage') }}">devboardxyz</a>
                 </div>
                 <ul class="navbar-collapse collapse navbar-left nav navbar-nav ">
-                    <li><a href="#" id="">link #1</a></li>
+                    {% if app.user %}
+                        <li><a href="{{ path('project') }}" id="">Projects</a></li>
+                        <li><a href="{{ path('project_new') }}" id="">Add project</a></li>
+                    {% endif %}
                 </ul>
                 <ul class="navbar-collapse collapse navbar-right nav navbar-nav">
                     {% block body_right_navigation %}

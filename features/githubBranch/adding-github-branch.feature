@@ -6,10 +6,10 @@ Feature: Creating github branch
 
   Background:
     Given I am logged in as "visitor1"
-    And there is "AcmeDude542/BreakingBad" github repo
+    And there is "devboard/test-hitman" github repo
 
   Scenario: Creating new github branch
     Given I am adding new github branch
-    When I fill in details for "master" github branch for "AcmeDude542/BreakingBad" github repo
+    When I fill in details for "master" github branch for "devboard/test-hitman" github repo
     And I save changes
-    Then there should be github branch "master" for "AcmeDude542/BreakingBad" in system
+    Then there should be github branch "master" for "devboard/test-hitman" in system

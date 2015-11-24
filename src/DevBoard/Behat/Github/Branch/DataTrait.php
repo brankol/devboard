@@ -1,21 +1,26 @@
 <?php
 namespace DevBoard\Behat\Github\Branch;
 
+use DevBoard\Github\Branch\Entity\GithubBranch;
+
 /**
  * Class DataTrait.
  */
 trait DataTrait
 {
     /**
+     * @param $repo
      * @param $name
      *
      * @throws \Exception
+     *
+     * @return
      */
-    private function getGithubBranchByName($name)
+    private function getGithubBranchByName($repo, $name)
     {
         $branch = $this->getGithubBranchRepository()
             ->findOneByName(
-                $this->repo,
+                $repo,
                 $name
             );
 
@@ -32,5 +37,18 @@ trait DataTrait
     private function getGithubBranchRepository()
     {
         return $this->getEntityManager()->getRepository('GhBranch:GithubBranch');
+    }
+
+    /**
+     * @param $name
+     *
+     * @return GithubBranch
+     */
+    private function createBranchObjectFromBranchName($name)
+    {
+        $branch = new GithubBranch();
+        $branch->setName($name);
+
+        return $branch;
     }
 }

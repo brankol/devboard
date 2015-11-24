@@ -10,21 +10,26 @@ use NullDev\GithubApi\Commit\GithubCommitDataInterface;
 class Commit implements GithubCommitDataInterface
 {
     private $sha;
-    private $timestamp;
+    private $authorDate;
+    private $committerDate;
     private $message;
 
     /**
      * Commit constructor.
      *
-     * @param string    $sha
-     * @param \DateTime $timestamp
-     * @param string    $message
+     * @param string   $sha
+     * @param DateTime $authorDate
+     * @param DateTime $committerDate
+     * @param string   $message
+     *
+     * @internal param DateTime $timestamp
      */
-    public function __construct($sha, DateTime $timestamp, $message)
+    public function __construct($sha, DateTime $authorDate, DateTime $committerDate, $message)
     {
-        $this->sha       = $sha;
-        $this->timestamp = $timestamp;
-        $this->message   = $message;
+        $this->sha           = $sha;
+        $this->authorDate    = $authorDate;
+        $this->committerDate = $committerDate;
+        $this->message       = $message;
     }
 
     /**
@@ -40,7 +45,7 @@ class Commit implements GithubCommitDataInterface
      */
     public function getAuthorDate()
     {
-        return $this->timestamp;
+        return $this->authorDate;
     }
 
     /**
@@ -48,7 +53,7 @@ class Commit implements GithubCommitDataInterface
      */
     public function getCommitterDate()
     {
-        return $this->timestamp;
+        return $this->committerDate;
     }
 
     /**

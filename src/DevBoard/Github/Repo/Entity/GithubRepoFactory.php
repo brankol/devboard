@@ -3,6 +3,7 @@ namespace DevBoard\Github\Repo\Entity;
 
 use DevBoard\Github\Repo\Mapper\RemoteToEntityMapper;
 use DevBoard\GithubRemote\ValueObject\Repo\Repo;
+use NullDev\GithubApi\Repo\GithubRepoDataInterface;
 
 /**
  * Class GithubRepoFactory.
@@ -38,11 +39,11 @@ class GithubRepoFactory
     }
 
     /**
-     * @param Repo $repoValueObject
+     * @param Repo|GithubRepoDataInterface $repoValueObject
      *
      * @return GithubRepo
      */
-    public function createFromValueObject(Repo $repoValueObject)
+    public function createFromValueObject(GithubRepoDataInterface $repoValueObject)
     {
         $githubRepo = new GithubRepo();
 

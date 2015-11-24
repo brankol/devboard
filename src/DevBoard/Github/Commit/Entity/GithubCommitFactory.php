@@ -23,6 +23,19 @@ class GithubCommitFactory
     }
 
     /**
+     * @param $sha
+     *
+     * @return GithubCommit
+     */
+    public function create($sha)
+    {
+        $commit = new GithubCommit();
+        $commit->setSha($sha);
+
+        return $commit;
+    }
+
+    /**
      * @param GithubRepo $githubRepo
      * @param Commit     $commitValueObject
      *

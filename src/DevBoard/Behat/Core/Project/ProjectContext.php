@@ -20,15 +20,12 @@ class ProjectContext extends DomainContext
         $this->target = new Project();
     }
 
-    /**
-     * @Then there should be project with :projectName name in system
-     *
-     * @param $projectName
-     *
-     * @throws \Exception
-     */
-    public function thereShouldBeProjectWithNameInSystem($projectName)
+    public function iSaveChanges()
     {
-        $this->getProjectByName($projectName);
+        $service = $this->getService('core.project.create.handler');
+
+        $project = $service->create($this->target->getProjectName());
+
+        echo $project->getProjectName();
     }
 }

@@ -49,8 +49,7 @@ class GithubUserServiceSpec extends ObjectBehavior
         $userFactory,
         $remoteService,
         User $user,
-        GithubUser $githubUser,
-        GithubUserData $githubUserData
+        GithubUser $githubUser
     ) {
         $userFactory->create('username')->willReturn($githubUser);
         $remoteService->fetch($githubUser, $user)->willThrow(new \Exception());
