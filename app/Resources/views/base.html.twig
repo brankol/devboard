@@ -47,6 +47,7 @@
                 </div>
                 <ul class="navbar-collapse collapse navbar-left nav navbar-nav ">
                     {% if app.user %}
+                        <li><a href="{{ path('dashboard') }}" id="">Dashboard</a></li>
                         <li><a href="{{ path('project') }}" id="">Projects</a></li>
                         <li><a href="{{ path('project_new') }}" id="">Add project</a></li>
                     {% endif %}

@@ -1,1 +1,66 @@
-Hello {{ name }}!
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Dashboard</h1>
+
+    <table class="records_list table">
+        <thead>
+        <tr>
+            <th>Repo</th>
+            <th>Branch</th>
+            <th>CircleCI</th>
+            <th>TravisCI</th>
+            <th>ScrutinizerCI</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for branch in branches %}
+            <tr>
+                <td>{{ branch.repo.fullName }}</td>
+                <td>{{ branch.name }}</td>
+                <td>{{ branch.lastCommit.message }}</td>
+                <td>
+                    <a href="https://circleci.com/gh/{{ branch.repo.fullName }}/tree/{{ branch.name }}" target="_blank">
+                        <img src="https://circleci.com/gh/{{ branch.repo.fullName }}/tree/{{ branch.name }}.svg?style=shield"/>
+                    </a>
+                </td>
+                <td>
+                    <a href="https://travis-ci.org/{{ branch.repo.fullName }}" target="_blank">
+                        <img src="https://travis-ci.org/{{ branch.repo.fullName }}.svg?branch={{ branch.name }}"/>
+                    </a>
+                </td>
+                <td>
+                    <a href="https://scrutinizer-ci.com/g/{{ branch.repo.fullName }}/build-status/{{ branch.name }}" target="_blank">
+                        <img src="https://scrutinizer-ci.com/g/{{ branch.repo.fullName }}/badges/build.png?b={{ branch.name }}"/>
+                    </a>
+                </td>
+                <td>
+                    <a href="https://coveralls.io/r/{{ branch.repo.fullName }}?branch={{ branch.name }}" target="_blank">
+                        <img src="https://coveralls.io/repos/{{ branch.repo.fullName }}/badge.svg?branch={{ branch.name }}"/>
+                    </a>
+                </td>
+                <td>
+                    <a href="https://codeclimate.com/github/{{ branch.repo.fullName }}/coverage" target="_blank">
+                        <img src="https://codeclimate.com/github/{{ branch.repo.fullName }}/badges/coverage.svg"/>
+                    </a>
+                </td>
+                <td>
+                    <a href="https://scrutinizer-ci.com/g/{{ branch.repo.fullName }}/build-status/{{ branch.name }}" target="_blank">
+                        <img src="https://scrutinizer-ci.com/g/{{ branch.repo.fullName }}/badges/quality-score.png?b={{ branch.name }}"/>
+                    </a>
+                </td>
+                <td>
+                    <a href="https://codeclimate.com/github/{{ branch.repo.fullName }}/coverage" target="_blank">
+                        <img src="https://codeclimate.com/github/{{ branch.repo.fullName }}/badges/gpa.svg"/>
+                    </a>
+                </td>
+
+
+                <td>{{ branch.updatedAt|ago }}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

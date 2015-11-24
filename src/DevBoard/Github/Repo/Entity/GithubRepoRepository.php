@@ -18,4 +18,23 @@ class GithubRepoRepository extends EntityRepository
     {
         return parent::findOneByFullName($fullName);
     }
+
+    public function getRepoIdsFromProjectIds($projectIds)
+    {
+        $queryBuilder = $this->createQueryBuilder('r')
+            ->join('r.projects', 'p')
+            ->select('r.id')
+            ->where('p.id IN (:projectIds)')
+            ->setParameter('projectIds', $projectIds);
+
+        $rawResult = $queryBuilder->getQuery()->getArrayResult();
+
+        $results = [];
+
+        foreach ($rawResult as $result) {
+            $results[] = $result['id'];
+        }
+
+        return $results;
+    }
 }

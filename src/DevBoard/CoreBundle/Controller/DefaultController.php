@@ -13,8 +13,25 @@ class DefaultController extends Controller
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('DevBoardCoreBundle:Default:index.html.twig', ['name' => $name]);
+        $em = $this->getDoctrine();
+
+        $projects = $this->getProjects();
+        $repos    = $em->getRepository('GhRepo:GithubRepo')->getRepoIdsFromProjectIds($projects);
+        $branches = $em->getRepository('GhBranch:GithubBranch')->getBranchesFromRepoIds($repos);
+
+        $data = [
+            'branches' => $branches,
+        ];
+
+        return $this->render('DevBoardCoreBundle:Default:index.html.twig', $data);
+    }
+
+    private function getProjects()
+    {
+        return $this->getDoctrine()
+            ->getRepository('DevBoardProject:Project')
+            ->getUserProjectIds($this->getUser());
     }
 }

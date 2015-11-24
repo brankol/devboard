@@ -22,4 +22,22 @@ class ProjectRepository extends EntityRepository
 
         return $queryBuilder->getQuery()->getResult();
     }
+
+    public function getUserProjectIds(User $user)
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->select('p.id')
+            ->where('p.user = :user_id')
+            ->setParameter('user_id', $user->getId());
+
+        $rawResult = $queryBuilder->getQuery()->getArrayResult();
+
+        $results = [];
+
+        foreach ($rawResult as $result) {
+            $results[] = $result['id'];
+        }
+
+        return $results;
+    }
 }
