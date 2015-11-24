@@ -27,4 +27,33 @@ class GithubBranchRepository extends EntityRepository
             ]
         );
     }
+
+    public function getBranchIdsFromRepoIds($repoIds)
+    {
+        $queryBuilder = $this->createQueryBuilder('b')
+            ->select('b.id')
+            ->where('b.repo IN (:repoIds)')
+            ->setParameter('repoIds', $repoIds);
+
+        $rawResult = $queryBuilder->getQuery()->getArrayResult();
+
+        $results = [];
+
+        foreach ($rawResult as $result) {
+            $results[] = $result['id'];
+        }
+
+        return $results;
+    }
+
+    public function getBranchesFromRepoIds($repoIds)
+    {
+        $queryBuilder = $this->createQueryBuilder('b')
+            ->where('b.repo IN (:repoIds)')
+            ->setParameter('repoIds', $repoIds)
+            ->orderBy('b.updatedAt', 'DESC')
+        ;
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

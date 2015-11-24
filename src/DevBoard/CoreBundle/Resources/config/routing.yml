@@ -2,6 +2,6 @@ dev_board_core_project:
     resource: "@DevBoardCoreBundle/Resources/config/routing/project.yml"
     prefix:   /project
 
-dev_board_core_homepage:
-    path:     /hello/{name}
+dashboard:
+    path:     /dashboard/
     defaults: { _controller: DevBoardCoreBundle:Default:index }
