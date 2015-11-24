@@ -1,0 +1,50 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Dashboard</h1>
+
+    <table id="branches" class="records_list table">
+        <thead>
+        <tr>
+            <th>Repo</th>
+            <th>Branch</th>
+            <th>Commit</th>
+            <th>CircleCI</th>
+            <th>TravisCI</th>
+            <th>ScrutinizerCI</th>
+            <th>Coveralls</th>
+            <th>CodeClimate</th>
+            <th>ScrutinizerCI</th>
+            <th>CodeClimate</th>
+        </tr>
+        </thead>
+        <tbody id="branches2">
+        {{ render(controller( 'DevBoardCoreBundle:Dashboard:livebranches' )) }}
+
+        </tbody>
+    </table>
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        function getData() {
+            $.ajax({
+                url: '{{ path('dashboard_livebranches') }}',
+                type: 'get',
+                success: function (html) {
+                    //$('#branches2').replaceWith('<tr><td>as</td></tr>');
+                    $('#branches2').replaceWith('<tbody id="branches2">' + html + '</tbody>');
+                }
+            });
+
+        }
+        ;
+
+        setInterval(function(){getData();}, 10000);
+
+    </script>
+
+{% endblock %}

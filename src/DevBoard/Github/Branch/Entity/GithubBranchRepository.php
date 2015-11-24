@@ -53,8 +53,24 @@ class GithubBranchRepository extends EntityRepository
             ->leftJoin('b.lastCommit', 'c')
             ->where('b.repo IN (:repoIds)')
             ->setParameter('repoIds', $repoIds)
-            ->orderBy('c.committerDate', 'DESC')
-        ;
+            ->orderBy('c.committerDate', 'DESC');
+
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    public function getLiveBranchesFromRepoIds($repoIds)
+    {
+        $timeLimit = new \DateTime();
+        $timeLimit->modify('-60 min');
+
+        $queryBuilder = $this->createQueryBuilder('b')
+            ->select('b')
+            ->leftJoin('b.lastCommit', 'c')
+            ->where('b.repo IN (:repoIds)')
+            ->andWhere('b.updatedAt > :timeLimit')
+            ->setParameter('repoIds', $repoIds)
+            ->setParameter('timeLimit', $timeLimit)
+            ->orderBy('c.committerDate', 'DESC');
 
         return $queryBuilder->getQuery()->getResult();
     }

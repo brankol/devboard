@@ -4,4 +4,7 @@ dev_board_core_project:
 
 dashboard:
     path:     /dashboard/
-    defaults: { _controller: DevBoardCoreBundle:Default:index }
+    defaults: { _controller: DevBoardCoreBundle:Dashboard:index }
+dashboard_livebranches:
+    path:     /dashboard/livebranches
+    defaults: { _controller: DevBoardCoreBundle:Dashboard:livebranches }
