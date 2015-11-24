@@ -49,9 +49,11 @@ class GithubBranchRepository extends EntityRepository
     public function getBranchesFromRepoIds($repoIds)
     {
         $queryBuilder = $this->createQueryBuilder('b')
+            ->select('b')
+            ->leftJoin('b.lastCommit', 'c')
             ->where('b.repo IN (:repoIds)')
             ->setParameter('repoIds', $repoIds)
-            ->orderBy('b.updatedAt', 'DESC')
+            ->orderBy('c.committerDate', 'DESC')
         ;
 
         return $queryBuilder->getQuery()->getResult();

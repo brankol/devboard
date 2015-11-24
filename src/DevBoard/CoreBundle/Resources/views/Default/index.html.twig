@@ -8,9 +8,14 @@
         <tr>
             <th>Repo</th>
             <th>Branch</th>
+            <th>Commit</th>
             <th>CircleCI</th>
             <th>TravisCI</th>
             <th>ScrutinizerCI</th>
+            <th>Coveralls</th>
+            <th>CodeClimate</th>
+            <th>ScrutinizerCI</th>
+            <th>CodeClimate</th>
         </tr>
         </thead>
         <tbody>
@@ -54,9 +59,7 @@
                         <img src="https://codeclimate.com/github/{{ branch.repo.fullName }}/badges/gpa.svg"/>
                     </a>
                 </td>
-
-
-                <td>{{ branch.updatedAt|ago }}</td>
+                <td>{{ branch.lastCommit.committerDate|ago }}</td>
                 <td></td>
             </tr>
         {% endfor %}
