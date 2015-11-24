@@ -27,7 +27,7 @@ class DashboardController extends Controller
 
         $projects = $this->getProjects();
         $repos    = $em->getRepository('GhRepo:GithubRepo')->getRepoIdsFromProjectIds($projects);
-        $branches = $em->getRepository('GhBranch:GithubBranch')->getBranchesFromRepoIds($repos);
+        $branches = $em->getRepository('GhBranch:GithubBranch')->getLiveBranchesFromRepoIds($repos);
 
         $data = [
             'branches' => $branches,
