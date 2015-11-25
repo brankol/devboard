@@ -38,7 +38,7 @@
                         <img src="https://codeclimate.com/github/{{ branch.repo.fullName }}/badges/gpa.svg"/>
                     </a>
                 </td>
-                <td>{{ branch.lastCommit.committerDate|ago }}</td>
+                <td>{{ branch.updatedAt|ago }}</td>
                 <td></td>
             </tr>
         {% endfor %}
