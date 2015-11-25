@@ -70,7 +70,7 @@ class GithubBranchRepository extends EntityRepository
             ->andWhere('b.updatedAt > :timeLimit')
             ->setParameter('repoIds', $repoIds)
             ->setParameter('timeLimit', $timeLimit)
-            ->orderBy('c.committerDate', 'DESC');
+            ->orderBy('b.updatedAt', 'DESC');
 
         return $queryBuilder->getQuery()->getResult();
     }
