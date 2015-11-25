@@ -5,37 +5,38 @@
                 <td>{{ branch.lastCommit.message }}</td>
                 <td>
                     <a href="https://circleci.com/gh/{{ branch.repo.fullName }}/tree/{{ branch.name }}" target="_blank">
-                        <img src="https://circleci.com/gh/{{ branch.repo.fullName }}/tree/{{ branch.name }}.svg?style=shield"/>
+                        <img src="https://circleci.com/gh/{{ branch.repo.fullName }}/tree/{{ branch.name }}.svg?style=shield#{{ "now"|date('U') }}"/>
+
                     </a>
                 </td>
                 <td>
                     <a href="https://travis-ci.org/{{ branch.repo.fullName }}" target="_blank">
-                        <img src="https://travis-ci.org/{{ branch.repo.fullName }}.svg?branch={{ branch.name }}"/>
+                        <img src="https://travis-ci.org/{{ branch.repo.fullName }}.svg?branch={{ branch.name }}#{{ "now"|date('U') }}"/>
                     </a>
                 </td>
                 <td>
                     <a href="https://scrutinizer-ci.com/g/{{ branch.repo.fullName }}/build-status/{{ branch.name }}" target="_blank">
-                        <img src="https://scrutinizer-ci.com/g/{{ branch.repo.fullName }}/badges/build.png?b={{ branch.name }}"/>
+                        <img src="https://scrutinizer-ci.com/g/{{ branch.repo.fullName }}/badges/build.png?b={{ branch.name }}#{{ "now"|date('U') }}"/>
                     </a>
                 </td>
                 <td>
                     <a href="https://coveralls.io/r/{{ branch.repo.fullName }}?branch={{ branch.name }}" target="_blank">
-                        <img src="https://coveralls.io/repos/{{ branch.repo.fullName }}/badge.svg?branch={{ branch.name }}"/>
+                        <img src="https://coveralls.io/repos/{{ branch.repo.fullName }}/badge.svg?branch={{ branch.name }}#{{ "now"|date('U') }}"/>
                     </a>
                 </td>
                 <td>
                     <a href="https://codeclimate.com/github/{{ branch.repo.fullName }}/coverage" target="_blank">
-                        <img src="https://codeclimate.com/github/{{ branch.repo.fullName }}/badges/coverage.svg"/>
+                        <img src="https://codeclimate.com/github/{{ branch.repo.fullName }}/badges/coverage.svg#{{ "now"|date('U') }}"/>
                     </a>
                 </td>
                 <td>
                     <a href="https://scrutinizer-ci.com/g/{{ branch.repo.fullName }}/build-status/{{ branch.name }}" target="_blank">
-                        <img src="https://scrutinizer-ci.com/g/{{ branch.repo.fullName }}/badges/quality-score.png?b={{ branch.name }}"/>
+                        <img src="https://scrutinizer-ci.com/g/{{ branch.repo.fullName }}/badges/quality-score.png?b={{ branch.name }}#{{ "now"|date('U') }}"/>
                     </a>
                 </td>
                 <td>
                     <a href="https://codeclimate.com/github/{{ branch.repo.fullName }}/coverage" target="_blank">
-                        <img src="https://codeclimate.com/github/{{ branch.repo.fullName }}/badges/gpa.svg"/>
+                        <img src="https://codeclimate.com/github/{{ branch.repo.fullName }}/badges/gpa.svg#{{ "now"|date('U') }}"/>
                     </a>
                 </td>
                 <td>{{ branch.updatedAt|ago }}</td>
