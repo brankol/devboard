@@ -108,6 +108,12 @@ doctrine:
                         dir: %kernel.root_dir%/../src/DevBoard/Github/User/Resources/config/doctrine
                         prefix: DevBoard\Github\User\Entity
                         alias: GhUser
+                    DevBoardGithubExternalService:
+                        type: yml
+                        is_bundle: false
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/ExternalService/Resources/config/doctrine
+                        prefix: DevBoard\Github\ExternalService\Entity
+                        alias: GhExternalService
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"

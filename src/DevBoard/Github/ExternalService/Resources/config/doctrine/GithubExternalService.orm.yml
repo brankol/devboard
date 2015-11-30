@@ -1,0 +1,20 @@
+DevBoard\Github\ExternalService\Entity\GithubExternalService:
+  type: entity
+  table: GithubExternalServices
+  repositoryClass: DevBoard\Github\ExternalService\Entity\GithubExternalServiceRepository
+  id:
+    id:
+      type: guid
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    name:
+      type: string
+      length: '255'
+    context:
+      type: string
+      length: '255'
+  lifecycleCallbacks:
+    prePersist: ['doCreatedValue']
+    preUpdate: ['doUpdatedValue']
