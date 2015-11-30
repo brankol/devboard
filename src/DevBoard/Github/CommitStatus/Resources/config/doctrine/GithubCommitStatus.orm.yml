@@ -1,0 +1,34 @@
+DevBoard\Github\CommitStatus\Entity\GithubCommitStatus:
+  type: entity
+  table: GithubCommitStatuses
+  repositoryClass: DevBoard\Github\CommitStatus\Entity\GithubCommitStatusRepository
+  id:
+    id:
+      type: guid
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    state:
+      type: integer
+      nullable: true
+    createdAt:
+      type: datetime
+    updatedAt:
+      type: datetime
+  manyToOne:
+    githubCommit:
+      targetEntity: DevBoard\Github\Commit\Entity\GithubCommit
+      inversedBy: statuses
+      joinColumn:
+        name: githubCommitId
+        referencedColumnName: id
+    githubExternalService:
+      targetEntity: DevBoard\Github\ExternalService\Entity\GithubExternalService
+      inversedBy: statuses
+      joinColumn:
+        name: githubExternalServiceId
+        referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: ['doCreatedValue']
+    preUpdate: ['doUpdatedValue']
