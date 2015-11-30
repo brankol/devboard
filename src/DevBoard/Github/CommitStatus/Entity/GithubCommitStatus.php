@@ -1,0 +1,77 @@
+<?php
+namespace DevBoard\Github\CommitStatus\Entity;
+
+use DevBoard\Github\Commit\Entity\GithubCommit;
+use DevBoard\Github\ExternalService\Entity\GithubExternalService;
+use Resources\Entity\BaseEntity;
+
+/**
+ * Class GithubCommitStatus.
+ */
+class GithubCommitStatus extends BaseEntity
+{
+    private $githubCommit;
+    private $githubExternalService;
+
+    private $state;
+
+    /**
+     * @return GithubCommit
+     */
+    public function getGithubCommit()
+    {
+        return $this->githubCommit;
+    }
+
+    /**
+     * @param GithubCommit $githubCommit
+     *
+     * @return $this
+     */
+    public function setGithubCommit(GithubCommit $githubCommit)
+    {
+        $this->githubCommit = $githubCommit;
+
+        return $this;
+    }
+
+    /**
+     * @return GithubExternalService
+     */
+    public function getGithubExternalService()
+    {
+        return $this->githubExternalService;
+    }
+
+    /**
+     * @param GithubExternalService $githubExternalService
+     *
+     * @return $this
+     */
+    public function setGithubExternalService(GithubExternalService $githubExternalService)
+    {
+        $this->githubExternalService = $githubExternalService;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getState()
+    {
+        return $this->state;
+    }
+
+    /**
+     * @param int $state
+     *
+     * @return $this
+     */
+    public function setState($state)
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+}

@@ -21,8 +21,6 @@ class Commit implements GithubCommitDataInterface
      * @param DateTime $authorDate
      * @param DateTime $committerDate
      * @param string   $message
-     *
-     * @internal param DateTime $timestamp
      */
     public function __construct($sha, DateTime $authorDate, DateTime $committerDate, $message)
     {

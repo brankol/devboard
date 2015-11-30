@@ -36,6 +36,9 @@ class DashboardController extends Controller
         return $this->render('DevBoardCoreBundle:Dashboard:livebranches.html.twig', $data);
     }
 
+    /**
+     * @return mixed
+     */
     private function getProjects()
     {
         return $this->getDoctrine()

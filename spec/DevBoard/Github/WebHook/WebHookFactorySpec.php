@@ -36,4 +36,21 @@ class WebHookFactorySpec extends ObjectBehavior
 
         $this->create($request)->shouldReturnAnInstanceOf('DevBoard\Github\WebHook\Data\PushEvent');
     }
+
+    public function it_will_create_status_event(
+        $signatureFactory,
+        WebHookSignature $signature,
+        Request $request,
+        HeaderBag $headerBag
+    ) {
+        $request->headers = $headerBag;
+
+        $headerBag->get('X-GitHub-Event')->willReturn('status');
+        $headerBag->get('X-Hub-Signature')->willReturn('sha1=abc123');
+
+        $signatureFactory->create('sha1=abc123')->willReturn($signature);
+        $request->getContent()->willReturn('{}');
+
+        $this->create($request)->shouldReturnAnInstanceOf('DevBoard\Github\WebHook\Data\StatusEvent');
+    }
 }

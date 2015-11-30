@@ -43,8 +43,6 @@ class BranchPayloadFactory
      * @param GithubBranchData $githubBranchData
      *
      * @return BranchPayload
-     *
-     * @internal param PushPayload $pushPayload
      */
     public function create(GithubRepo $githubRepo, GithubBranchData $githubBranchData)
     {

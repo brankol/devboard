@@ -26,6 +26,9 @@ class DefaultController extends Controller
         return $this->render('DevBoardCoreBundle:Default:index.html.twig', $data);
     }
 
+    /**
+     * @return mixed
+     */
     private function getProjects()
     {
         return $this->getDoctrine()

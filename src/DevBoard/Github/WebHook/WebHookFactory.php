@@ -2,6 +2,7 @@
 namespace DevBoard\Github\WebHook;
 
 use DevBoard\Github\WebHook\Data\PushEvent;
+use DevBoard\Github\WebHook\Data\StatusEvent;
 use Exception;
 use Symfony\Component\HttpFoundation\HeaderBag;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,6 +38,8 @@ class WebHookFactory
 
         if ('push' === $event) {
             return new PushEvent($signature, $request->getContent());
+        } elseif ('status' === $event) {
+            return new StatusEvent($signature, $request->getContent());
         } else {
             throw new Exception('Unsupported webhook event: "'.$event.'" !');
         }
