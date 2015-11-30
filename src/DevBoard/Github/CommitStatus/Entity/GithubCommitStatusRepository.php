@@ -3,7 +3,6 @@ namespace DevBoard\Github\CommitStatus\Entity;
 
 use DevBoard\Github\Commit\Entity\GithubCommit;
 use DevBoard\Github\ExternalService\Entity\GithubExternalService;
-use DevBoard\Github\Repo\Entity\GithubRepo;
 use Doctrine\ORM\EntityRepository;
 
 /**

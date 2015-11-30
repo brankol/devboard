@@ -14,7 +14,6 @@ use DevBoard\GithubRemote\Fetch\Branch\Data\CommitCommitterFactory;
 use DevBoard\GithubRemote\Fetch\Branch\Data\CommitFactory;
 use DevBoard\GithubRemote\ValueObject\Branch\Branch;
 use DevBoard\GithubRemote\ValueObject\Commit\Commit;
-use DevBoard\GithubRemote\ValueObject\Repo\Repo;
 use DevBoard\GithubRemote\ValueObject\User\CommitAuthor;
 use DevBoard\GithubRemote\ValueObject\User\CommitCommitter;
 use Doctrine\ORM\EntityManager;

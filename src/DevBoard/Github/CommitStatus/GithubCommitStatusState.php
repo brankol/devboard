@@ -14,6 +14,11 @@ class GithubCommitStatusState
 
     const PASSED = 90;
 
+    /**
+     * @param $text
+     *
+     * @return int
+     */
     public static function convert($text)
     {
         switch ($text) {

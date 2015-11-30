@@ -23,6 +23,7 @@ class EventHandler
      *
      * @param PayloadFactory $payloadFactory
      * @param PushHandler    $pushHandler
+     * @param StatusHandler  $statusHandler
      */
     public function __construct(PayloadFactory $payloadFactory, PushHandler $pushHandler, StatusHandler $statusHandler)
     {

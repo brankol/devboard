@@ -15,7 +15,6 @@ class GithubBranchRepository extends EntityRepository
      *
      * @return mixed
      *
-     * @internal param GithubRepo $repo
      * @codeCoverageIgnore
      */
     public function findOneByName(GithubRepo $githubRepo, $branchName)

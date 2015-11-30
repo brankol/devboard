@@ -2,12 +2,10 @@
 namespace DevBoard\Github\CommitStatus;
 
 use DevBoard\Github\Commit\Entity\GithubCommit;
-use DevBoard\Github\Commit\Entity\GithubCommitRepository;
 use DevBoard\Github\CommitStatus\Entity\GithubCommitStatus;
 use DevBoard\Github\CommitStatus\Entity\GithubCommitStatusFactory;
 use DevBoard\Github\CommitStatus\Entity\GithubCommitStatusRepository;
 use DevBoard\Github\ExternalService\Entity\GithubExternalService;
-use DevBoard\Github\Repo\Entity\GithubRepo;
 use Doctrine\ORM\EntityManager;
 
 /**
@@ -36,6 +34,12 @@ class GithubCommitStatusFacade
         $this->em         = $em;
     }
 
+    /**
+     * @param GithubCommit          $githubCommit
+     * @param GithubExternalService $githubExternalService
+     *
+     * @return GithubCommitStatus
+     */
     public function get(GithubCommit $githubCommit, GithubExternalService $githubExternalService)
     {
         return $this->repository->findOneByRepoCommitAndExternalService(
@@ -44,6 +48,12 @@ class GithubCommitStatusFacade
         );
     }
 
+    /**
+     * @param GithubCommit          $githubCommit
+     * @param GithubExternalService $githubExternalService
+     *
+     * @return GithubCommitStatus
+     */
     public function create(GithubCommit $githubCommit, GithubExternalService $githubExternalService)
     {
         $status = $this->factory->create($githubCommit, $githubExternalService);
@@ -54,6 +64,12 @@ class GithubCommitStatusFacade
         return $status;
     }
 
+    /**
+     * @param GithubCommit          $githubCommit
+     * @param GithubExternalService $githubExternalService
+     *
+     * @return GithubCommitStatus
+     */
     public function getOrCreate(GithubCommit $githubCommit, GithubExternalService $githubExternalService)
     {
         $status = $this->get($githubCommit, $githubExternalService);

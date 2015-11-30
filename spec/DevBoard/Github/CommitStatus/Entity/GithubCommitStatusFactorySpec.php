@@ -2,9 +2,7 @@
 namespace spec\DevBoard\Github\CommitStatus\Entity;
 
 use DevBoard\Github\Commit\Entity\GithubCommit;
-use DevBoard\Github\CommitStatus\Entity\GithubCommitStatusRepository;
 use DevBoard\Github\ExternalService\Entity\GithubExternalService;
-use DevBoard\Github\Repo\Entity\GithubRepo;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 

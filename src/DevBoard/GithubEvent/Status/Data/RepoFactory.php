@@ -11,7 +11,7 @@ use DevBoard\GithubRemote\ValueObject\Repo\Repo;
 class RepoFactory
 {
     /**
-     * @param StatusPayload|PushPayload $statusPayload
+     * @param StatusPayload $statusPayload
      *
      * @return Repo
      */

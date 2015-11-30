@@ -1,8 +1,6 @@
 <?php
 namespace spec\DevBoard\GithubEvent\Status;
 
-use DevBoard\Github\Branch\Entity\GithubBranch;
-use DevBoard\Github\Branch\GithubBranchFacade;
 use DevBoard\Github\Commit\Entity\GithubCommit;
 use DevBoard\Github\Commit\GithubCommitFacade;
 use DevBoard\Github\CommitStatus\Entity\GithubCommitStatus;
@@ -12,24 +10,15 @@ use DevBoard\Github\ExternalService\Entity\GithubExternalService;
 use DevBoard\Github\ExternalService\GithubExternalServiceFacade;
 use DevBoard\Github\Repo\Entity\GithubRepo;
 use DevBoard\Github\Repo\GithubRepoFacade;
-use DevBoard\Github\User\Entity\GithubUser;
-use DevBoard\Github\User\GithubUserFacade;
-use DevBoard\GithubEvent\Payload\PushPayload;
 use DevBoard\GithubEvent\Payload\StatusPayload;
-use DevBoard\GithubEvent\Status\Data\BranchFactory;
-use DevBoard\GithubEvent\Status\Data\CommitAuthorFactory;
-use DevBoard\GithubEvent\Status\Data\CommitCommitterFactory;
 use DevBoard\GithubEvent\Status\Data\CommitFactory;
 use DevBoard\GithubEvent\Status\Data\CommitStatusFactory;
 use DevBoard\GithubEvent\Status\Data\ExternalServiceFactory;
 use DevBoard\GithubEvent\Status\Data\RepoFactory;
-use DevBoard\GithubRemote\ValueObject\Branch\Branch;
 use DevBoard\GithubRemote\ValueObject\Commit\Commit;
 use DevBoard\GithubRemote\ValueObject\CommitStatus\CommitStatus;
 use DevBoard\GithubRemote\ValueObject\ExternalService\ExternalService;
 use DevBoard\GithubRemote\ValueObject\Repo\Repo;
-use DevBoard\GithubRemote\ValueObject\User\CommitAuthor;
-use DevBoard\GithubRemote\ValueObject\User\CommitCommitter;
 use Doctrine\ORM\EntityManager;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
