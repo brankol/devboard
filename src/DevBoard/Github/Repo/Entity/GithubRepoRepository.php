@@ -19,6 +19,11 @@ class GithubRepoRepository extends EntityRepository
         return parent::findOneByFullName($fullName);
     }
 
+    /**
+     * @param $projectIds
+     *
+     * @return array
+     */
     public function getRepoIdsFromProjectIds($projectIds)
     {
         $queryBuilder = $this->createQueryBuilder('r')

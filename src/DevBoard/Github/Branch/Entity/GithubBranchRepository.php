@@ -28,6 +28,11 @@ class GithubBranchRepository extends EntityRepository
         );
     }
 
+    /**
+     * @param $repoIds
+     *
+     * @return array
+     */
     public function getBranchIdsFromRepoIds($repoIds)
     {
         $queryBuilder = $this->createQueryBuilder('b')
@@ -46,6 +51,11 @@ class GithubBranchRepository extends EntityRepository
         return $results;
     }
 
+    /**
+     * @param $repoIds
+     *
+     * @return array
+     */
     public function getBranchesFromRepoIds($repoIds)
     {
         $queryBuilder = $this->createQueryBuilder('b')
@@ -58,6 +68,11 @@ class GithubBranchRepository extends EntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
+    /**
+     * @param $repoIds
+     *
+     * @return array
+     */
     public function getLiveBranchesFromRepoIds($repoIds)
     {
         $timeLimit = new \DateTime();
