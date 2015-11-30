@@ -2,9 +2,12 @@
 namespace spec\DevBoard\GithubEvent;
 
 use DevBoard\Github\WebHook\Data\PushEvent;
+use DevBoard\Github\WebHook\Data\StatusEvent;
 use DevBoard\GithubEvent\Payload\PayloadFactory;
 use DevBoard\GithubEvent\Payload\PushPayload;
+use DevBoard\GithubEvent\Payload\StatusPayload;
 use DevBoard\GithubEvent\Push\PushHandler;
+use DevBoard\GithubEvent\Status\StatusHandler;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 
@@ -15,9 +18,9 @@ class EventHandlerSpec extends ObjectBehavior
         $this->shouldHaveType('DevBoard\GithubEvent\EventHandler');
     }
 
-    public function let(PayloadFactory $payloadFactory, PushHandler $pushHandler)
+    public function let(PayloadFactory $payloadFactory, PushHandler $pushHandler, StatusHandler $statusHandler)
     {
-        $this->beConstructedWith($payloadFactory, $pushHandler);
+        $this->beConstructedWith($payloadFactory, $pushHandler, $statusHandler);
     }
 
     public function it_will_handle_push_event(
@@ -31,5 +34,18 @@ class EventHandlerSpec extends ObjectBehavior
         $pushHandler->process($pushPayload)->willReturn(true);
 
         $this->handle($pushEvent)->shouldReturn(true);
+    }
+
+    public function it_will_handle_status_event(
+        $payloadFactory,
+        $statusHandler,
+        StatusEvent $statusEvent,
+        StatusPayload $statusPayload
+    ) {
+        $payloadFactory->create($statusEvent)->willReturn($statusPayload);
+
+        $statusHandler->process($statusPayload)->willReturn(true);
+
+        $this->handle($statusEvent)->shouldReturn(true);
     }
 }
