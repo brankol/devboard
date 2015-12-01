@@ -12,6 +12,8 @@ class GithubCommitStatusState
 
     const FAILED = 60;
 
+    const ERROR = 70;
+
     const PASSED = 90;
 
     /**
@@ -24,7 +26,9 @@ class GithubCommitStatusState
         switch ($text) {
             case 'pending':
                 return self::PENDING;
-            case 'failed':
+            case 'error':
+                return self::ERRORgit;
+            case 'failure':
                 return self::FAILED;
             case 'success':
                 return self::PASSED;
