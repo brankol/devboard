@@ -15,9 +15,16 @@ class CommitFactorySpec extends ObjectBehavior
     public function it_will_create_remote_commit_value_object(StatusPayload $statusPayload)
     {
         $data = [
-            'sha'       => 'sha',
-            'message'   => 'Message',
-            'timestamp' => '2015-11-20T22:25:30+01:00',
+            'sha'    => 'sha',
+            'commit' => [
+                'author' => [
+                    'date' => '2015-11-30T20:47:39Z',
+                ],
+                'committer' => [
+                    'date' => '2015-11-30T20:47:39Z',
+                ],
+                'message' => 'Message',
+            ],
         ];
 
         $statusPayload->getCommitDetails()->willReturn($data);
