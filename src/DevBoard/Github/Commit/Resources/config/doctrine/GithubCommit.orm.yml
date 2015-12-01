@@ -53,6 +53,10 @@ DevBoard\Github\Commit\Entity\GithubCommit:
       joinColumn:
         name: committerId
         referencedColumnName: id
+  oneToMany:
+    commitStatuses:
+      targetEntity: DevBoard\Github\CommitStatus\Entity\GithubCommitStatus
+      mappedBy: githubCommit
   lifecycleCallbacks:
     prePersist: ['doCreatedValue']
     preUpdate: ['doUpdatedValue']

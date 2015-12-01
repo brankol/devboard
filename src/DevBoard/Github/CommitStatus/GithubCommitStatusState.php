@@ -27,7 +27,7 @@ class GithubCommitStatusState
             case 'pending':
                 return self::PENDING;
             case 'error':
-                return self::ERRORgit;
+                return self::ERROR;
             case 'failure':
                 return self::FAILED;
             case 'success':

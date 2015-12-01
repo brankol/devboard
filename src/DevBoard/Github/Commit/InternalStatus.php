@@ -19,12 +19,12 @@ class InternalStatus
     const PENDING = 30;
 
     /**
-     * @const All CI results not in but at least one of them already failed.
+     * @const Pending and success CI results.
      */
-    const FAILING = 40;
+    const SUCCEEDING = 35;
 
     /**
-     * @const Error status
+     * @const At least one of the CI results erorred.
      */
     const ERROR = 60;
 
@@ -42,4 +42,26 @@ class InternalStatus
      * @const CI results were a success
      */
     const SUCCESS = 90;
+
+    public static function getText($value)
+    {
+        switch ($value) {
+            case self::UNKNOWN:
+                return 'Unknown';
+            case self::PENDING:
+                return 'Unknown';
+            case self::SUCCEEDING:
+                return 'Unknown';
+            case self::ERROR:
+                return 'Unknown';
+            case self::FAILURE:
+                return 'Unknown';
+            case self::FINISHED_NO_STATUS_CHECKS:
+                return 'Unknown';
+            case self::SUCCESS:
+                return 'Unknown';
+            default:
+                return '??';
+        }
+    }
 }

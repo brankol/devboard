@@ -2,8 +2,10 @@
 namespace DevBoard\Github\Commit\Entity;
 
 use DateTime;
+use DevBoard\Github\Commit\InternalStatus;
 use DevBoard\Github\Repo\Entity\GithubRepo;
 use DevBoard\Github\User\Entity\GithubUser;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use NullDev\GithubApi\Commit\GithubCommitDataInterface;
 use Resources\Entity\BaseEntity;
@@ -35,10 +37,21 @@ class GithubCommit extends BaseEntity implements GithubCommitDataInterface
     private $message;
 
     /** @var string */
-    private $internalStatus;
+    private $internalStatus = InternalStatus::FINISHED_NO_STATUS_CHECKS;
 
     /** @var string */
     private $githubStatus;
+
+    /** @var ArrayCollection */
+    private $commitStatuses;
+
+    /**
+     * GithubCommit constructor.
+     */
+    public function __construct()
+    {
+        $this->commitStatuses = new ArrayCollection();
+    }
 
     /**
      * @return GithubRepo
@@ -242,6 +255,30 @@ class GithubCommit extends BaseEntity implements GithubCommitDataInterface
         $this->githubStatus = $githubStatus;
 
         return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getCommitStatuses()
+    {
+        return $this->commitStatuses;
+    }
+
+    /**
+     * @param ArrayCollection $commitStatuses
+     */
+    public function setCommitStatuses(ArrayCollection $commitStatuses)
+    {
+        $this->commitStatuses = $commitStatuses;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInternalStatusText()
+    {
+        return InternalStatus::getText($this->internalStatus);
     }
 
     /**
