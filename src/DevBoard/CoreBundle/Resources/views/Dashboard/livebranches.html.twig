@@ -3,6 +3,8 @@
                 <td>{{ branch.repo.fullName }}</td>
                 <td>{{ branch.name }}</td>
                 <td>{{ branch.lastCommit.message }}</td>
+                <td>{{ branch.lastCommit.internalStatus }}</td>
+                <td>{{ branch.lastCommit.internalStatusText }}</td>
                 <td>
                     <a href="https://circleci.com/gh/{{ branch.repo.fullName }}/tree/{{ branch.name }}" target="_blank">
                         <img src="https://circleci.com/gh/{{ branch.repo.fullName }}/tree/{{ branch.name }}.svg?style=shield#{{ "now"|date('U') }}"/>

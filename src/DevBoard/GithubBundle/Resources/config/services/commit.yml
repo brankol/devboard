@@ -20,3 +20,6 @@ services:
       - @github.commit.repository
       - @github.commit.factory
       - @doctrine.orm.entity_manager
+
+  github.commit.state.calculator:
+    class: DevBoard\Github\Commit\CalculateState\CalculateGithubCommitState
