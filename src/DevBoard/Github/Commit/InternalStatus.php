@@ -49,17 +49,17 @@ class InternalStatus
             case self::UNKNOWN:
                 return 'Unknown';
             case self::PENDING:
-                return 'Unknown';
+                return 'Pending';
             case self::SUCCEEDING:
-                return 'Unknown';
+                return 'Succeding';
             case self::ERROR:
-                return 'Unknown';
+                return 'Error';
             case self::FAILURE:
-                return 'Unknown';
+                return 'Failure';
             case self::FINISHED_NO_STATUS_CHECKS:
-                return 'Unknown';
+                return 'Finished';
             case self::SUCCESS:
-                return 'Unknown';
+                return 'Success';
             default:
                 return '??';
         }
