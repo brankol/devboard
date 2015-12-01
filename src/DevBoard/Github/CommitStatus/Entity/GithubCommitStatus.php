@@ -2,6 +2,7 @@
 namespace DevBoard\Github\CommitStatus\Entity;
 
 use DevBoard\Github\Commit\Entity\GithubCommit;
+use DevBoard\Github\CommitStatus\GithubCommitStatusState;
 use DevBoard\Github\ExternalService\Entity\GithubExternalService;
 use Resources\Entity\BaseEntity;
 
@@ -73,5 +74,13 @@ class GithubCommitStatus extends BaseEntity
         $this->state = $state;
 
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStateText()
+    {
+        return GithubCommitStatusState::getText((int)$this->state);
     }
 }
