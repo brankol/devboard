@@ -81,6 +81,6 @@ class GithubCommitStatus extends BaseEntity
      */
     public function getStateText()
     {
-        return GithubCommitStatusState::getText((int)$this->state);
+        return GithubCommitStatusState::getText((int) $this->state);
     }
 }
