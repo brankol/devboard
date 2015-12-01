@@ -21,9 +21,9 @@ class CommitFactory
 
         return new Commit(
             $data['sha'],
-            new DateTime($data['timestamp']),
-            new DateTime($data['timestamp']),
-            $data['message']
+            new DateTime($data['commit']['author']['date']),
+            new DateTime($data['commit']['committer']['date']),
+            $data['commit']['message']
         );
     }
 }
