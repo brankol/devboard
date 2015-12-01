@@ -1,6 +1,7 @@
 <?php
 namespace spec\DevBoard\GithubEvent\Status;
 
+use DevBoard\Github\Commit\CalculateState\CalculateGithubCommitState;
 use DevBoard\Github\Commit\Entity\GithubCommit;
 use DevBoard\Github\Commit\GithubCommitFacade;
 use DevBoard\Github\CommitStatus\Entity\GithubCommitStatus;
@@ -39,6 +40,7 @@ class StatusHandlerSpec extends ObjectBehavior
         GithubCommitFacade $githubCommitFacade,
         GithubExternalServiceFacade $githubExternalServiceFacade,
         GithubCommitStatusFacade $githubCommitStatusFacade,
+        CalculateGithubCommitState $calculateGithubCommitState,
         EntityManager $em
 
     ) {
@@ -51,6 +53,7 @@ class StatusHandlerSpec extends ObjectBehavior
             $githubCommitFacade,
             $githubExternalServiceFacade,
             $githubCommitStatusFacade,
+            $calculateGithubCommitState,
             $em
         );
     }
@@ -65,6 +68,7 @@ class StatusHandlerSpec extends ObjectBehavior
         $githubCommitFacade,
         $githubExternalServiceFacade,
         $githubCommitStatusFacade,
+        $calculateGithubCommitState,
         $em,
         StatusPayload $statusPayload,
         Repo $repoValueObject,
@@ -92,9 +96,11 @@ class StatusHandlerSpec extends ObjectBehavior
             ->willReturn($githubCommitStatus);
 
         $githubCommitStatus->setState(GithubCommitStatusState::convert($commitStatusValueObject->getStatus()));
+        $calculateGithubCommitState->calculate($githubCommitEntity)->shouldBeCalled();
 
         $em->persist($githubCommitStatus)->shouldBeCalled();
-        $em->persist($githubCommitStatus)->shouldBeCalled();
+        $em->refresh($githubCommitEntity)->shouldBeCalled();
+        $em->persist($githubCommitEntity)->shouldBeCalled();
         $em->flush()->shouldBeCalled();
 
         $this->process($statusPayload)->shouldReturn(true);

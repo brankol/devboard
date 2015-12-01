@@ -1,6 +1,7 @@
 <?php
 namespace DevBoard\GithubEvent\Status;
 
+use DevBoard\Github\Commit\CalculateState\CalculateGithubCommitState;
 use DevBoard\Github\Commit\GithubCommitFacade;
 use DevBoard\Github\CommitStatus\GithubCommitStatusFacade;
 use DevBoard\Github\CommitStatus\GithubCommitStatusState;
@@ -26,6 +27,7 @@ class StatusHandler
     private $githubCommitFacade;
     private $githubExternalServiceFacade;
     private $githubCommitStatusFacade;
+    private $calculateGithubCommitState;
     private $em;
 
     /**
@@ -38,6 +40,8 @@ class StatusHandler
      * @param GithubExternalServiceFacade $githubExternalServiceFacade
      * @param GithubCommitStatusFacade    $githubCommitStatusFacade
      * @param EntityManager               $em
+     *
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct(
         RepoFactory $repoFactory,
@@ -48,6 +52,7 @@ class StatusHandler
         GithubCommitFacade $githubCommitFacade,
         GithubExternalServiceFacade $githubExternalServiceFacade,
         GithubCommitStatusFacade $githubCommitStatusFacade,
+        CalculateGithubCommitState $calculateGithubCommitState,
         EntityManager $em
     ) {
         $this->repoFactory                 = $repoFactory;
@@ -58,6 +63,7 @@ class StatusHandler
         $this->githubCommitFacade          = $githubCommitFacade;
         $this->githubExternalServiceFacade = $githubExternalServiceFacade;
         $this->githubCommitStatusFacade    = $githubCommitStatusFacade;
+        $this->calculateGithubCommitState  = $calculateGithubCommitState;
         $this->em                          = $em;
     }
 
@@ -85,6 +91,12 @@ class StatusHandler
         $githubCommitStatus->setState(GithubCommitStatusState::convert($statusPayload->getState()));
 
         $this->em->persist($githubCommitStatus);
+        $this->em->flush();
+
+        $this->em->refresh($githubCommit);
+
+        $this->calculateGithubCommitState->calculate($githubCommit);
+        $this->em->persist($githubCommit);
         $this->em->flush();
 
         return true;
