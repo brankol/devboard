@@ -36,4 +36,28 @@ class GithubCommitStatusState
                 return self::WTF;
         }
     }
+
+    /**
+     * @param $value
+     *
+     * @return string
+     */
+    public static function getText($value)
+    {
+        switch ($value) {
+
+            case self::PENDING:
+                return 'pending';
+            case self::ERROR:
+                return 'error';
+            case self::FAILED:
+                return 'failure';
+            case self::PASSED:
+                return 'success';
+            case self::WTF:
+                return 'wtf';
+            default:
+                return '???';
+        }
+    }
 }

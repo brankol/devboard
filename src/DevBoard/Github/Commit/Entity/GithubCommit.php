@@ -278,7 +278,7 @@ class GithubCommit extends BaseEntity implements GithubCommitDataInterface
      */
     public function getInternalStatusText()
     {
-        return InternalStatus::getText($this->internalStatus);
+        return InternalStatus::getText((int) $this->internalStatus);
     }
 
     /**
