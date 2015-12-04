@@ -60,4 +60,28 @@ class GithubCommitStatusState
                 return '???';
         }
     }
+
+    /**
+     * @param $value
+     *
+     * @return string
+     */
+    public static function getColor($value)
+    {
+        switch ($value) {
+
+            case self::PENDING:
+                return '#E5DA3F';
+            case self::ERROR:
+                return '#D94341';
+            case self::FAILED:
+                return '#e05d44';
+            case self::PASSED:
+                return '#4c1';
+            case self::WTF:
+                return '#000';
+            default:
+                return '#000';
+        }
+    }
 }

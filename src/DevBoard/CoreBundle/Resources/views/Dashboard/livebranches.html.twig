@@ -1,53 +1,49 @@
-        {% for branch in branches %}
-            <tr>
-                <td>{{ branch.repo.fullName }}</td>
-                <td>{{ branch.name }}</td>
-                <td>{{ branch.lastCommit.message }}</td>
-                <td>{{ branch.lastCommit.internalStatus }}</td>
-                <td>{{ branch.lastCommit.internalStatusText }}</td>
+{% for branch in branches %}
+    <div class="row">
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
 
-                <td>
-                    {% for status in branch.lastCommit.commitStatuses %}
-                    {{ status.githubExternalService.name }}:{{ status.stateText }} <br>
-                    {% endfor %}
-                </td>
-                <td>
-                    <a href="https://circleci.com/gh/{{ branch.repo.fullName }}/tree/{{ branch.name }}" target="_blank">
-                        <img src="https://circleci.com/gh/{{ branch.repo.fullName }}/tree/{{ branch.name }}.svg?style=shield#{{ "now"|date('U') }}"/>
-
-                    </a>
-                </td>
-                <td>
-                    <a href="https://travis-ci.org/{{ branch.repo.fullName }}" target="_blank">
-                        <img src="https://travis-ci.org/{{ branch.repo.fullName }}.svg?branch={{ branch.name }}#{{ "now"|date('U') }}"/>
-                    </a>
-                </td>
-                <td>
-                    <a href="https://scrutinizer-ci.com/g/{{ branch.repo.fullName }}/build-status/{{ branch.name }}" target="_blank">
-                        <img src="https://scrutinizer-ci.com/g/{{ branch.repo.fullName }}/badges/build.png?b={{ branch.name }}#{{ "now"|date('U') }}"/>
-                    </a>
-                </td>
-                <td>
-                    <a href="https://coveralls.io/r/{{ branch.repo.fullName }}?branch={{ branch.name }}" target="_blank">
-                        <img src="https://coveralls.io/repos/{{ branch.repo.fullName }}/badge.svg?branch={{ branch.name }}#{{ "now"|date('U') }}"/>
-                    </a>
-                </td>
-                <td>
-                    <a href="https://codeclimate.com/github/{{ branch.repo.fullName }}/coverage" target="_blank">
-                        <img src="https://codeclimate.com/github/{{ branch.repo.fullName }}/badges/coverage.svg#{{ "now"|date('U') }}"/>
-                    </a>
-                </td>
-                <td>
-                    <a href="https://scrutinizer-ci.com/g/{{ branch.repo.fullName }}/build-status/{{ branch.name }}" target="_blank">
-                        <img src="https://scrutinizer-ci.com/g/{{ branch.repo.fullName }}/badges/quality-score.png?b={{ branch.name }}#{{ "now"|date('U') }}"/>
-                    </a>
-                </td>
-                <td>
-                    <a href="https://codeclimate.com/github/{{ branch.repo.fullName }}/coverage" target="_blank">
-                        <img src="https://codeclimate.com/github/{{ branch.repo.fullName }}/badges/gpa.svg#{{ "now"|date('U') }}"/>
-                    </a>
-                </td>
-                <td>{{ branch.updatedAt|ago }}</td>
-                <td></td>
-            </tr>
-        {% endfor %}
+            {% for status in branch.lastCommit.commitStatuses %}
+                <div style="background-color:{{ status.stateColor }};display: inline-block; margin: 2px;">
+                    <div style="padding: 5px;">
+                        {% if status.githubExternalService.context == 'ci/circleci' %}
+                            <a href="https://circleci.com/gh/{{ branch.repo.fullName }}/tree/{{ branch.name }}" target="_blank">
+                                {% image '@DevBoardCoreBundle/Resources/public/images/logo-stacked-grey.svg' %}
+                                <img src="{{ asset_url }}" alt="Example" width="50px"/>
+                                {% endimage %}
+                            </a>
+                        {% elseif status.githubExternalService.context == 'continuous-integration/travis-ci/push' %}
+                            <a href="https://travis-ci.org/{{ branch.repo.fullName }}" target="_blank">
+                                {% image '@DevBoardCoreBundle/Resources/public/images/mascot-bg-blue-74537338f8ec8ea2c0722b4d60f9777f.png' %}
+                                <img src="{{ asset_url }}" alt="Example" width="50px"/>
+                                {% endimage %}
+                            </a>
+                        {% else %}
+                            {{ status.githubExternalService.name }}:{{ status.stateText }} <br>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <p class="lead">
+                    {{ branch.repo.fullName }}
+                </p>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <p class="lead">
+                    {{ branch.name }}
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <p class="text-muted">
+                    {{ branch.lastCommit.message }}
+                </p>
+            </div>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            {{ branch.updatedAt|ago }}
+            <p class="text-muted">{{ branch.lastCommit.internalStatusText }} ({{ branch.lastCommit.internalStatus }})</p>
+        </div>
+    </div>
+{% endfor %}
