@@ -21,7 +21,7 @@ class RepoFactory
 
         return new Repo(
             $data['id'],
-            $data['owner']['name'],
+            $data['owner']['login'],
             $data['name'],
             $data['full_name'],
             $data['html_url'],

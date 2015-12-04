@@ -19,7 +19,7 @@ class RepoFactorySpec extends ObjectBehavior
             'name'      => 'name',
             'full_name' => 'owner/name',
             'owner'     => [
-                'name' => 'owner',
+                'login' => 'owner',
             ],
             'html_url'       => 'https://github.com/owner/name',
             'description'    => 'Description',
