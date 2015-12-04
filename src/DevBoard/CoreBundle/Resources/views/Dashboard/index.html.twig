@@ -1,33 +1,10 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Dashboard</h1>
-
-    <table id="branches" class="records_list table">
-        <thead>
-        <tr>
-            <th>Repo</th>
-            <th>Branch</th>
-            <th>Commit</th>
-            <th>Internal status</th>
-            <th>Internal status text</th>
-            <th>zz</th>
-            <th>CircleCI</th>
-            <th>TravisCI</th>
-            <th>ScrutinizerCI</th>
-            <th>Coveralls</th>
-            <th>CodeClimate</th>
-            <th>ScrutinizerCI</th>
-            <th>CodeClimate</th>
-        </tr>
-        </thead>
-        <tbody id="branches2">
+    <div class="clear-fix"> &nbsp;</div>
+    <div id="branches">
         {{ render(controller( 'DevBoardCoreBundle:Dashboard:livebranches' )) }}
-
-        </tbody>
-    </table>
-
-
+    </div>
 {% endblock %}
 
 {% block javascripts %}
@@ -39,15 +16,11 @@
                 type: 'get',
                 success: function (html) {
                     //$('#branches2').replaceWith('<tr><td>as</td></tr>');
-                    $('#branches2').replaceWith('<tbody id="branches2">' + html + '</tbody>');
+                    $('#branches').replaceWith('<div id="branches">' + html + '</div>');
                 }
             });
-
         }
         ;
-
         setInterval(function(){getData();}, 10000);
-
     </script>
-
 {% endblock %}
