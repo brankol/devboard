@@ -77,6 +77,7 @@ class PushHandlerTest extends WebTestCase
     public function provideDeletedBranch()
     {
         return [
+            [json_decode($this->getSampleFile('created-branch.json'), true)],
             [json_decode($this->getSampleFile('deleted-branch.json'), true)],
         ];
     }
