@@ -4,6 +4,9 @@ namespace DevBoard\GithubEvent\Tests\Push;
 use DevBoard\GithubEvent\Payload\PushPayload;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Class PushHandlerTest.
+ */
 class PushHandlerTest extends WebTestCase
 {
     protected $container;
@@ -20,6 +23,8 @@ class PushHandlerTest extends WebTestCase
 
     /**
      * @dataProvider provideCreatedBranch
+     *
+     * @param $data
      */
     public function testPushEventToCreateNewBranch($data)
     {
@@ -31,6 +36,8 @@ class PushHandlerTest extends WebTestCase
 
     /**
      * @dataProvider provideUpdatedBranch
+     *
+     * @param $data
      */
     public function testPushEventToUpdateBranch($data)
     {
@@ -42,6 +49,8 @@ class PushHandlerTest extends WebTestCase
 
     /**
      * @dataProvider provideDeletedBranch
+     *
+     * @param $data
      */
     public function testPushEventToDeleteBranch($data)
     {

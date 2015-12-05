@@ -39,6 +39,7 @@ class StatusHandler
      * @param GithubCommitFacade          $githubCommitFacade
      * @param GithubExternalServiceFacade $githubExternalServiceFacade
      * @param GithubCommitStatusFacade    $githubCommitStatusFacade
+     * @param CalculateGithubCommitState  $calculateGithubCommitState
      * @param EntityManager               $em
      *
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)

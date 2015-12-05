@@ -43,6 +43,11 @@ class InternalStatus
      */
     const SUCCESS = 90;
 
+    /**
+     * @param $value
+     *
+     * @return string
+     */
     public static function getText($value)
     {
         switch ($value) {
