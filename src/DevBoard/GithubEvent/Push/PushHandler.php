@@ -58,8 +58,6 @@ class PushHandler
         if ($pushPayload->isBranch()) {
             return $this->branchHandler;
         } elseif ($pushPayload->isTag()) {
-            throw new Exception('TODO');
-
             return $this->tagHandler;
         }
 
