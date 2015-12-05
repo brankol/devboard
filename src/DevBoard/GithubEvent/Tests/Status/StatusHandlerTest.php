@@ -4,6 +4,9 @@ namespace DevBoard\GithubEvent\Tests\Status;
 use DevBoard\GithubEvent\Payload\StatusPayload;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
+/**
+ * Class StatusHandlerTest.
+ */
 class StatusHandlerTest extends WebTestCase
 {
     protected $container;
@@ -20,6 +23,8 @@ class StatusHandlerTest extends WebTestCase
 
     /**
      * @dataProvider provideStatusEvents
+     *
+     * @param $data
      */
     public function testStatusEvents($data)
     {
