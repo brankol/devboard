@@ -1,0 +1,35 @@
+DevBoard\Github\Tag\Entity\GithubTag:
+  type: entity
+  table: GithubTages
+  repositoryClass: DevBoard\Github\Tag\Entity\GithubTagRepository
+  id:
+    id:
+      type: guid
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    name:
+      type: string
+      length: '255'
+    createdAt:
+      type: datetime
+    updatedAt:
+      type: datetime
+  manyToOne:
+    repo:
+      targetEntity: DevBoard\Github\Repo\Entity\GithubRepo
+      inversedBy: tages
+      joinColumn:
+        name: repoId
+        referencedColumnName: id
+    lastCommit:
+      targetEntity: DevBoard\Github\Commit\Entity\GithubCommit
+      inversedBy: commits
+      cascade: ["persist"]
+      joinColumn:
+        name: lastCommitId
+        referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: ['doCreatedValue']
+    preUpdate: ['doUpdatedValue']

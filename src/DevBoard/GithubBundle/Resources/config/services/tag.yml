@@ -1,0 +1,22 @@
+services:
+  github.tag.repository:
+    class: Doctrine\ORM\EntityRepository
+    factory_service: doctrine.orm.default_entity_manager
+    factory_method: getRepository
+    arguments:
+      - DevBoard\Github\Tag\Entity\GithubTag
+
+  github.tag.factory:
+    class: DevBoard\Github\Tag\Entity\GithubTagFactory
+    arguments:
+      - @github.tag.mapper.remote_to_entity
+
+  github.tag.mapper.remote_to_entity:
+    class: DevBoard\Github\Tag\Mapper\RemoteToEntityMapper
+
+  github.tag.facade:
+    class: DevBoard\Github\Tag\GithubTagFacade
+    arguments:
+      - @github.tag.repository
+      - @github.tag.factory
+      - @doctrine.orm.entity_manager

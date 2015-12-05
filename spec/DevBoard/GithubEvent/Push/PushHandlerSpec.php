@@ -61,11 +61,6 @@ class PushHandlerSpec extends ObjectBehavior
         $pushPayload->isTag()->willReturn(true);
         $pushPayload->isCreate()->willReturn(true);
 
-        //@TODO
-        $this->shouldThrow('Exception')->duringProcess($pushPayload);
-
-        return;
-
         $tagHandler->create($pushPayload)->willReturn(true)->shouldBeCalled();
 
         $this->process($pushPayload)->shouldReturn(true);
@@ -77,11 +72,6 @@ class PushHandlerSpec extends ObjectBehavior
         $pushPayload->isTag()->willReturn(true);
         $pushPayload->isCreate()->willReturn(false);
         $pushPayload->isUpdate()->willReturn(true);
-
-        //@TODO
-        $this->shouldThrow('Exception')->duringProcess($pushPayload);
-
-        return;
 
         $tagHandler->update($pushPayload)->willReturn(true)->shouldBeCalled();
 
@@ -95,11 +85,6 @@ class PushHandlerSpec extends ObjectBehavior
         $pushPayload->isCreate()->willReturn(false);
         $pushPayload->isUpdate()->willReturn(false);
         $pushPayload->isDelete()->willReturn(true);
-
-        //@TODO
-        $this->shouldThrow('Exception')->duringProcess($pushPayload);
-
-        return;
 
         $tagHandler->delete($pushPayload)->willReturn(true)->shouldBeCalled();
 

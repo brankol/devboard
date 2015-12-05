@@ -3,6 +3,7 @@ imports:
   - { resource: services/branch.yml }
   - { resource: services/commit.yml }
   - { resource: services/commitstatus.yml }
+  - { resource: services/tag.yml }
   - { resource: services/user.yml }
   - { resource: services/externalservices.yml }
   - { resource: services/webhook.yml }
@@ -80,8 +81,33 @@ services:
       - @github.user.facade
       - @doctrine.orm.entity_manager
 
+
+  github.event.push.tag.data.repo.factory:
+    class: DevBoard\GithubEvent\Push\Tag\Data\RepoFactory
+  github.event.push.tag.data.tag.factory:
+    class: DevBoard\GithubEvent\Push\Tag\Data\TagFactory
+  github.event.push.tag.data.commit.factory:
+    class: DevBoard\GithubEvent\Push\Tag\Data\CommitFactory
+  github.event.push.tag.data.commit_author.factory:
+    class: DevBoard\GithubEvent\Push\Tag\Data\CommitAuthorFactory
+  github.event.push.tag.data.commit_committer.factory:
+    class: DevBoard\GithubEvent\Push\Tag\Data\CommitCommitterFactory
+
+
+
   github.event.push.tag.handler:
     class: DevBoard\GithubEvent\Push\Tag\TagHandler
+    arguments:
+      - @github.event.push.tag.data.repo.factory
+      - @github.event.push.tag.data.tag.factory
+      - @github.event.push.tag.data.commit.factory
+      - @github.event.push.tag.data.commit_author.factory
+      - @github.event.push.tag.data.commit_committer.factory
+      - @github.repo.facade
+      - @github.tag.facade
+      - @github.commit.facade
+      - @github.user.facade
+      - @doctrine.orm.entity_manager
 
   github.event.push.handler:
     class: DevBoard\GithubEvent\Push\PushHandler
