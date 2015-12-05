@@ -55,7 +55,7 @@ class GithubTagRepository extends EntityRepository
      *
      * @return array
      */
-    public function getTagesFromRepoIds($repoIds)
+    public function getTagsFromRepoIds($repoIds)
     {
         $queryBuilder = $this->createQueryBuilder('b')
             ->select('b')
@@ -72,7 +72,7 @@ class GithubTagRepository extends EntityRepository
      *
      * @return array
      */
-    public function getLiveTagesFromRepoIds($repoIds)
+    public function getLiveTagsFromRepoIds($repoIds)
     {
         $timeLimit = new \DateTime();
         $timeLimit->modify('-60 min');

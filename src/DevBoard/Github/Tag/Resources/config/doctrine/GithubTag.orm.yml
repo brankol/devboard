@@ -1,6 +1,6 @@
 DevBoard\Github\Tag\Entity\GithubTag:
   type: entity
-  table: GithubTages
+  table: GithubTags
   repositoryClass: DevBoard\Github\Tag\Entity\GithubTagRepository
   id:
     id:
