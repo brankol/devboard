@@ -28,9 +28,10 @@ class DashboardController extends Controller
         $projects = $this->getProjects();
         $repos    = $em->getRepository('GhRepo:GithubRepo')->getRepoIdsFromProjectIds($projects);
         $branches = $em->getRepository('GhBranch:GithubBranch')->getLiveBranchesFromRepoIds($repos);
+        $tags     = $em->getRepository('GhTag:GithubTag')->getLiveTagsFromRepoIds($repos);
 
         $data = [
-            'branches' => $branches,
+            'branches' => array_merge($branches, $tags),
         ];
 
         return $this->render('DevBoardCoreBundle:Dashboard:livebranches.html.twig', $data);
