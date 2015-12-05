@@ -20,7 +20,7 @@ class PushPayloadSpec extends ObjectBehavior
                 'author'    => ['name' => 'name', 'email' => 'email@example.com', 'username' => 'username'],
                 'committer' => ['name' => 'name2', 'email' => 'email2@example.com', 'username' => 'username2'],
             ],
-            'repository' => ['id' => 1,'name' => 'name','owner' => ['name' => 'owner']],
+            'repository' => ['id' => 1, 'name' => 'name', 'owner' => ['name' => 'owner']],
         ];
 
         $this->beConstructedWith($data);
@@ -88,7 +88,7 @@ class PushPayloadSpec extends ObjectBehavior
 
     public function it_returns_repo_data()
     {
-        $data = ['id' => 1,'name' => 'name','owner' => ['name' => 'owner']];
+        $data = ['id' => 1, 'name' => 'name', 'owner' => ['name' => 'owner']];
 
         $this->getRepositoryDetails()->shouldReturn($data);
     }
