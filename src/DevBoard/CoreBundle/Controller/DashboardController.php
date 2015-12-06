@@ -29,7 +29,7 @@ class DashboardController extends Controller
         $repos        = $em->getRepository('GhRepo:GithubRepo')->getRepoIdsFromProjectIds($projects);
         $branches     = $em->getRepository('GhBranch:GithubBranch')->getLiveBranchesFromRepoIds($repos);
         $tags         = $em->getRepository('GhTag:GithubTag')->getLiveTagsFromRepoIds($repos);
-        $pullRequests = $em->getRepository('GhPullRequest:GithubPullRequest')->getLivePullRequestsFromRepoIds($repos);
+        $pullRequests = $em->getRepository('GhPullRequest:GithubPullRequest')->getOpenPullRequestsFromRepoIds($repos);
 
         $data = [
             'branches'     => array_merge($branches, $tags),

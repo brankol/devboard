@@ -5,6 +5,7 @@ use DevBoard\Github\Commit\Entity\GithubCommit;
 use DevBoard\Github\Commit\GithubCommitFacade;
 use DevBoard\Github\PullRequest\Entity\GithubPullRequest;
 use DevBoard\Github\PullRequest\GithubPullRequestFacade;
+use DevBoard\Github\PullRequest\GithubPullRequestState;
 use DevBoard\Github\Repo\Entity\GithubRepo;
 use DevBoard\Github\Repo\GithubRepoFacade;
 use DevBoard\Github\User\Entity\GithubUser;
@@ -101,7 +102,9 @@ class PullRequestHandlerSpec extends ObjectBehavior
         $githubPullRequestEntity->setAssignedTo($githubPullRequestAssigneeEntity)->shouldBeCalled();
 
         $githubPullRequestEntity->setLastCommit($githubCommitEntity)->shouldBeCalled();
+        $githubPullRequestEntity->setState(GithubPullRequestState::OPENED)->shouldBeCalled();
 
+        $pullRequestValueObject->getState()->willReturn('opened');
         $em->persist($githubPullRequestEntity)->shouldBeCalled();
         $em->persist($githubCommitEntity)->shouldBeCalled();
         $em->flush()->shouldBeCalled();

@@ -56,14 +56,16 @@ class GithubPullRequestRepository extends EntityRepository
      *
      * @return array
      */
-    public function getPullRequestsFromRepoIds($repoIds)
+    public function getOpenPullRequestsFromRepoIds($repoIds)
     {
         $queryBuilder = $this->createQueryBuilder('b')
             ->select('b')
             ->leftJoin('b.lastCommit', 'c')
             ->where('b.repo IN (:repoIds)')
+            ->andWhere('b.state = :state')
             ->setParameter('repoIds', $repoIds)
-            ->orderBy('c.committerDate', 'DESC');
+            ->setParameter('state', GithubPullRequestState::OPENED)
+            ->orderBy('b.updatedAt', 'DESC');
 
         return $queryBuilder->getQuery()->getResult();
     }
