@@ -13,6 +13,7 @@ class GithubCommitStatus extends BaseEntity
 {
     private $githubCommit;
     private $githubExternalService;
+    private $targetUrl;
 
     private $state;
 
@@ -52,6 +53,26 @@ class GithubCommitStatus extends BaseEntity
     public function setGithubExternalService(GithubExternalService $githubExternalService)
     {
         $this->githubExternalService = $githubExternalService;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTargetUrl()
+    {
+        return $this->targetUrl;
+    }
+
+    /**
+     * @param mixed $targetUrl
+     *
+     * @return $this
+     */
+    public function setTargetUrl($targetUrl)
+    {
+        $this->targetUrl = $targetUrl;
 
         return $this;
     }
