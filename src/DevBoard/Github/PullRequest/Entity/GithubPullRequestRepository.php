@@ -1,6 +1,7 @@
 <?php
 namespace DevBoard\Github\PullRequest\Entity;
 
+use DevBoard\Github\PullRequest\GithubPullRequestState;
 use DevBoard\Github\Repo\Entity\GithubRepo;
 use Doctrine\ORM\EntityRepository;
 
@@ -82,8 +83,10 @@ class GithubPullRequestRepository extends EntityRepository
             ->leftJoin('b.lastCommit', 'c')
             ->where('b.repo IN (:repoIds)')
             ->andWhere('b.updatedAt > :timeLimit')
+            ->andWhere('b.state = :state')
             ->setParameter('repoIds', $repoIds)
             ->setParameter('timeLimit', $timeLimit)
+            ->setParameter('state', GithubPullRequestState::OPENED)
             ->orderBy('b.updatedAt', 'DESC');
 
         return $queryBuilder->getQuery()->getResult();
