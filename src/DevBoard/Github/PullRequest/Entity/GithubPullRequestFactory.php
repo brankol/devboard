@@ -1,6 +1,7 @@
 <?php
 namespace DevBoard\Github\PullRequest\Entity;
 
+use DevBoard\Github\PullRequest\GithubPullRequestState;
 use DevBoard\Github\PullRequest\Mapper\RemoteToEntityMapper;
 use DevBoard\Github\Repo\Entity\GithubRepo;
 use DevBoard\GithubRemote\ValueObject\PullRequest\PullRequest;
@@ -35,7 +36,7 @@ class GithubPullRequestFactory
         $githubPullRequest->setNumber($pullRequestValueObject->getNumber());
         $githubPullRequest->setTitle($pullRequestValueObject->getTitle());
         $githubPullRequest->setBody($pullRequestValueObject->getBody());
-        $githubPullRequest->setState($pullRequestValueObject->getState());
+        $githubPullRequest->setState(GithubPullRequestState::convert((int) $pullRequestValueObject->getState()));
         $githubPullRequest->setLocked($pullRequestValueObject->isLocked());
         $githubPullRequest->setMerged($pullRequestValueObject->isMerged());
         $githubPullRequest->setGithubCreatedAt($pullRequestValueObject->getGithubCreatedAt());
