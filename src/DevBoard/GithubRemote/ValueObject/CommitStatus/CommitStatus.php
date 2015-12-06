@@ -8,6 +8,7 @@ class CommitStatus
 {
     private $status;
     private $description;
+    private $targetUrl;
 
     /**
      * CommitStatus constructor.
@@ -15,10 +16,11 @@ class CommitStatus
      * @param $status
      * @param $description
      */
-    public function __construct($status, $description)
+    public function __construct($status, $description, $targetUrl)
     {
         $this->status      = $status;
         $this->description = $description;
+        $this->targetUrl   = $targetUrl;
     }
 
     /**
@@ -35,5 +37,13 @@ class CommitStatus
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTargetUrl()
+    {
+        return $this->targetUrl;
     }
 }

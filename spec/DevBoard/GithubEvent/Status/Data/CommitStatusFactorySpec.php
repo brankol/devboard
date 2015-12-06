@@ -16,6 +16,7 @@ class CommitStatusFactorySpec extends ObjectBehavior
     {
         $statusPayload->getState()->willReturn('state');
         $statusPayload->getDescription()->willReturn('description');
+        $statusPayload->getTargetUrl()->willReturn('url');
 
         $result = $this->create($statusPayload);
         $result->shouldReturnAnInstanceOf('DevBoard\GithubRemote\ValueObject\CommitStatus\CommitStatus');
