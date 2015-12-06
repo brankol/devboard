@@ -2,6 +2,7 @@
 namespace spec\DevBoard\GithubEvent\Payload;
 
 use DevBoard\Github\WebHook\Data\AbstractEvent;
+use DevBoard\Github\WebHook\Data\PullRequestEvent;
 use DevBoard\Github\WebHook\Data\PushEvent;
 use DevBoard\Github\WebHook\Data\StatusEvent;
 use PhpSpec\ObjectBehavior;
@@ -24,6 +25,13 @@ class PayloadFactorySpec extends ObjectBehavior
     {
         $statusEvent->getPayload()->willReturn(['data']);
         $this->create($statusEvent)->shouldReturnAnInstanceOf('DevBoard\GithubEvent\Payload\StatusPayload');
+    }
+
+    public function it_instantiates_pull_request_payload_object_from_received_webhook_event(
+        PullRequestEvent $pullRequestEvent
+    ) {
+        $pullRequestEvent->getPayload()->willReturn(['data']);
+        $this->create($pullRequestEvent)->shouldReturnAnInstanceOf('DevBoard\GithubEvent\Payload\PullRequestPayload');
     }
 
     public function it_will_throw_exception_on_unknown_webhook_event(AbstractEvent $abstractEvent)

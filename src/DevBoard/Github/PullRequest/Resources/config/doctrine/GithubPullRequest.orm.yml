@@ -1,0 +1,63 @@
+DevBoard\Github\PullRequest\Entity\GithubPullRequest:
+  type: entity
+  table: GithubPullRequests
+  repositoryClass: DevBoard\Github\PullRequest\Entity\GithubPullRequestRepository
+  id:
+    id:
+      type: guid
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    number:
+      type: integer
+    title:
+      type: string
+      length: '255'
+    body:
+      type: text
+    state:
+      type: integer
+    locked:
+      type: boolean
+    merged:
+      type: boolean
+    githubCreatedAt:
+      type: datetime
+    githubUpdatedAt:
+      type: datetime
+    createdAt:
+      type: datetime
+    updatedAt:
+      type: datetime
+  manyToOne:
+    repo:
+      targetEntity: DevBoard\Github\Repo\Entity\GithubRepo
+      inversedBy: pullRequestes
+      joinColumn:
+        name: repoId
+        referencedColumnName: id
+    createdBy:
+      targetEntity: DevBoard\Github\User\Entity\GithubUser
+      inversedBy: pullRequestsCreated
+      cascade: ["persist"]
+      joinColumn:
+        name: createdById
+        referencedColumnName: id
+    assignedTo:
+      targetEntity: DevBoard\Github\User\Entity\GithubUser
+      inversedBy: pullRequestsAssigned
+      cascade: ["persist"]
+      joinColumn:
+        name: assignedToId
+        referencedColumnName: id
+    lastCommit:
+      targetEntity: DevBoard\Github\Commit\Entity\GithubCommit
+      inversedBy: commits
+      cascade: ["persist"]
+      joinColumn:
+        name: lastCommitId
+        referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: ['doCreatedValue']
+    preUpdate: ['doUpdatedValue']

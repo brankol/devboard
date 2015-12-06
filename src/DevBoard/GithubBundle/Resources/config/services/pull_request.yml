@@ -1,0 +1,22 @@
+services:
+  github.pull_request.repository:
+    class: Doctrine\ORM\EntityRepository
+    factory_service: doctrine.orm.default_entity_manager
+    factory_method: getRepository
+    arguments:
+      - DevBoard\Github\PullRequest\Entity\GithubPullRequest
+
+  github.pull_request.factory:
+    class: DevBoard\Github\PullRequest\Entity\GithubPullRequestFactory
+    arguments:
+      - @github.pull_request.mapper.remote_to_entity
+
+  github.pull_request.mapper.remote_to_entity:
+    class: DevBoard\Github\PullRequest\Mapper\RemoteToEntityMapper
+
+  github.pull_request.facade:
+    class: DevBoard\Github\PullRequest\GithubPullRequestFacade
+    arguments:
+      - @github.pull_request.repository
+      - @github.pull_request.factory
+      - @doctrine.orm.entity_manager

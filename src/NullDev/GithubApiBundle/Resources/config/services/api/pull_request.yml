@@ -1,0 +1,9 @@
+services:
+  null_dev_github_api.pull_request.data.factory:
+    class: NullDev\GithubApi\PullRequest\GithubPullRequestDataFactory
+
+  null_dev_github_api.pull_request.service:
+    class: NullDev\GithubApi\PullRequest\RemoteGithubPullRequestService
+    arguments:
+      - @null_dev_github_api.client.authenticated.factory.token
+      - @null_dev_github_api.pull_request.data.factory
