@@ -7,6 +7,8 @@ use Behat\Symfony2Extension\Context\KernelAwareContext;
 
 /**
  * Default context.
+ *
+ * @SuppressWarnings(PHPMD.NumberOfChildren)
  */
 abstract class DefaultContext extends RawMinkContext implements KernelAwareContext, SnippetAcceptingContext
 {
