@@ -18,7 +18,8 @@ class CommitStatusFactory
     {
         return new CommitStatus(
             $statusPayload->getState(),
-            $statusPayload->getDescription()
+            $statusPayload->getDescription(),
+            $statusPayload->getTargetUrl()
         );
     }
 }

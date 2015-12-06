@@ -90,6 +90,7 @@ class StatusHandler
             ->getOrCreate($githubCommit, $githubExternalService, $commitStatusValueObject);
 
         $githubCommitStatus->setState(GithubCommitStatusState::convert($statusPayload->getState()));
+        $githubCommitStatus->setTargetUrl($commitStatusValueObject->getTargetUrl());
 
         $this->em->persist($githubCommitStatus);
         $this->em->flush();

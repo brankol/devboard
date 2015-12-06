@@ -31,4 +31,10 @@ class GithubCommitStatusSpec extends ObjectBehavior
         $this->setState(GithubCommitStatusState::PENDING);
         $this->getState()->shouldReturn(GithubCommitStatusState::PENDING);
     }
+
+    public function it_has_target_url()
+    {
+        $this->setTargetUrl('url');
+        $this->getTargetUrl()->shouldReturn('url');
+    }
 }

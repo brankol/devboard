@@ -81,4 +81,9 @@ class StatusPayloadSpec extends ObjectBehavior
     {
         $this->getCommitDetails()->shouldReturn(['commit-details']);
     }
+
+    public function it_exposes_target_url()
+    {
+        $this->getTargetUrl()->shouldReturn('https://travis-ci.org/owner/name/builds/92845894');
+    }
 }

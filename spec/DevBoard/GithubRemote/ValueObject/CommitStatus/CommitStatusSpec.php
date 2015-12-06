@@ -13,12 +13,13 @@ class CommitStatusSpec extends ObjectBehavior
 
     public function let()
     {
-        $this->beConstructedWith('status', 'description');
+        $this->beConstructedWith('status', 'description', 'url');
     }
 
     public function it_exposes_status_and_description()
     {
         $this->getStatus()->shouldReturn('status');
         $this->getDescription()->shouldReturn('description');
+        $this->getTargetUrl()->shouldReturn('url');
     }
 }

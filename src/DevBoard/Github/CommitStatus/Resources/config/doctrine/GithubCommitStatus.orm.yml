@@ -12,6 +12,10 @@ DevBoard\Github\CommitStatus\Entity\GithubCommitStatus:
     state:
       type: integer
       nullable: true
+    targetUrl:
+      type: string
+      length: '255'
+      nullable: true
     createdAt:
       type: datetime
     updatedAt:
