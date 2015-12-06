@@ -15,7 +15,7 @@ class GithubPullRequestState
     public static function convert($text)
     {
         switch ($text) {
-            case 'opened':
+            case 'open':
                 return self::OPENED;
             case 'closed':
                 return self::CLOSED;
@@ -34,7 +34,7 @@ class GithubPullRequestState
         switch ($value) {
 
             case self::OPENED:
-                return 'opened';
+                return 'open';
             case self::CLOSED:
                 return 'closed';
             case self::WTF:

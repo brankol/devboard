@@ -104,7 +104,7 @@ class PullRequestHandlerSpec extends ObjectBehavior
         $githubPullRequestEntity->setLastCommit($githubCommitEntity)->shouldBeCalled();
         $githubPullRequestEntity->setState(GithubPullRequestState::OPENED)->shouldBeCalled();
 
-        $pullRequestValueObject->getState()->willReturn('opened');
+        $pullRequestValueObject->getState()->willReturn('open');
         $em->persist($githubPullRequestEntity)->shouldBeCalled();
         $em->persist($githubCommitEntity)->shouldBeCalled();
         $em->flush()->shouldBeCalled();
