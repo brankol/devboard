@@ -75,7 +75,7 @@ class PullRequestHandler
      *
      * @return bool
      */
-    public function create(PullRequestPayload $pullRequestPayload)
+    public function process(PullRequestPayload $pullRequestPayload)
     {
         $repoValueObject = $this->repoFactory->create($pullRequestPayload);
         $githubRepo      = $this->githubRepoFacade->getOrCreate($repoValueObject);
@@ -102,64 +102,6 @@ class PullRequestHandler
 
         $this->em->persist($githubPullRequest);
         $this->em->persist($githubCommit);
-        $this->em->flush();
-
-        return true;
-    }
-
-    /**
-     * @param PullRequestPayload $pullRequestPayload
-     *
-     * @return bool
-     */
-    public function update(PullRequestPayload $pullRequestPayload)
-    {
-        $repoValueObject = $this->repoFactory->create($pullRequestPayload);
-        $githubRepo      = $this->githubRepoFacade->getOrCreate($repoValueObject);
-
-        $pullRequestValueObject = $this->pullRequestFactory->create($pullRequestPayload);
-        $githubPullRequest      = $this->githubPullRequestFacade->getOrCreate($githubRepo, $pullRequestValueObject);
-
-        $commitValueObject = $this->commitFactory->create($pullRequestPayload);
-        $githubCommit      = $this->githubCommitFacade->getOrCreate($githubRepo, $commitValueObject);
-
-        $pullRequestCreatorValueObject = $this->pullRequestCreatorFactory->create($pullRequestPayload);
-        $githubPullRequestCreator      = $this->githubUserFacade->getOrCreate($pullRequestCreatorValueObject);
-
-        $githubPullRequest->setCreatedBy($githubPullRequestCreator);
-
-        if (null !== $pullRequestPayload->getPullRequestAssigneeDetails()) {
-            $pullRequestAssigneeValueObject = $this->pullRequestAssigneeFactory->create($pullRequestPayload);
-            $githubPullRequestAssignee      = $this->githubUserFacade->getOrCreate($pullRequestAssigneeValueObject);
-
-            $githubPullRequest->setAssignedTo($githubPullRequestAssignee);
-        }
-
-        $githubPullRequest->setLastCommit($githubCommit);
-
-        $this->em->persist($githubPullRequest);
-        $this->em->persist($githubCommit);
-        $this->em->flush();
-
-        return true;
-    }
-
-    /**
-     * @param PullRequestPayload $pullRequestPayload
-     *
-     * @return bool
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
-     * @TODO
-     */
-    public function delete(PullRequestPayload $pullRequestPayload)
-    {
-        $repoValueObject = $this->repoFactory->create($pullRequestPayload);
-        $githubRepo      = $this->githubRepoFacade->get($repoValueObject);
-
-        $pullRequestValueObject = $this->pullRequestFactory->create($pullRequestPayload);
-        $githubPullRequest      = $this->githubPullRequestFacade->get($githubRepo, $pullRequestValueObject);
-
-        $this->em->remove($githubPullRequest);
         $this->em->flush();
 
         return true;

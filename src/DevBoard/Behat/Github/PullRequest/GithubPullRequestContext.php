@@ -54,7 +54,7 @@ class GithubPullRequestContext extends DomainContext
     {
         $service = $this->getService('github.event.pull_request.handler');
 
-        $service->create($this->payload);
+        $service->process($this->payload);
     }
 
     /**
