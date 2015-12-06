@@ -1,67 +1,10 @@
+imports:
+  - { resource: services/api/branch.yml }
+  - { resource: services/api/commit.yml }
+  - { resource: services/api/repo.yml }
+  - { resource: services/api/tag.yml }
+  - { resource: services/api/user.yml }
+
 services:
-#    null_dev_github_api.example:
-#        class: NullDev\GithubApiBundle\Example
-#        arguments: [@service_id, "plain_value", %parameter%]
-
-    null_dev_github_api.client.authenticated.factory.token:
-        class: NullDev\GithubApi\Client\Authenticated\TokenAuthenticatedClientFactory
-
-    null_dev_github_api.repo.data.factory:
-        class: NullDev\GithubApi\Repo\GithubRepoDataFactory
-
-    null_dev_github_api.repo.service:
-        class: NullDev\GithubApi\Repo\RemoteGithubRepoService
-        arguments:
-          - @null_dev_github_api.client.authenticated.factory.token
-          - @null_dev_github_api.repo.data.factory
-          
-          
-    null_dev_github_api.commit.data.factory:
-        class: NullDev\GithubApi\Commit\GithubCommitDataFactory
-        arguments:
-          - @null_dev_github_api.user.data.factory
-
-    null_dev_github_api.commit.service:
-        class: NullDev\GithubApi\Commit\RemoteGithubCommitService
-        arguments:
-          - @null_dev_github_api.client.authenticated.factory.token
-          - @null_dev_github_api.commit.data.factory
-
-
-
-
-
-    null_dev_github_api.branch.data.factory:
-        class: NullDev\GithubApi\Branch\GithubBranchDataFactory
-
-    null_dev_github_api.branch.service:
-        class: NullDev\GithubApi\Branch\RemoteGithubBranchService
-        arguments:
-          - @null_dev_github_api.client.authenticated.factory.token
-          - @null_dev_github_api.branch.data.factory
-
-
-
-    null_dev_github_api.tag.data.factory:
-        class: NullDev\GithubApi\Tag\GithubTagDataFactory
-
-    null_dev_github_api.tag.service:
-        class: NullDev\GithubApi\Tag\RemoteGithubTagService
-        arguments:
-          - @null_dev_github_api.client.authenticated.factory.token
-          - @null_dev_github_api.tag.data.factory
-
-
-
-
-
-
-
-    null_dev_github_api.user.data.factory:
-        class: NullDev\GithubApi\User\GithubUserDataFactory
-
-    null_dev_github_api.user.service:
-        class: NullDev\GithubApi\User\RemoteGithubUserService
-        arguments:
-          - @null_dev_github_api.client.authenticated.factory.token
-          - @null_dev_github_api.user.data.factory
+  null_dev_github_api.client.authenticated.factory.token:
+    class: NullDev\GithubApi\Client\Authenticated\TokenAuthenticatedClientFactory

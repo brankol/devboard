@@ -1,0 +1,10 @@
+services:
+
+  null_dev_github_api.branch.data.factory:
+    class: NullDev\GithubApi\Branch\GithubBranchDataFactory
+
+  null_dev_github_api.branch.service:
+    class: NullDev\GithubApi\Branch\RemoteGithubBranchService
+    arguments:
+      - @null_dev_github_api.client.authenticated.factory.token
+      - @null_dev_github_api.branch.data.factory
