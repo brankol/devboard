@@ -1,0 +1,12 @@
+imports:
+  - { resource: payload.yml }
+  - { resource: push.yml }
+  - { resource: status.yml }
+services:
+
+  github.event.handler:
+    class: DevBoard\GithubEvent\EventHandler
+    arguments:
+      - @github.event.payload.factory
+      - @github.event.push.handler
+      - @github.event.status.handler

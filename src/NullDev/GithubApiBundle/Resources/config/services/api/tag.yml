@@ -1,0 +1,9 @@
+services:
+  null_dev_github_api.tag.data.factory:
+    class: NullDev\GithubApi\Tag\GithubTagDataFactory
+
+  null_dev_github_api.tag.service:
+    class: NullDev\GithubApi\Tag\RemoteGithubTagService
+    arguments:
+      - @null_dev_github_api.client.authenticated.factory.token
+      - @null_dev_github_api.tag.data.factory

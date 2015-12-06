@@ -1,0 +1,27 @@
+services:
+
+  github.event.status.handler:
+    class: DevBoard\GithubEvent\Status\StatusHandler
+    arguments:
+      - @github.event.status.data.repo.factory
+      - @github.event.status.data.commit.factory
+      - @github.event.status.data.externalservices.factory
+      - @github.event.status.data.commitstatus.factory
+      - @github.repo.facade
+      - @github.commit.facade
+      - @github.externalservices.facade
+      - @github.commitstatus.facade
+      - @github.commit.state.calculator
+      - @doctrine.orm.entity_manager
+
+  github.event.status.data.repo.factory:
+    class: DevBoard\GithubEvent\Status\Data\RepoFactory
+
+  github.event.status.data.commit.factory:
+    class: DevBoard\GithubEvent\Status\Data\CommitFactory
+
+  github.event.status.data.externalservices.factory:
+    class: DevBoard\GithubEvent\Status\Data\ExternalServiceFactory
+
+  github.event.status.data.commitstatus.factory:
+    class: DevBoard\GithubEvent\Status\Data\CommitStatusFactory

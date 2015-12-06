@@ -1,0 +1,9 @@
+services:
+
+  github.sync.branches.handler:
+    class: DevBoard\Github\Sync\Branches\SyncBranchesHandler
+    arguments:
+      - @nulldev.user.service.current
+      - @null_dev_github_api.branch.service
+      - @github.remote.fetch.branch.handler
+

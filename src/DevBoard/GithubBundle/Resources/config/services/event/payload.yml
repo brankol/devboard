@@ -1,0 +1,4 @@
+services:
+
+  github.event.payload.factory:
+    class: DevBoard\GithubEvent\Payload\PayloadFactory

@@ -1,0 +1,22 @@
+services:
+
+  github.remote.fetch.branch.data.branch.factory:
+    class: DevBoard\GithubRemote\Fetch\Branch\Data\BranchFactory
+  github.remote.fetch.branch.data.commit.factory:
+    class: DevBoard\GithubRemote\Fetch\Branch\Data\CommitFactory
+  github.remote.fetch.branch.data.commit_author.factory:
+    class: DevBoard\GithubRemote\Fetch\Branch\Data\CommitAuthorFactory
+  github.remote.fetch.branch.data.commit_committer.factory:
+    class: DevBoard\GithubRemote\Fetch\Branch\Data\CommitCommitterFactory
+
+  github.remote.fetch.branch.handler:
+    class: DevBoard\GithubRemote\Fetch\Branch\BranchHandler
+    arguments:
+      - @github.remote.fetch.branch.data.branch.factory
+      - @github.remote.fetch.branch.data.commit.factory
+      - @github.remote.fetch.branch.data.commit_author.factory
+      - @github.remote.fetch.branch.data.commit_committer.factory
+      - @github.branch.facade
+      - @github.commit.facade
+      - @github.user.facade
+      - @doctrine.orm.entity_manager

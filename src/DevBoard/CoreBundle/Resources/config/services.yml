@@ -1,6 +1,7 @@
 services:
   core.project.factory:
     class: DevBoard\Core\Project\Entity\ProjectFactory
+
   core.project.create.handler:
     class: DevBoard\Core\CreateProject\CreateProjectHandler
     arguments:
