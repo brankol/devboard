@@ -114,6 +114,12 @@ doctrine:
                         dir: %kernel.root_dir%/../src/DevBoard/Github/Tag/Resources/config/doctrine
                         prefix: DevBoard\Github\Tag\Entity
                         alias: GhTag
+                    DevBoardGithubPullRequest:
+                        type: yml
+                        is_bundle: false
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/PullRequest/Resources/config/doctrine
+                        prefix: DevBoard\Github\PullRequest\Entity
+                        alias: GhPullRequest
                     DevBoardGithubUser:
                         type: yml
                         is_bundle: false

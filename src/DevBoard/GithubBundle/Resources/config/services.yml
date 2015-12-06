@@ -3,6 +3,7 @@ imports:
   - { resource: services/branch.yml }
   - { resource: services/commit.yml }
   - { resource: services/commitstatus.yml }
+  - { resource: services/pull_request.yml }
   - { resource: services/tag.yml }
   - { resource: services/user.yml }
   - { resource: services/externalservices.yml }

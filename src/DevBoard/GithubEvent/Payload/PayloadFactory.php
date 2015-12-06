@@ -2,6 +2,7 @@
 namespace DevBoard\GithubEvent\Payload;
 
 use DevBoard\Github\WebHook\Data\AbstractEvent;
+use DevBoard\Github\WebHook\Data\PullRequestEvent;
 use DevBoard\Github\WebHook\Data\PushEvent;
 use DevBoard\Github\WebHook\Data\StatusEvent;
 use Exception;
@@ -24,6 +25,8 @@ class PayloadFactory
             return new PushPayload($event->getPayload());
         } elseif ($event instanceof StatusEvent) {
             return new StatusPayload($event->getPayload());
+        } elseif ($event instanceof PullRequestEvent) {
+            return new PullRequestPayload($event->getPayload());
         }
 
         throw new Exception('Unknown WebHook Event:'.get_class($event));

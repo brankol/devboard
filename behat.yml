@@ -6,6 +6,16 @@ default:
             snippets: false
 
     suites:
+        githubPullRequest:
+            contexts:
+                - DevBoard\Behat\Github\Repo\FixtureContext
+                - DevBoard\Behat\Github\PullRequest\FixtureContext
+                - DevBoard\Behat\Github\PullRequest\GithubPullRequestContext
+                - DevBoard\Behat\Github\PullRequest\GithubPullRequestDataContext
+                - DevBoard\Behat\Github\Repo\GithubRepoDataContext
+                - DevBoard\Behat\Github\User\GithubUserDataContext
+            filters:
+                tags: "@githubPullRequest"
         push:
             contexts:
                 - DevBoard\Behat\GithubEvent\Push\GithubEventPushContext
@@ -80,7 +90,7 @@ default:
                 - Resources\Behat\WebContext
                 - DevBoard\Behat\NullDev\User\UserContext
             filters:
-                tags: "~@push && ~@project && ~@githubBranch && ~@githubCommit && ~@githubRepo && ~@githubUser && ~@user && ~@integration"
+                tags: "~@push && ~@project && ~@githubBranch && ~@githubCommit && ~@githubPullRequest && ~@githubRepo && ~@githubUser && ~@user && ~@integration"
 
     extensions:
         Behat\MinkExtension:

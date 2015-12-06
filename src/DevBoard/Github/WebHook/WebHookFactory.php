@@ -1,6 +1,7 @@
 <?php
 namespace DevBoard\Github\WebHook;
 
+use DevBoard\Github\WebHook\Data\PullRequestEvent;
 use DevBoard\Github\WebHook\Data\PushEvent;
 use DevBoard\Github\WebHook\Data\StatusEvent;
 use Exception;
@@ -40,6 +41,8 @@ class WebHookFactory
             return new PushEvent($signature, $request->getContent());
         } elseif ('status' === $event) {
             return new StatusEvent($signature, $request->getContent());
+        } elseif ('pull_request' === $event) {
+            return new PullRequestEvent($signature, $request->getContent());
         } else {
             throw new Exception('Unsupported webhook event: "'.$event.'" !');
         }

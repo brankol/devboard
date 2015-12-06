@@ -1,6 +1,7 @@
 imports:
   - { resource: services/api/branch.yml }
   - { resource: services/api/commit.yml }
+  - { resource: services/api/pull_request.yml }
   - { resource: services/api/repo.yml }
   - { resource: services/api/tag.yml }
   - { resource: services/api/user.yml }

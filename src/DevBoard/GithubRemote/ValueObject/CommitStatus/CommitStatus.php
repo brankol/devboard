@@ -15,6 +15,7 @@ class CommitStatus
      *
      * @param $status
      * @param $description
+     * @param $targetUrl
      */
     public function __construct($status, $description, $targetUrl)
     {

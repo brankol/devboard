@@ -1,6 +1,7 @@
 imports:
   - { resource: payload.yml }
   - { resource: push.yml }
+  - { resource: pull_request.yml }
   - { resource: status.yml }
 services:
 
@@ -10,3 +11,4 @@ services:
       - @github.event.payload.factory
       - @github.event.push.handler
       - @github.event.status.handler
+      - @github.event.pull_request.handler
