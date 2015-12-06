@@ -5,13 +5,13 @@
                 <div style="background-color:{{ status.stateColor }};display: inline-block; margin: 2px;">
                     <div style="padding: 5px;">
                         {% if status.githubExternalService.context == 'ci/circleci' %}
-                            <a href="https://circleci.com/gh/{{ branch.repo.fullName }}/tree/{{ branch.name }}" target="_blank">
+                            <a href="{{ status.targetUrl }}" target="_blank">
                                 {% image '@DevBoardCoreBundle/Resources/public/images/logo-stacked-grey.svg' %}
                                 <img src="{{ asset_url }}" alt="Example" width="50px"/>
                                 {% endimage %}
                             </a>
                         {% elseif status.githubExternalService.context == 'continuous-integration/travis-ci/push' %}
-                            <a href="https://travis-ci.org/{{ branch.repo.fullName }}" target="_blank">
+                            <a href="{{ status.targetUrl }}" target="_blank">
                                 {% image '@DevBoardCoreBundle/Resources/public/images/mascot-bg-blue-74537338f8ec8ea2c0722b4d60f9777f.png' %}
                                 <img src="{{ asset_url }}" alt="Example" width="50px"/>
                                 {% endimage %}
