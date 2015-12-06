@@ -3,6 +3,7 @@ namespace DevBoard\GithubEvent\PullRequest;
 
 use DevBoard\Github\Commit\GithubCommitFacade;
 use DevBoard\Github\PullRequest\GithubPullRequestFacade;
+use DevBoard\Github\PullRequest\GithubPullRequestState;
 use DevBoard\Github\Repo\GithubRepoFacade;
 use DevBoard\Github\User\GithubUserFacade;
 use DevBoard\GithubEvent\Payload\PullRequestPayload;
@@ -99,6 +100,7 @@ class PullRequestHandler
         }
 
         $githubPullRequest->setLastCommit($githubCommit);
+        $githubPullRequest->setState(GithubPullRequestState::convert($pullRequestValueObject->getState()));
 
         $this->em->persist($githubPullRequest);
         $this->em->persist($githubCommit);

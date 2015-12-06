@@ -36,7 +36,7 @@ class GithubPullRequestFactory
         $githubPullRequest->setNumber($pullRequestValueObject->getNumber());
         $githubPullRequest->setTitle($pullRequestValueObject->getTitle());
         $githubPullRequest->setBody($pullRequestValueObject->getBody());
-        $githubPullRequest->setState(GithubPullRequestState::convert((int) $pullRequestValueObject->getState()));
+        $githubPullRequest->setState(GithubPullRequestState::convert($pullRequestValueObject->getState()));
         $githubPullRequest->setLocked($pullRequestValueObject->isLocked());
         $githubPullRequest->setMerged($pullRequestValueObject->isMerged());
         $githubPullRequest->setGithubCreatedAt($pullRequestValueObject->getGithubCreatedAt());
