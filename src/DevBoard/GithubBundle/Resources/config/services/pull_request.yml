@@ -1,8 +1,7 @@
 services:
   github.pull_request.repository:
     class: Doctrine\ORM\EntityRepository
-    factory_service: doctrine.orm.default_entity_manager
-    factory_method: getRepository
+    factory: ["@doctrine.orm.default_entity_manager", getRepository]
     arguments:
       - DevBoard\Github\PullRequest\Entity\GithubPullRequest
 
