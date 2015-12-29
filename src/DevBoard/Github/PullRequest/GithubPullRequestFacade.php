@@ -41,7 +41,7 @@ class GithubPullRequestFacade
      */
     public function get(GithubRepo $githubRepo, PullRequest $pullRequestValueObject)
     {
-        return $this->repository->findOneByTitle($githubRepo, $pullRequestValueObject->getTitle());
+        return $this->repository->findOneByNumber($githubRepo, $pullRequestValueObject->getNumber());
     }
 
     /**

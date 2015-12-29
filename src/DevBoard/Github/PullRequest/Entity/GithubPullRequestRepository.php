@@ -12,6 +12,24 @@ class GithubPullRequestRepository extends EntityRepository
 {
     /**
      * @param GithubRepo $githubRepo
+     * @param            $pullRequestNumber
+     *
+     * @return mixed
+     *
+     * @codeCoverageIgnore
+     */
+    public function findOneByNumber(GithubRepo $githubRepo, $pullRequestNumber)
+    {
+        return $this->findOneBy(
+            [
+                'number' => $pullRequestNumber,
+                'repo'   => $githubRepo,
+            ]
+        );
+    }
+
+    /**
+     * @param GithubRepo $githubRepo
      * @param            $pullRequestTitle
      *
      * @return mixed
