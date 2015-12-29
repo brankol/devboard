@@ -28,8 +28,8 @@ class GithubPullRequestFacadeSpec extends ObjectBehavior
         PullRequest $pullRequestValueObject,
         GithubPullRequest $githubPullRequestEntity
     ) {
-        $pullRequestValueObject->getTitle()->willReturn('master');
-        $repository->findOneByTitle($githubRepo, 'master')->willReturn($githubPullRequestEntity);
+        $pullRequestValueObject->getNumber()->willReturn('23');
+        $repository->findOneByNumber($githubRepo, '23')->willReturn($githubPullRequestEntity);
         $this->get($githubRepo, $pullRequestValueObject)->shouldReturn($githubPullRequestEntity);
     }
 
@@ -38,8 +38,8 @@ class GithubPullRequestFacadeSpec extends ObjectBehavior
         GithubRepo $githubRepo,
         PullRequest $pullRequestValueObject
     ) {
-        $pullRequestValueObject->getTitle()->willReturn('master');
-        $repository->findOneByTitle($githubRepo, 'master')->willReturn(null);
+        $pullRequestValueObject->getNumber()->willReturn('25');
+        $repository->findOneByNumber($githubRepo, '25')->willReturn(null);
         $this->get($githubRepo, $pullRequestValueObject)->shouldReturn(null);
     }
 
@@ -64,8 +64,8 @@ class GithubPullRequestFacadeSpec extends ObjectBehavior
         PullRequest $pullRequestValueObject,
         GithubPullRequest $githubPullRequestEntity
     ) {
-        $pullRequestValueObject->getTitle()->willReturn('master');
-        $repository->findOneByTitle($githubRepo, 'master')->willReturn($githubPullRequestEntity);
+        $pullRequestValueObject->getNumber()->willReturn('27');
+        $repository->findOneByNumber($githubRepo, '27')->willReturn($githubPullRequestEntity);
         $this->getOrCreate($githubRepo, $pullRequestValueObject)->shouldReturn($githubPullRequestEntity);
     }
 
@@ -77,8 +77,8 @@ class GithubPullRequestFacadeSpec extends ObjectBehavior
         PullRequest $pullRequestValueObject,
         GithubPullRequest $githubPullRequestEntity
     ) {
-        $pullRequestValueObject->getTitle()->willReturn('master');
-        $repository->findOneByTitle($githubRepo, 'master')->willReturn(null);
+        $pullRequestValueObject->getNumber()->willReturn('31');
+        $repository->findOneByNumber($githubRepo, '31')->willReturn(null);
 
         $factory->createFromValueObject($githubRepo, $pullRequestValueObject)->willReturn($githubPullRequestEntity);
 
