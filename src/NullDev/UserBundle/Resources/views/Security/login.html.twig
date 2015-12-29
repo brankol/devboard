@@ -1,0 +1,79 @@
+{% extends "::base.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+
+
+{% block stylesheets %}
+    {% stylesheets '@NullDevUserBundle/Resources/public/css/login.css' filter='cssrewrite' %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+{% endblock %}
+
+{% block jumbotron %}
+{% endblock %}
+
+
+{% block body %}
+
+    <div class="container">
+
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="flash-{{ type }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        {% endif %}
+
+        <div class="text-center">
+
+
+            <br/>
+
+            <h1>Sign in using:</h1>
+            <a href="{{ path('null_dev_user_connect_github') }}" id="sign-in">
+                {% image '@NullDevUserBundle/Resources/public/images/GitHub/GitHub-Mark-120px-plus.png' %}
+                <img src="{{ asset_url }}" alt="Example"/>
+                {% endimage %}
+                <br/>
+                Github
+
+
+            </a>
+        </div>
+
+
+        <div style="display: none;">
+            {% if error %}
+                <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+
+            <form action="{{ path("fos_user_security_check") }}" method="post" class="form-signin">
+                <h2 class="form-signin-heading">{{ 'layout.login'|trans }}</h2>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+
+                <label for="username" class="sr-only">{{ 'security.login.username'|trans }}</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" placeholder="Username" required autofocus/>
+
+                <label for="password" class="sr-only">{{ 'security.login.password'|trans }}</label>
+                <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Password" required/>
+
+                <div class="checkbox">
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                </div>
+
+                <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" class="btn btn-lg btn-primary btn-block"/>
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+
