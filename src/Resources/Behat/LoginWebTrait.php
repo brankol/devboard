@@ -18,6 +18,16 @@ trait LoginWebTrait
     }
 
     /**
+     * Checks, that current page is login page.
+     *
+     * @Then /^(?:|I )should be on (?:|the )login page$/
+     */
+    public function assertLoginPage()
+    {
+        $this->assertSession()->addressEquals($this->locatePath('/login'));
+    }
+
+    /**
      * @Given I am logged in as :username
      *
      * @param $username
