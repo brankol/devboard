@@ -3,10 +3,10 @@ services:
   null_dev_github_api.commit.data.factory:
     class: NullDev\GithubApi\Commit\GithubCommitDataFactory
     arguments:
-      - @null_dev_github_api.user.data.factory
+      - "@null_dev_github_api.user.data.factory"
 
   null_dev_github_api.commit.service:
     class: NullDev\GithubApi\Commit\RemoteGithubCommitService
     arguments:
-      - @null_dev_github_api.client.authenticated.factory.token
-      - @null_dev_github_api.commit.data.factory
+      - "@null_dev_github_api.client.authenticated.factory.token"
+      - "@null_dev_github_api.commit.data.factory"

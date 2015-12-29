@@ -11,12 +11,10 @@ use Resources\Behat\WebContext;
 /**
  * Class FrontContext.
  */
-class FrontContext extends WebContext implements KernelAwareContext, SnippetAcceptingContext
+class FrontContext extends WebContext implements SnippetAcceptingContext
 {
     use DataTrait;
     use ProjectValidationTrait;
-    use Symfony2Trait;
-    use LoginWebTrait;
     use CleanDbTrait;
 
     /**
@@ -25,29 +23,6 @@ class FrontContext extends WebContext implements KernelAwareContext, SnippetAcce
     public function iAmAddingNewProject()
     {
         $this->visitPath('/project/new');
-    }
-
-    /**
-     * @Transform :property
-     *
-     * @param $propertyName
-     *
-     * @return string
-     */
-    public function transformPropertyNameIntoFormPropertyName($propertyName)
-    {
-        return 'form_'.lcfirst(str_replace(' ', '', $propertyName));
-    }
-
-    /**
-     * @When I fill :property with :propertyValue
-     *
-     * @param $property
-     * @param $propertyValue
-     */
-    public function iFillWith($property, $propertyValue)
-    {
-        $this->fillField($property, $propertyValue);
     }
 
     /**

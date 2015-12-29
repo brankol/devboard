@@ -81,14 +81,12 @@ default:
                 tags: "@githubUser"
         user:
             contexts:
-                - DevBoard\Behat\NullDev\User\UserContext
                 - DevBoard\Behat\NullDev\User\FrontContext
             filters:
                 tags: "@user && ~@integration"
         web:
             contexts:
                 - Resources\Behat\WebContext
-                - DevBoard\Behat\NullDev\User\UserContext
             filters:
                 tags: "~@push && ~@project && ~@githubBranch && ~@githubCommit && ~@githubPullRequest && ~@githubRepo && ~@githubUser && ~@user && ~@integration"
 

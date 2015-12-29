@@ -3,23 +3,39 @@ namespace Resources\Behat;
 
 use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\MinkExtension\Context\MinkContext;
+use Behat\Symfony2Extension\Context\KernelAwareContext;
 
 /**
  * Behat context class.
  */
-class WebContext extends MinkContext implements SnippetAcceptingContext
+class WebContext extends MinkContext implements KernelAwareContext, SnippetAcceptingContext
 {
     private $output;
+    use LoginWebTrait;
     use ScreenshotTrait;
+    use Symfony2Trait;
 
     /**
-     * Initializes context.
+     * @Transform :property
      *
-     * Every scenario gets its own context object.
-     * You can also pass arbitrary arguments to the context constructor through behat.yml.
+     * @param $propertyName
+     *
+     * @return string
      */
-    public function __construct()
+    public function transformPropertyNameIntoFormPropertyName($propertyName)
     {
+        return 'form_'.lcfirst(str_replace(' ', '', $propertyName));
+    }
+
+    /**
+     * @When I fill :property with :propertyValue
+     *
+     * @param $property
+     * @param $propertyValue
+     */
+    public function iFillWith($property, $propertyValue)
+    {
+        $this->fillField($property, $propertyValue);
     }
 
     /**

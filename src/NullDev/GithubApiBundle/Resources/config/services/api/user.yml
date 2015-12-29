@@ -5,5 +5,5 @@ services:
   null_dev_github_api.user.service:
     class: NullDev\GithubApi\User\RemoteGithubUserService
     arguments:
-      - @null_dev_github_api.client.authenticated.factory.token
-      - @null_dev_github_api.user.data.factory
+      - "@null_dev_github_api.client.authenticated.factory.token"
+      - "@null_dev_github_api.user.data.factory"

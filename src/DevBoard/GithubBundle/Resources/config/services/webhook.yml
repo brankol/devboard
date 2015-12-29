@@ -4,6 +4,6 @@ services:
     arguments: [ %github_webhook_secret% ]
   github.webhook.factory:
     class: DevBoard\Github\WebHook\WebHookFactory
-    arguments: [ @github.webhook.signature.factory ]
+    arguments: [ "@github.webhook.signature.factory" ]
   github.webhook.signature.factory:
     class: DevBoard\Github\WebHook\WebHookSignatureFactory
