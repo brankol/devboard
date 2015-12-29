@@ -5,3 +5,7 @@ null_dev_user_homepage:
 null_dev_user_connect_github:
     path:     /connect/github
     defaults: { _controller: NullDevUserBundle:Connect:github }
+
+null_dev_user_connect_github_private:
+    path:     /connect/github-private
+    defaults: { _controller: NullDevUserBundle:Connect:githubPrivate }

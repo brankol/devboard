@@ -36,6 +36,31 @@ class ConnectController extends Controller
 
     /**
      * @param Request $request
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function githubPrivateAction(Request $request)
+    {
+        $this->startSessionIfNotStarted($request);
+
+        if ('test' === $this->getCurrentApplicationEnvironment()) {
+            $scopeParamName    = 'github_private_scope_test';
+            $clientIdParamName = 'github_client_id_test';
+        } else {
+            $scopeParamName    = 'github_private_scope';
+            $clientIdParamName = 'github_client_id';
+        }
+
+        $scope    = $this->container->getParameter($scopeParamName);
+        $clientId = $this->container->getParameter($clientIdParamName);
+
+        $url = 'https://github.com/login/oauth/authorize?scope='.$scope.'&client_id='.$clientId;
+
+        return $this->redirect($url, 302);
+    }
+
+    /**
+     * @param Request $request
      */
     private function startSessionIfNotStarted(Request $request)
     {

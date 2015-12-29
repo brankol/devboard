@@ -19,8 +19,7 @@ web_profiler:
 # Twig Configuration
 twig:
     globals:
-        github_client_id: %github_client_id_test%
-        github_default_scope: "user,read:org,repo"
+        ~
 
 swiftmailer:
     disable_delivery: true

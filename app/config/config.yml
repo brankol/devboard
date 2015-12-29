@@ -39,14 +39,13 @@ twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
     globals:
-        github_client_id: %github_client_id%
-        github_default_scope: "user,read:org,repo"
+        ~
 
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ 'DevBoardCoreBundle' ]
+    bundles:        [ 'DevBoardCoreBundle', 'FOSUserBundle', 'NullDevUserBundle' ]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~
