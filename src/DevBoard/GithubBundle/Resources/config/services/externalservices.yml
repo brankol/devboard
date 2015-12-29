@@ -9,7 +9,7 @@ services:
   github.externalservices.factory:
     class: DevBoard\Github\ExternalService\Entity\GithubExternalServiceFactory
     arguments:
-      - @github.externalservices.mapper.remote_to_entity
+      - "@github.externalservices.mapper.remote_to_entity"
       
   github.externalservices.mapper.remote_to_entity:
     class: DevBoard\Github\ExternalService\Mapper\RemoteToEntityMapper
@@ -17,6 +17,6 @@ services:
   github.externalservices.facade:
     class: DevBoard\Github\ExternalService\GithubExternalServiceFacade
     arguments:
-      - @github.externalservices.repository
-      - @github.externalservices.factory
-      - @doctrine.orm.entity_manager
+      - "@github.externalservices.repository"
+      - "@github.externalservices.factory"
+      - "@doctrine.orm.entity_manager"

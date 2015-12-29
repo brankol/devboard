@@ -9,7 +9,7 @@ services:
   github.branch.factory:
     class: DevBoard\Github\Branch\Entity\GithubBranchFactory
     arguments:
-      - @github.branch.mapper.remote_to_entity
+      - "@github.branch.mapper.remote_to_entity"
 
   github.branch.mapper.remote_to_entity:
     class: DevBoard\Github\Branch\Mapper\RemoteToEntityMapper
@@ -17,6 +17,6 @@ services:
   github.branch.facade:
     class: DevBoard\Github\Branch\GithubBranchFacade
     arguments:
-      - @github.branch.repository
-      - @github.branch.factory
-      - @doctrine.orm.entity_manager
+      - "@github.branch.repository"
+      - "@github.branch.factory"
+      - "@doctrine.orm.entity_manager"

@@ -3,16 +3,16 @@ services:
   github.event.pull_request.handler:
     class: DevBoard\GithubEvent\PullRequest\PullRequestHandler
     arguments:
-      - @github.event.pull_request.data.repo.factory
-      - @github.event.pull_request.data.pull_request.factory
-      - @github.event.pull_request.data.commit.factory
-      - @github.event.pull_request.data.pull_request_creator.factory
-      - @github.event.pull_request.data.pull_request_assignee.factory
-      - @github.repo.facade
-      - @github.pull_request.facade
-      - @github.commit.facade
-      - @github.user.facade
-      - @doctrine.orm.entity_manager
+      - "@github.event.pull_request.data.repo.factory"
+      - "@github.event.pull_request.data.pull_request.factory"
+      - "@github.event.pull_request.data.commit.factory"
+      - "@github.event.pull_request.data.pull_request_creator.factory"
+      - "@github.event.pull_request.data.pull_request_assignee.factory"
+      - "@github.repo.facade"
+      - "@github.pull_request.facade"
+      - "@github.commit.facade"
+      - "@github.user.facade"
+      - "@doctrine.orm.entity_manager"
 
   github.event.pull_request.data.repo.factory:
     class: DevBoard\GithubEvent\PullRequest\Data\RepoFactory

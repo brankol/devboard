@@ -9,7 +9,7 @@ services:
   github.tag.factory:
     class: DevBoard\Github\Tag\Entity\GithubTagFactory
     arguments:
-      - @github.tag.mapper.remote_to_entity
+      - "@github.tag.mapper.remote_to_entity"
 
   github.tag.mapper.remote_to_entity:
     class: DevBoard\Github\Tag\Mapper\RemoteToEntityMapper
@@ -17,6 +17,6 @@ services:
   github.tag.facade:
     class: DevBoard\Github\Tag\GithubTagFacade
     arguments:
-      - @github.tag.repository
-      - @github.tag.factory
-      - @doctrine.orm.entity_manager
+      - "@github.tag.repository"
+      - "@github.tag.factory"
+      - "@doctrine.orm.entity_manager"

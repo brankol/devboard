@@ -5,10 +5,10 @@ services:
   core.project.create.handler:
     class: DevBoard\Core\CreateProject\CreateProjectHandler
     arguments:
-      - @nulldev.user.service.current
-      - @github.repo.factory
-      - @null_dev_github_api.repo.service
-      - @github.repo.facade
-      - @core.project.factory
-      - @doctrine.orm.entity_manager
-      - @github.sync.branches.handler
+      - "@nulldev.user.service.current"
+      - "@github.repo.factory"
+      - "@null_dev_github_api.repo.service"
+      - "@github.repo.facade"
+      - "@core.project.factory"
+      - "@doctrine.orm.entity_manager"
+      - "@github.sync.branches.handler"

@@ -9,7 +9,7 @@ services:
   github.commit.factory:
     class: DevBoard\Github\Commit\Entity\GithubCommitFactory
     arguments:
-      - @github.commit.mapper.remote_to_entity
+      - "@github.commit.mapper.remote_to_entity"
       
   github.commit.mapper.remote_to_entity:
     class: DevBoard\Github\Commit\Mapper\RemoteToEntityMapper
@@ -17,9 +17,9 @@ services:
   github.commit.facade:
     class: DevBoard\Github\Commit\GithubCommitFacade
     arguments:
-      - @github.commit.repository
-      - @github.commit.factory
-      - @doctrine.orm.entity_manager
+      - "@github.commit.repository"
+      - "@github.commit.factory"
+      - "@doctrine.orm.entity_manager"
 
   github.commit.state.calculator:
     class: DevBoard\Github\Commit\CalculateState\CalculateGithubCommitState

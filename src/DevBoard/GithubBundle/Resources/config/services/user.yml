@@ -9,23 +9,23 @@ services:
   github.user.factory:
     class: DevBoard\Github\User\Entity\GithubUserFactory
     arguments:
-      - @github.user.mapper.remote_to_entity
+      - "@github.user.mapper.remote_to_entity"
   github.user.mapper.remote_to_entity:
     class: DevBoard\Github\User\Mapper\RemoteToEntityMapper
     
   github.user.facade:
     class: DevBoard\Github\User\GithubUserFacade
     arguments:
-      - @github.user.repository
-      - @github.user.factory
-      - @doctrine.orm.entity_manager    
+      - "@github.user.repository"
+      - "@github.user.factory"
+      - "@doctrine.orm.entity_manager"
     
     
   github.user.service:
     class: DevBoard\Github\User\GithubUserService
     arguments:
-      - @github.user.factory
-      - @null_dev_github_api.user.service
-      - @github.user.mapper.remote_to_entity
-      - @doctrine.orm.entity_manager
+      - "@github.user.factory"
+      - "@null_dev_github_api.user.service"
+      - "@github.user.mapper.remote_to_entity"
+      - "@doctrine.orm.entity_manager"
 
