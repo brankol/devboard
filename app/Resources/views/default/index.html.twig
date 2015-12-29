@@ -13,11 +13,18 @@
 
             <h2>Have all relevant github projects info in one place</h2>
 
-            <p>
-                <a class="btn btn-primary btn-lg" role="button" id="sign-up"
-                   href="{{ path('null_dev_user_connect_github') }}">
+            <br/>
+            <br/><br/>
+
+            <p class="text-center">
+
+                <a href="{{ path('null_dev_user_connect_github') }}" class="btn btn-primary btn-lg" role="button" id="sign-up">
+                    {% image '@NullDevUserBundle/Resources/public/images/GitHub/GitHub-Mark-32px.png' %}
+                    <img src="{{ asset_url }}" alt="Sign up using Github"/>
+                    {% endimage %}
                     Sign up using Github
                 </a>
+
             </p>
         </div>
     </div>
