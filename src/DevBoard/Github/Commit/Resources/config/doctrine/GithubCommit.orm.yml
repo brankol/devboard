@@ -35,20 +35,17 @@ DevBoard\Github\Commit\Entity\GithubCommit:
   manyToOne:
     githubRepo:
       targetEntity: DevBoard\Github\Repo\Entity\GithubRepo
-      inversedBy: commits
       joinColumn:
         name: githubRepoId
         referencedColumnName: id
     author:
       targetEntity: DevBoard\Github\User\Entity\GithubUser
-      inversedBy: authored
       cascade: ["persist"]
       joinColumn:
         name: authorId
         referencedColumnName: id
     committer:
       targetEntity: DevBoard\Github\User\Entity\GithubUser
-      inversedBy: committed
       cascade: ["persist"]
       joinColumn:
         name: committerId
@@ -57,6 +54,9 @@ DevBoard\Github\Commit\Entity\GithubCommit:
     commitStatuses:
       targetEntity: DevBoard\Github\CommitStatus\Entity\GithubCommitStatus
       mappedBy: githubCommit
+    branches:
+      targetEntity: DevBoard\Github\Branch\Entity\GithubBranch
+      mappedBy: lastCommit
   lifecycleCallbacks:
     prePersist: ['doCreatedValue']
     preUpdate: ['doUpdatedValue']

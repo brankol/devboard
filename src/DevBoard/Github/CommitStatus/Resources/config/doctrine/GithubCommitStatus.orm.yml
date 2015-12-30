@@ -23,13 +23,12 @@ DevBoard\Github\CommitStatus\Entity\GithubCommitStatus:
   manyToOne:
     githubCommit:
       targetEntity: DevBoard\Github\Commit\Entity\GithubCommit
-      inversedBy: statuses
+      inversedBy: commitStatuses
       joinColumn:
         name: githubCommitId
         referencedColumnName: id
     githubExternalService:
       targetEntity: DevBoard\Github\ExternalService\Entity\GithubExternalService
-      inversedBy: statuses
       joinColumn:
         name: githubExternalServiceId
         referencedColumnName: id

@@ -1,6 +1,7 @@
 <?php
 namespace NullDev\UserBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
@@ -53,13 +54,16 @@ class User extends BaseUser
     /** @ORM\Column(name="githubAccessToken", type="string", length=255, nullable=true, unique=true) */
     protected $githubAccessToken;
 
+    /** @ORM\OneToMany(targetEntity="DevBoard\Core\Project\Entity\Project", mappedBy="user") */
+    protected $projects;
+
     /**
      *
      */
     public function __construct()
     {
         parent::__construct();
-        // your own logic
+        $this->projects = new ArrayCollection();
     }
 
     /**
@@ -172,5 +176,21 @@ class User extends BaseUser
     public function setGithubAccessToken($githubAccessToken)
     {
         $this->githubAccessToken = $githubAccessToken;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getProjects()
+    {
+        return $this->projects;
+    }
+
+    /**
+     * @param ArrayCollection $projects
+     */
+    public function setProjects($projects)
+    {
+        $this->projects = $projects;
     }
 }

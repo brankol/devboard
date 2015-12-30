@@ -19,13 +19,11 @@ DevBoard\Github\Tag\Entity\GithubTag:
   manyToOne:
     repo:
       targetEntity: DevBoard\Github\Repo\Entity\GithubRepo
-      inversedBy: tages
       joinColumn:
         name: repoId
         referencedColumnName: id
     lastCommit:
       targetEntity: DevBoard\Github\Commit\Entity\GithubCommit
-      inversedBy: commits
       cascade: ["persist"]
       joinColumn:
         name: lastCommitId
