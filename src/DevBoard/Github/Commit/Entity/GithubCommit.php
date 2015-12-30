@@ -45,12 +45,16 @@ class GithubCommit extends BaseEntity implements GithubCommitDataInterface
     /** @var ArrayCollection */
     private $commitStatuses;
 
+    /** @var ArrayCollection */
+    private $branches;
+
     /**
      * GithubCommit constructor.
      */
     public function __construct()
     {
         $this->commitStatuses = new ArrayCollection();
+        $this->branches       = new ArrayCollection();
     }
 
     /**

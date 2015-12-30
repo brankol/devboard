@@ -33,27 +33,23 @@ DevBoard\Github\PullRequest\Entity\GithubPullRequest:
   manyToOne:
     repo:
       targetEntity: DevBoard\Github\Repo\Entity\GithubRepo
-      inversedBy: pullRequestes
       joinColumn:
         name: repoId
         referencedColumnName: id
     createdBy:
       targetEntity: DevBoard\Github\User\Entity\GithubUser
-      inversedBy: pullRequestsCreated
       cascade: ["persist"]
       joinColumn:
         name: createdById
         referencedColumnName: id
     assignedTo:
       targetEntity: DevBoard\Github\User\Entity\GithubUser
-      inversedBy: pullRequestsAssigned
       cascade: ["persist"]
       joinColumn:
         name: assignedToId
         referencedColumnName: id
     lastCommit:
       targetEntity: DevBoard\Github\Commit\Entity\GithubCommit
-      inversedBy: commits
       cascade: ["persist"]
       joinColumn:
         name: lastCommitId

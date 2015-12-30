@@ -25,7 +25,7 @@ DevBoard\Github\Branch\Entity\GithubBranch:
         referencedColumnName: id
     lastCommit:
       targetEntity: DevBoard\Github\Commit\Entity\GithubCommit
-      inversedBy: commits
+      inversedBy: branches
       cascade: ["persist"]
       joinColumn:
         name: lastCommitId

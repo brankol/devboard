@@ -28,7 +28,7 @@ DevBoard\Core\Project\Entity\Project:
   manyToMany:
     githubRepos:
       targetEntity: DevBoard\Github\Repo\Entity\GithubRepo
-      inversedBy: repos
+      inversedBy: projects
       joinTable:
         name: ProjectGithubRepos
   lifecycleCallbacks:
