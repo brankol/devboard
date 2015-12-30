@@ -2,10 +2,7 @@
 namespace DevBoard\Behat\Core\Project;
 
 use Behat\Behat\Context\SnippetAcceptingContext;
-use Behat\Symfony2Extension\Context\KernelAwareContext;
 use Resources\Behat\CleanDbTrait;
-use Resources\Behat\LoginWebTrait;
-use Resources\Behat\Symfony2Trait;
 use Resources\Behat\WebContext;
 
 /**
