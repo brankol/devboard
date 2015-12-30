@@ -4,6 +4,7 @@ namespace DevBoard\Github\Repo\Entity;
 use DateTime;
 use DevBoard\Core\Project\Entity\Project;
 use DevBoard\Github\Branch\Entity\GithubBranch;
+use DevBoard\Github\Hook\Entity\GithubHook;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use NullDev\GithubApi\Repo\GithubRepoDataInterface;
@@ -63,6 +64,9 @@ class GithubRepo extends BaseEntity implements GithubRepoDataInterface
 
     /** @var ArrayCollection */
     protected $branches;
+
+    /** @var GithubHook */
+    protected $hook;
 
     /**
      *
@@ -483,6 +487,26 @@ class GithubRepo extends BaseEntity implements GithubRepoDataInterface
         }
 
         return null;
+    }
+
+    /**
+     * @return GithubHook
+     */
+    public function getHook()
+    {
+        return $this->hook;
+    }
+
+    /**
+     * @param GithubHook $hook
+     *
+     * @return $this
+     */
+    public function setHook(GithubHook $hook)
+    {
+        $this->hook = $hook;
+
+        return $this;
     }
 
     /**

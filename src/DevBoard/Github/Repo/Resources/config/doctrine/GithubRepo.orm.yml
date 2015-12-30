@@ -55,6 +55,13 @@ DevBoard\Github\Repo\Entity\GithubRepo:
     branches:
       targetEntity: DevBoard\Github\Branch\Entity\GithubBranch
       mappedBy: repo
+  oneToOne:
+    hook:
+      targetEntity: DevBoard\Github\Hook\Entity\GithubHook
+      inversedBy: id
+      joinColumn:
+        name: hook
+        referencedColumnName: id
   manyToMany:
     projects:
       targetEntity: DevBoard\Core\Project\Entity\Project

@@ -110,6 +110,12 @@ doctrine:
                         dir: %kernel.root_dir%/../src/DevBoard/Github/CommitStatus/Resources/config/doctrine
                         prefix: DevBoard\Github\CommitStatus\Entity
                         alias: GhCommitStatus
+                    DevBoardGithubHook:
+                        type: yml
+                        is_bundle: false
+                        dir: %kernel.root_dir%/../src/DevBoard/Github/Hook/Resources/config/doctrine
+                        prefix: DevBoard\Github\Hook\Entity
+                        alias: GhHook
                     DevBoardGithubTag:
                         type: yml
                         is_bundle: false
