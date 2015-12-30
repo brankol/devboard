@@ -1,6 +1,9 @@
 <?php
 namespace DevBoard\Github\PullRequest;
 
+/**
+ * Class GithubPullRequestState.
+ */
 class GithubPullRequestState
 {
     const WTF    = 0;

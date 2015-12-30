@@ -1,0 +1,25 @@
+DevBoard\Github\Hook\Entity\GithubHook:
+  type: entity
+  table: GithubHooks
+  repositoryClass: DevBoard\Github\Hook\Entity\GithubHookRepository
+  id:
+    id:
+      type: guid
+      id: true
+      generator:
+        strategy: UUID
+  fields:
+    createdAt:
+      type: datetime
+    updatedAt:
+      type: datetime
+  oneToOne:
+    repo:
+      targetEntity: DevBoard\Github\Repo\Entity\GithubRepo
+      inversedBy: hook
+      joinColumn:
+        name: repoId
+        referencedColumnName: id
+  lifecycleCallbacks:
+    prePersist: ['doCreatedValue']
+    preUpdate: ['doUpdatedValue']
