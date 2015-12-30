@@ -35,6 +35,6 @@ trait LoginDomainTrait
     private function logUserIn(User $user)
     {
         $token = new UsernamePasswordToken($user, null, 'main', $user->getRoles());
-        $this->getService('security.context')->setToken($token);
+        $this->getService('security.token_storage')->setToken($token);
     }
 }
