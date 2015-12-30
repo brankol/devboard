@@ -4,6 +4,7 @@ namespace DevBoard\CoreBundle\Controller;
 use DevBoard\Core\Project\Entity\Project;
 use DevBoard\CoreBundle\Form\ProjectType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -74,7 +75,7 @@ class ProjectController extends Controller
     private function createCreateForm(Project $entity)
     {
         $form = $this->createForm(
-            new ProjectType(),
+            ProjectType::class,
             $entity,
             [
                 'action' => $this->generateUrl('project_create'),
@@ -82,7 +83,7 @@ class ProjectController extends Controller
             ]
         );
 
-        $form->add('submit', 'submit', ['label' => 'Save']);
+        $form->add('submit', SubmitType::class, ['label' => 'Save']);
 
         return $form;
     }
@@ -180,7 +181,7 @@ class ProjectController extends Controller
             ]
         );
 
-        $form->add('submit', 'submit', ['label' => 'Save']);
+        $form->add('submit', SubmitType::class, ['label' => 'Save']);
 
         return $form;
     }
@@ -263,7 +264,7 @@ class ProjectController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('project_delete', ['id' => $id]))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', ['label' => 'Delete'])
+            ->add('submit', SubmitType::class, ['label' => 'Delete'])
             ->getForm();
     }
 }

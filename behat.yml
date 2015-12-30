@@ -106,3 +106,4 @@ default:
                 capabilities:
                     version: ''
         Behat\Symfony2Extension: ~
+        RMiller\BehatSpec\BehatExtension: ~
