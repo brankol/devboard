@@ -53,16 +53,9 @@ class RunNotificationCommand extends ContainerAwareCommand
         } else {
             $logger->info('Data:'.var_export($event->getRawPayload(), true));
 
-            $payload = $this->getContainer()->get('github.event.payload.factory')->create($event);
+            $this->getContainer()->get('github.event.payload.factory')->create($event);
 
             $this->getContainer()->get('github.event.handler')->handle($event);
-
-            $repo = $payload->repository->full_name;
-
-            $branch = $payload->ref;
-
-            $logger->info('Repo:'.$repo);
-            $logger->info('Branch:'.$branch);
         }
 
         echo 'Done!';
