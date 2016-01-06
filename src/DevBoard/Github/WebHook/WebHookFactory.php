@@ -57,4 +57,21 @@ class WebHookFactory
     {
         return $this->signatureFactory->create($headerBag->get('X-Hub-Signature'));
     }
+
+    public function createFromQueueNotification(array $queueNotification)
+    {
+        $event     = $queueNotification['eventType'];
+        $signature = $this->signatureFactory->create($queueNotification['signature']);
+        $content   = $queueNotification['content'];
+
+        if ('push' === $event) {
+            return new PushEvent($signature, $content);
+        } elseif ('status' === $event) {
+            return new StatusEvent($signature, $content);
+        } elseif ('pull_request' === $event) {
+            return new PullRequestEvent($signature, $content);
+        } else {
+            throw new Exception('Unsupported webhook event: "'.$event.'" !');
+        }
+    }
 }

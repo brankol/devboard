@@ -70,4 +70,52 @@ class WebHookFactorySpec extends ObjectBehavior
 
         $this->create($request)->shouldReturnAnInstanceOf('DevBoard\Github\WebHook\Data\PullRequestEvent');
     }
+
+    public function it_will_create_push_event_from_queue_notification(
+        $signatureFactory,
+        WebHookSignature $signature
+    ) {
+        $data = [
+            'eventType' => 'push',
+            'signature' => 'sha1=abc123',
+            'content'   => [],
+        ];
+        $signatureFactory->create('sha1=abc123')->willReturn($signature);
+
+        $this->createFromQueueNotification($data)->shouldReturnAnInstanceOf('DevBoard\Github\WebHook\Data\PushEvent');
+    }
+
+    public function it_will_create_status_event_from_queue_notification(
+        $signatureFactory,
+        WebHookSignature $signature,
+        Request $request,
+        HeaderBag $headerBag
+    ) {
+        $data = [
+            'eventType' => 'status',
+            'signature' => 'sha1=abc123',
+            'content'   => [],
+        ];
+        $signatureFactory->create('sha1=abc123')->willReturn($signature);
+
+        $this->createFromQueueNotification($data)->shouldReturnAnInstanceOf('DevBoard\Github\WebHook\Data\StatusEvent');
+    }
+
+    public function it_will_create_pull_request_event_from_queue_notification(
+        $signatureFactory,
+        WebHookSignature $signature,
+        Request $request,
+        HeaderBag $headerBag
+    ) {
+        $data = [
+            'eventType' => 'pull_request',
+            'signature' => 'sha1=abc123',
+            'content'   => [],
+        ];
+        $signatureFactory->create('sha1=abc123')->willReturn($signature);
+
+        $this->createFromQueueNotification($data)->shouldReturnAnInstanceOf(
+            'DevBoard\Github\WebHook\Data\PullRequestEvent'
+        );
+    }
 }
