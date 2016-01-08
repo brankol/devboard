@@ -28,6 +28,9 @@ class HookClientTest extends MyKernelTestCase
         );
     }
 
+    /**
+     * @group GithubIntegration
+     */
     public function testCreateHook()
     {
         $this->givenThereIsNoHook();
@@ -37,6 +40,9 @@ class HookClientTest extends MyKernelTestCase
         $this->assertTrue(is_array($result));
     }
 
+    /**
+     * @group GithubIntegration
+     */
     public function testFindHook()
     {
         $this->givenThereIsHook();
@@ -45,6 +51,9 @@ class HookClientTest extends MyKernelTestCase
         $this->assertNotFalse($result);
     }
 
+    /**
+     * @group GithubIntegration
+     */
     public function testFindHookNoneFound()
     {
         $this->givenThereIsNoHook();
@@ -53,6 +62,9 @@ class HookClientTest extends MyKernelTestCase
         $this->assertFalse($result);
     }
 
+    /**
+     * @group GithubIntegration
+     */
     public function testRemoveHook()
     {
         $this->givenThereIsHook();
@@ -61,6 +73,9 @@ class HookClientTest extends MyKernelTestCase
         $this->assertTrue($result);
     }
 
+    /**
+     * @group GithubIntegration
+     */
     public function testReadOnlyRepoWillThrowRunTimeExceptions()
     {
         $readOnlyClient = $this->service->create($this->provideReadOnlyRepo());
@@ -75,6 +90,9 @@ class HookClientTest extends MyKernelTestCase
         $this->assertInstanceOf('Github\Exception\RuntimeException', $resultRemove);
     }
 
+    /**
+     * @group GithubIntegration
+     */
     public function testUntouchableRepoWillThrowRunTimeExceptions()
     {
         $untochuableClient = $this->service->create($this->provideUntouchableRepo());
