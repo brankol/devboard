@@ -59,7 +59,7 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - php -d 'xdebug.max_nesting_level=500' bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage --coverage-php build/cov/coverage.cov src/
+  - php -d 'xdebug.max_nesting_level=500' bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage --coverage-php build/cov/coverage.cov src/ --exclude-group GithubIntegration
   - sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
   #- ./bin/behat
   - ./bin/phpspec run --no-interaction
