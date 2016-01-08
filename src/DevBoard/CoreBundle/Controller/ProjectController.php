@@ -19,7 +19,7 @@ class ProjectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('DevBoardProject:Project')->findAll();
+        $entities = $em->getRepository('DevBoardProject:Project')->findByUser($this->getUser());
 
         return $this->render(
             'DevBoardCoreBundle:Project:index.html.twig',
