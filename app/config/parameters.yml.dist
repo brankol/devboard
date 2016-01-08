@@ -31,3 +31,4 @@ parameters:
     github_default_scope_test: 'user,read:org,public_repo'
     github_private_scope_test: 'user,read:org,repo'
     github_webhook_secret: "FAKE-WEBHOOK-SECRET"
+    github_webhook_url: "https://notify.devboard.xyz/github/"
