@@ -1,0 +1,8 @@
+dev_board_github:
+  hook:
+    name: 'web'
+    config:
+      url: %github_webhook_url%
+      content_type: 'json'
+      insecure_ssl: false
+      secret: %github_webhook_secret%

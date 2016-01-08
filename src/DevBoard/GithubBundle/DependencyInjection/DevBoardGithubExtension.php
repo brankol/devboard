@@ -23,5 +23,13 @@ class DevBoardGithubExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        $listOfSecondLevelConfigs = ['hook'];
+
+        foreach ($listOfSecondLevelConfigs as $secondLevelConfig) {
+            foreach ($config[$secondLevelConfig] as $key => $value) {
+                $container->setParameter($this->getAlias().'.'.$secondLevelConfig.'.'.$key, $value);
+            }
+        }
     }
 }
