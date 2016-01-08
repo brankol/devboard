@@ -12,3 +12,4 @@ parameters:
     mailer_password:   ~
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
+    github_webhook_url: "https://notify.devboard.xyz/github/"

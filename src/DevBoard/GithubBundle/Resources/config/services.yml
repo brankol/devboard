@@ -1,4 +1,5 @@
 imports:
+  - { resource: services/api/hook.yml }
   - { resource: services/repo.yml }
   - { resource: services/branch.yml }
   - { resource: services/commit.yml }

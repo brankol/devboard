@@ -58,10 +58,7 @@ DevBoard\Github\Repo\Entity\GithubRepo:
   oneToOne:
     hook:
       targetEntity: DevBoard\Github\Hook\Entity\GithubHook
-      inversedBy: id
-      joinColumn:
-        name: hook
-        referencedColumnName: id
+      mappedBy: repo
   manyToMany:
     projects:
       targetEntity: DevBoard\Core\Project\Entity\Project

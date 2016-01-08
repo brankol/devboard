@@ -12,3 +12,4 @@ services:
       - "@core.project.factory"
       - "@doctrine.orm.entity_manager"
       - "@github.sync.branches.handler"
+      - "@github.api.repo.hook.client.factory"

@@ -1,0 +1,19 @@
+services:
+  github.api.repo.hook.settings.basic:
+    class: DevBoard\GithubApi\Repository\Hook\HookSettings
+    arguments:
+      - %dev_board_github.hook.name%
+      - %dev_board_github.hook.config%
+      - [ 'push', 'pull_request', 'status']
+  github.api.repo.hook.client.factory:
+    class: DevBoard\GithubApi\Repository\Hook\HookClientFactory
+    arguments:
+      - "@null_dev_github_api.client.authenticated.factory.token"
+      - "@github.api.repo.hook.settings.basic"
+
+  github.api.repo.hook.client.factory.current_user:
+    class: DevBoard\GithubApi\Repository\Hook\CurrentUserHookClientFactory
+    arguments:
+      - "@null_dev_github_api.client.authenticated.factory.token"
+      - "@github.api.repo.hook.settings.basic"
+      - "@nulldev.user.service.current"

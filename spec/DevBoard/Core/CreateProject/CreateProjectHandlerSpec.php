@@ -7,6 +7,8 @@ use DevBoard\Github\Repo\Entity\GithubRepo;
 use DevBoard\Github\Repo\Entity\GithubRepoFactory;
 use DevBoard\Github\Repo\GithubRepoFacade;
 use DevBoard\Github\Sync\Branches\SyncBranchesHandler;
+use DevBoard\GithubApi\Repository\Hook\HookClient;
+use DevBoard\GithubApi\Repository\Hook\HookClientFactory;
 use Doctrine\ORM\EntityManager;
 use NullDev\GithubApi\Repo\GithubRepoData;
 use NullDev\GithubApi\Repo\RemoteGithubRepoService;
@@ -29,7 +31,8 @@ class CreateProjectHandlerSpec extends ObjectBehavior
         GithubRepoFacade $githubRepoFacade,
         ProjectFactory $projectFactory,
         EntityManager $em,
-        SyncBranchesHandler $syncBranchesHandler
+        SyncBranchesHandler $syncBranchesHandler,
+        HookClientFactory $hookClientFactory
     ) {
         $this->beConstructedWith(
             $currentUserService,
@@ -38,7 +41,8 @@ class CreateProjectHandlerSpec extends ObjectBehavior
             $githubRepoFacade,
             $projectFactory,
             $em,
-            $syncBranchesHandler
+            $syncBranchesHandler,
+            $hookClientFactory
         );
     }
 
@@ -50,11 +54,13 @@ class CreateProjectHandlerSpec extends ObjectBehavior
         $projectFactory,
         $em,
         $syncBranchesHandler,
+        $hookClientFactory,
         GithubRepo $githubRepoInitial,
         GithubRepo $githubRepoEntity,
         Project $project,
         GithubRepoData $githubRepoData,
-        User $user
+        User $user,
+        HookClient $hookClient
 
     ) {
         $githubRepoFactory->create('owner/name')->willReturn($githubRepoInitial);
@@ -74,6 +80,8 @@ class CreateProjectHandlerSpec extends ObjectBehavior
         $em->flush()->shouldBeCalled();
 
         $syncBranchesHandler->sync($githubRepoEntity)->willReturn(true);
+        $hookClientFactory->create($githubRepoEntity, $user)->willReturn($hookClient);
+        $hookClient->createHook()->shouldBeCalled();
 
         $this->create('owner/name')->shouldReturn($project);
     }

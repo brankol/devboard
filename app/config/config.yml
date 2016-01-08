@@ -5,6 +5,7 @@ imports:
     - { resource: main/doctrine-migrations.yml }
     - { resource: main/fos-user.yml }
     - { resource: main/hwi-oauth.yml }
+    - { resource: devboard/githubapi.yml }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
