@@ -122,6 +122,10 @@ class ProjectController extends Controller
             throw $this->createNotFoundException('Unable to find Project entity.');
         }
 
+        if ($entity->getUser() !== $this->getUser()) {
+            throw $this->createNotFoundException('Unable to find Project entity!');
+        }
+
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render(
@@ -148,6 +152,10 @@ class ProjectController extends Controller
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find Project entity.');
+        }
+
+        if ($entity->getUser() !== $this->getUser()) {
+            throw $this->createNotFoundException('Unable to find Project entity!');
         }
 
         $editForm   = $this->createEditForm($entity);
@@ -234,6 +242,8 @@ class ProjectController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        throw $this->createNotFoundException('@TODO: delete is not possible at this moment!');
+
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
