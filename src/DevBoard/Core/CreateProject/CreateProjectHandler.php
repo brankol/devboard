@@ -6,6 +6,7 @@ use DevBoard\Core\Project\Entity\ProjectFactory;
 use DevBoard\Github\Repo\Entity\GithubRepoFactory;
 use DevBoard\Github\Repo\GithubRepoFacade;
 use DevBoard\Github\Sync\Branches\SyncBranchesHandler;
+use DevBoard\GithubApi\Repository\Hook\HookClientFactory;
 use Doctrine\ORM\EntityManager;
 use NullDev\GithubApi\Repo\RemoteGithubRepoService;
 use NullDev\UserBundle\Service\CurrentUserService;
@@ -22,6 +23,7 @@ class CreateProjectHandler
     private $projectFactory;
     private $em;
     private $syncBranchesHandler;
+    private $hookClientFactory;
 
     /**
      * CreateProjectHandler constructor.
@@ -33,6 +35,7 @@ class CreateProjectHandler
      * @param ProjectFactory          $projectFactory
      * @param EntityManager           $em
      * @param SyncBranchesHandler     $syncBranchesHandler
+     * @param HookClientFactory       $hookClientFactory
      */
     public function __construct(
         CurrentUserService $currentUserService,
@@ -41,7 +44,8 @@ class CreateProjectHandler
         GithubRepoFacade $githubRepoFacade,
         ProjectFactory $projectFactory,
         EntityManager $em,
-        SyncBranchesHandler $syncBranchesHandler
+        SyncBranchesHandler $syncBranchesHandler,
+        HookClientFactory $hookClientFactory
     ) {
         $this->currentUserService      = $currentUserService;
         $this->githubRepoFactory       = $githubRepoFactory;
@@ -50,6 +54,7 @@ class CreateProjectHandler
         $this->projectFactory          = $projectFactory;
         $this->em                      = $em;
         $this->syncBranchesHandler     = $syncBranchesHandler;
+        $this->hookClientFactory       = $hookClientFactory;
     }
 
     /**
@@ -72,6 +77,8 @@ class CreateProjectHandler
         $this->em->flush();
 
         $this->syncBranchesHandler->sync($repoEntity);
+        $hookClient = $this->hookClientFactory->create($repoEntity, $this->currentUserService->getUser());
+        $hookClient->createHook();
 
         return $project;
     }
