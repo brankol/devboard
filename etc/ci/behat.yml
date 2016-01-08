@@ -102,3 +102,4 @@ default:
             show_auto:    false
             files_path:   /home/ubuntu/devboardxyz/
         Behat\Symfony2Extension: ~
+        #RMiller\BehatSpec\BehatExtension: ~
