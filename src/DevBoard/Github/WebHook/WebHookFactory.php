@@ -58,6 +58,13 @@ class WebHookFactory
         return $this->signatureFactory->create($headerBag->get('X-Hub-Signature'));
     }
 
+    /**
+     * @param array $queueNotification
+     *
+     * @throws Exception
+     *
+     * @return PullRequestEvent|PushEvent|StatusEvent
+     */
     public function createFromQueueNotification(array $queueNotification)
     {
         $event     = $queueNotification['eventType'];

@@ -1,8 +1,6 @@
 <?php
 namespace DevBoard\GithubBundle\Command;
 
-use DateTime;
-use NullDev\Date\Week;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
