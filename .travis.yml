@@ -5,6 +5,7 @@ addons:
   apt:
     packages:
       - apache2
+      - libapache2-mod-fastcgi
       - xvfb  
 php:
   - 5.5
@@ -14,9 +15,6 @@ cache:
     - vendor
     - bin
 before_script:
-  - echo "deb http://us-central1.gce.archive.ubuntu.com/ubuntu/ precise multiverse" | sudo tee -a /etc/apt/sources.list
-  - sudo apt-get update
-  - sudo apt-get install apache2 libapache2-mod-fastcgi -y
    # enable php-fpm
   - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
   - sudo a2enmod rewrite actions fastcgi alias
