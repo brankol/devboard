@@ -44,7 +44,7 @@ before_script:
   - cp etc/ci/behat.yml behat.yml
   - cp etc/ci/phpspec.yml phpspec.yml
 
-  - composer install
+  - composer install --prefer-source
   - php app/console doctrine:database:create --env=dev
   - php app/console doctrine:database:create --env=test
   - php app/console doctrine:migrations:migrate --env=test --no-interaction
