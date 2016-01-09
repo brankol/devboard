@@ -4,30 +4,37 @@ addons:
   - www.test.ci
   apt:
     packages:
-      - apache2
-      - libapache2-mod-fastcgi
-      - xvfb  
+      - nginx
+      - xvfb
+      - mysql-client-core-5.6
+      - mysql-server-5.6
+      - mysql-client-5.6
+
+sudo: required
+dist: trusty
+
 php:
   - 5.5
   - 5.6
+
 cache:
   directories:
     - vendor
     - bin
+
 before_script:
    # enable php-fpm
   - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
-  - sudo a2enmod rewrite actions fastcgi alias
   - echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
-   # configure apache virtual hosts
-  - sudo cp -f etc/travis-ci/www.test.ci /etc/apache2/sites-available/default
-  - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
-  - sudo mkdir /etc/ssl/crt/
-  - sudo cp etc/provisioning/roles/nginx/files/ssl/server.crt /etc/ssl/crt/server.crt
-  - sudo cp etc/provisioning/roles/nginx/files/ssl/server.key /etc/ssl/crt/server.key
-#  - sudo a2enmod ssl
-  - sudo service apache2 restart
+
+   # configure virtual hosts
+  - sudo cp -f etc/travis-ci/symfony2-test-application.conf /etc/nginx/sites-enabled/www.test.ci.conf
+  - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/nginx/sites-enabled/www.test.ci.conf
+  - sudo mkdir /etc/nginx/ssl/
+  - sudo cp etc/provisioning/roles/nginx/files/ssl/server.crt /etc/nginx/ssl/server.crt
+  - sudo cp etc/provisioning/roles/nginx/files/ssl/server.key /etc/nginx/ssl/server.key
+  - sudo service nginx restart
 
   - sh -e /etc/init.d/xvfb start
   - export DISPLAY=:99.0
@@ -45,10 +52,10 @@ before_script:
   - cp etc/ci/phpspec.yml phpspec.yml
 
   - sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
-
   - composer install --prefer-source
-  - php app/console doctrine:database:create --env=dev
-  - php app/console doctrine:database:create --env=test
+
+  - php app/console doctrine:database:create --env=dev --if-not-exists
+  - php app/console doctrine:database:create --env=test --if-not-exists
   - php app/console doctrine:migrations:migrate --env=test --no-interaction
   - php app/console doctrine:fixtures:load --env=test --no-interaction
   - sed -i 's/FAKE-GITHUB-ID-TEST/"'$GITHUB_ID'"/' app/config/parameters.yml
