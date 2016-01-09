@@ -1,17 +1,10 @@
 language: php
 addons:
-  hosts:
-  - www.test.ci
   apt:
     packages:
-      - nginx
       - xvfb
-      - mysql-client-core-5.6
-      - mysql-server-5.6
-      - mysql-client-5.6
 
-sudo: required
-dist: trusty
+sudo: false
 
 php:
   - 5.5
@@ -23,19 +16,6 @@ cache:
     - bin
 
 before_script:
-   # enable php-fpm
-  - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
-  - echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
-
-   # configure virtual hosts
-  - sudo cp -f etc/travis-ci/symfony2-test-application.conf /etc/nginx/sites-enabled/www.test.ci.conf
-  - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/nginx/sites-enabled/www.test.ci.conf
-  - sudo mkdir /etc/nginx/ssl/
-  - sudo cp etc/provisioning/roles/nginx/files/ssl/server.crt /etc/nginx/ssl/server.crt
-  - sudo cp etc/provisioning/roles/nginx/files/ssl/server.key /etc/nginx/ssl/server.key
-  - sudo service nginx restart
-
   - sh -e /etc/init.d/xvfb start
   - export DISPLAY=:99.0
   - sleep 4
@@ -47,9 +27,10 @@ before_script:
   - cp etc/travis-ci/.coveralls.yml .coveralls.yml
   - cp etc/travis-ci/app/config/parameters.yml app/config/parameters.yml
   - cp etc/travis-ci/web/app_test.php web/app_test.php
-  - cp etc/travis-ci/web/.htaccess web/.htaccess
-  - cp etc/ci/behat.yml behat.yml
   - cp etc/ci/phpspec.yml phpspec.yml
+  - sed -i 's/https:\/\/test.devboardxyz.loc\//http:\/\/localhost:8000\/app_test.php\//' behat.yml
+
+  - php -S localhost:8000 -t web/ &
 
   - sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
   - composer install --prefer-source
