@@ -28,7 +28,7 @@ class HookSettingsSpec extends ObjectBehavior
 
     public function it_will_not_accept_anything_but_web_as_name_of_the_hook()
     {
-        $this->shouldThrow('Exception')->during__construct('webhook-name', []);
+        $this->shouldThrow('Exception')->during__construct('webhook-name', [], []);
     }
 
     public function it_will_return_config_params_as_array()
