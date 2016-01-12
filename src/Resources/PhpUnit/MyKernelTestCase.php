@@ -41,6 +41,9 @@ class MyKernelTestCase extends KernelTestCase
         return $this->getEm()->getRepository('NullDevUserBundle:User')->findOneByUsername($username);
     }
 
+    /**
+     * @return mixed
+     */
     private function getEm()
     {
         return $this->container->get('doctrine.orm.entity_manager');
