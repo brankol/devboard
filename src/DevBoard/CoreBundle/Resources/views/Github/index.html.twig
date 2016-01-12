@@ -1,0 +1,42 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <style>
+        .hoverable:hover {
+            background-color: #efefef
+        }
+    </style>
+    <div class="container">
+
+
+        <h1>Track your github repos</h1>
+
+        {% for container in containers %}
+            <div class="row ">
+                <div class="col-lg-3">
+                    <img src="{{ container.owner.avatarUrl }}" width="50px"/>
+                    {{ container.name }}
+                    ({{ container.count }})
+                </div>
+
+                <div class="col-lg-9 ">
+                    {% for repository in container.repositories %}
+                        <div class="row hoverable">
+                            <div class="col-lg-6">
+                                {{ repository.name }}
+                            </div>
+                            <div class="col-lg-1">
+                                {{ form( createForm.getNew(repository)) }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="row">
+                <hr>
+            </div>
+
+        {% endfor %}
+
+    </div>
+{% endblock %}
