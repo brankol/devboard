@@ -19,7 +19,7 @@ class FrontContext extends WebContext implements SnippetAcceptingContext
      */
     public function iAmAddingNewProject()
     {
-        $this->visitPath('/project/new');
+        $this->visitPath('/my/project/new');
     }
 
     /**

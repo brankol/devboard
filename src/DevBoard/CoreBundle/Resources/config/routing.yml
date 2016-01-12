@@ -1,10 +1,14 @@
 dev_board_core_project:
     resource: "@DevBoardCoreBundle/Resources/config/routing/project.yml"
-    prefix:   /project
+    prefix:   /my/project
 
 dashboard:
-    path:     /dashboard/
+    path:     /my/dashboard/
     defaults: { _controller: DevBoardCoreBundle:Dashboard:index }
 dashboard_livebranches:
-    path:     /dashboard/livebranches
+    path:     /my/dashboard/livebranches
     defaults: { _controller: DevBoardCoreBundle:Dashboard:livebranches }
+
+github_all:
+    path:     /my/gh/all
+    defaults: { _controller: DevBoardCoreBundle:GitHub:index }

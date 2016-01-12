@@ -19,7 +19,9 @@ class ProjectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('DevBoardProject:Project')->findByUser($this->getUser());
+        $criteria = ['user' => $this->getUser()];
+        $sort     = ['projectName' => 'ASC'];
+        $entities = $em->getRepository('DevBoardProject:Project')->findBy($criteria, $sort);
 
         return $this->render(
             'DevBoardCoreBundle:Project:index.html.twig',
@@ -53,7 +55,7 @@ class ProjectController extends Controller
                         $em->flush();
             */
 
-            return $this->redirect($this->generateUrl('project'));
+            return $this->redirect($this->generateUrl('dashboard'));
         }
 
         return $this->render(

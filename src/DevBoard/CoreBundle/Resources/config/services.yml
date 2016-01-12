@@ -13,3 +13,9 @@ services:
       - "@doctrine.orm.entity_manager"
       - "@github.sync.branches.handler"
       - "@github.api.repo.hook.client.factory"
+
+  core.project.create.form_container.factory:
+    class: DevBoard\Core\CreateProject\CreateFormContainerFactory
+    arguments:
+      - "@form.factory"
+      - "@router"
