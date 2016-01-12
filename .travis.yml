@@ -31,7 +31,7 @@ before_script:
   - cp etc/ci/phpspec.yml phpspec.yml
   - sed -i 's/https:\/\/test.devboardxyz.loc\//http:\/\/localhost:8000\/app_test.php\//' behat.yml
 
-  - php -S localhost:8000 -t web/ &
+  - php app/console server:start --env=test &
 
   - sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
   - composer install --prefer-source
