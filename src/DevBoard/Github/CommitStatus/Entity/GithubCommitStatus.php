@@ -112,4 +112,19 @@ class GithubCommitStatus extends BaseEntity
     {
         return GithubCommitStatusState::getColor((int) $this->state);
     }
+
+    /**
+     * @return array
+     */
+    public function getLiveInfo()
+    {
+        $current = [
+            'targetUrl'  => $this->getTargetUrl(),
+            'state'      => $this->getState(),
+            'stateText'  => $this->getStateText(),
+            'stateColor' => $this->getStateColor(),
+        ];
+
+        return array_merge($current, $this->getGithubExternalService()->getLiveInfo());
+    }
 }

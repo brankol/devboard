@@ -153,4 +153,15 @@ class GithubUser extends BaseEntity implements GithubUserDataInterface
     {
         return $this->getName();
     }
+
+    /**
+     * @return array
+     */
+    public function getLiveInfo()
+    {
+        return [
+            'username'  => $this->getUsername(),
+            'avatarUrl' => $this->getAvatarUrl(),
+        ];
+    }
 }
