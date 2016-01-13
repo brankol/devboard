@@ -82,4 +82,17 @@ class GithubBranch extends BaseEntity implements GithubBranchDataInterface
     {
         return $this->getName();
     }
+
+    /**
+     * @return array
+     */
+    public function getLiveInfo()
+    {
+        return [
+            'name'       => $this->getName(),
+            'repo'       => $this->getRepo()->getLiveInfo(),
+            'lastCommit' => $this->getLastCommit()->getLiveInfo(),
+            'updatedAt'  => $this->getUpdatedAt(),
+        ];
+    }
 }

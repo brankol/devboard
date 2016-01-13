@@ -12,3 +12,8 @@ dashboard_livebranches:
 github_all:
     path:     /my/gh/all
     defaults: { _controller: DevBoardCoreBundle:GitHub:index }
+
+api_github_branches_live:
+    path:     /my/api/gh/v1/branches/live
+    defaults: { _controller: DevBoardCoreBundle:Branches:live }
+

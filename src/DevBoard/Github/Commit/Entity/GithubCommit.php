@@ -292,4 +292,25 @@ class GithubCommit extends BaseEntity implements GithubCommitDataInterface
     {
         return $this->getMessage();
     }
+
+    /**
+     * @return array
+     */
+    public function getLiveInfo()
+    {
+        $statuses = [];
+
+        foreach ($this->getCommitStatuses() as $commitStatus) {
+            $statuses[] = $commitStatus->getLiveInfo();
+        }
+
+        return [
+            'message' => $this->getMessage(),
+            //'author'             => $this->getAuthor()->getLiveInfo(),
+            //'committer'          => $this->getCommitter()->getLiveInfo(),
+            'internalStatus'     => $this->getInternalStatus(),
+            'internalStatusText' => $this->getInternalStatusText(),
+            'statuses'           => $statuses,
+        ];
+    }
 }

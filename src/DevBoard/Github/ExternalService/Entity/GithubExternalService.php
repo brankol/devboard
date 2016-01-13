@@ -8,12 +8,14 @@ use Resources\Entity\BaseEntity;
  */
 class GithubExternalService extends BaseEntity
 {
+    /** @var string */
     private $name;
 
+    /** @var string */
     private $context;
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getName()
     {
@@ -21,7 +23,7 @@ class GithubExternalService extends BaseEntity
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      *
      * @return $this
      */
@@ -53,10 +55,21 @@ class GithubExternalService extends BaseEntity
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * @return array
+     */
+    public function getLiveInfo()
+    {
+        return [
+            'name'    => $this->getName(),
+            'context' => $this->getContext(),
+        ];
     }
 }

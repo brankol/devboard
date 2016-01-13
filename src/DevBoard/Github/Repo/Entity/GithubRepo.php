@@ -516,4 +516,17 @@ class GithubRepo extends BaseEntity implements GithubRepoDataInterface
     {
         return $this->getFullName();
     }
+
+    /**
+     * @return array
+     */
+    public function getLiveInfo()
+    {
+        return [
+            'name'  => $this->getName(),
+            'owner' => $this->getOwner(),
+            //'fullName' => $this->getFullName(),
+            'htmlUrl' => $this->getHtmlUrl(),
+        ];
+    }
 }
