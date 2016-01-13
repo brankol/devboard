@@ -68,14 +68,18 @@ class GithubBranchRepository extends EntityRepository
     }
 
     /**
-     * @param $repoIds
+     * Returns branches from given repos that have been updated in last $timeLimitHours hours.
+     *
+     * @param array $repoIds
+     * @param int   $timeLimitHours
      *
      * @return array
      */
-    public function getLiveBranchesFromRepoIds($repoIds)
+    public function getLiveBranchesFromRepoIds($repoIds, $timeLimitHours = 1)
     {
-        $timeLimit = new \DateTime();
-        $timeLimit->modify('-60 min');
+        $timeLimitMinutes = 60 * $timeLimitHours;
+        $timeLimit        = new \DateTime();
+        $timeLimit->modify('-'.$timeLimitMinutes.' min');
 
         $queryBuilder = $this->createQueryBuilder('b')
             ->select('b')
