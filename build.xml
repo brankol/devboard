@@ -65,7 +65,7 @@
         <antcall target="behat-suite-strict">
             <param name="suite" value="company_admin"/>
         </antcall>
-        <parallel threadCount="2">
+         <parallel failonany="true" threadCount="2">
             <antcall target="behat-suite-strict">
                 <param name="suite" value="user"/>
             </antcall>
@@ -108,7 +108,7 @@
     </target>
 
     <target name="php-cs-fixer-fix-task" description="Run php-cs-fixer fix in parallel">
-        <parallel threadCount="2">
+         <parallel failonany="true" threadCount="2">
             <antcall target="php-cs-fixer-fix">
             	<param name="path" value="src"/>
             </antcall>
@@ -124,7 +124,7 @@
         </parallel>
     </target>
     <target name="php-cs-fixer-check-task" description="Run php-cs-fixer dry-run in parallel">
-        <parallel threadCount="2">
+         <parallel failonany="true" threadCount="2">
             <antcall target="php-cs-fixer-check">
             	<param name="path" value="src"/>
             </antcall>
@@ -140,7 +140,7 @@
         </parallel>
     </target>
     <target name="phpmd-task" description="Run phpmd in parallel">
-        <parallel threadCount="2">
+         <parallel failonany="true" threadCount="2">
             <antcall target="phpmd">
             	<param name="path" value="src"/>
             </antcall>
@@ -153,7 +153,7 @@
         </parallel>
     </target>
     <target name="phpcs-task" description="Run phpcs in parallel">
-        <parallel threadCount="2">
+         <parallel failonany="true" threadCount="2">
             <antcall target="phpcs">
             	<param name="path" value="src"/>
             </antcall>
@@ -167,15 +167,15 @@
     </target>
 
     <target name="php-cs-fixer-fix" description="">
-        <exec executable="bin/php-cs-fixer">
+        <exec executable="bin/php-cs-fixer" failonerror="false">
             <arg value="fix" />
             <arg path="${basedir}/${path}" />
             <arg value="--level=symfony" />
             <arg value="--fixers=short_array_syntax,align_double_arrow,align_equals,no_blank_lines_before_namespace,ordered_use,phpdoc_order,-unused_use,-empty_return" />
         </exec>
     </target>
-    <target name="php-cs-fixer-check" description="">
-        <exec executable="bin/php-cs-fixer">
+    <target name="php-cs-fixer-check" description="" >
+        <exec executable="bin/php-cs-fixer" failonerror="true">
             <arg value="fix" />
             <arg path="${basedir}/${path}" />
             <arg value="--dry-run" />
@@ -185,14 +185,14 @@
         </exec>
     </target>
     <target name="phpmd" description="">
-        <exec executable="bin/phpmd">
+        <exec executable="bin/phpmd" failonerror="true">
             <arg path="${basedir}/${path}" />
             <arg value="text" />
             <arg value="phpmd.xml" />
         </exec>
     </target>
     <target name="phpcs" description="">
-        <exec executable="bin/phpcs">
+        <exec executable="bin/phpcs" failonerror="true">
             <arg value="--standard=phpcs.xml" />
             <arg path="${basedir}/${path}" />
             <arg value="-n" />
