@@ -2,24 +2,12 @@
 {% block title %}Your devboard{% endblock %}
 {% block body -%}
     <div class="clear-fix"> &nbsp;</div>
+    <div id="app">Initing dashboard...</div>
     <div id="branches">
         {{ render(controller( 'DevBoardCoreBundle:Dashboard:livebranches' )) }}
     </div>
 {% endblock %}
 
 {% block javascripts %}
-
-    <script>
-        function getData() {
-            $.ajax({
-                url: '{{ path('dashboard_livebranches') }}',
-                type: 'get',
-                success: function (html) {
-                    //$('#branches2').replaceWith('<tr><td>as</td></tr>');
-                    $('#branches').replaceWith('<div id="branches">' + html + '</div>');
-                }
-            });
-        }
-        setInterval(function(){getData();}, 10000);
-    </script>
+    <script src="/static/js/build/bundle.js"></script>
 {% endblock %}
