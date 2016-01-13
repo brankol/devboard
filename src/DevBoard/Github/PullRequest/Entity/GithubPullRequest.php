@@ -298,8 +298,8 @@ class GithubPullRequest extends BaseEntity implements GithubPullRequestDataInter
     public function getLiveInfo()
     {
         return [
-            'number'       => $this->getNumber(),
-            'title'       => $this->getTitle(),
+            'number'     => $this->getNumber(),
+            'title'      => $this->getTitle(),
             'repo'       => $this->getRepo()->getLiveInfo(),
             'lastCommit' => $this->getLastCommit()->getLiveInfo(),
             'updatedAt'  => $this->getUpdatedAt(),
