@@ -32,7 +32,6 @@ before_script:
   - sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
   - composer install --prefer-source
 
-  - php app/console doctrine:database:create --env=dev --if-not-exists
   - php app/console doctrine:database:create --env=test --if-not-exists
   - php app/console doctrine:migrations:migrate --env=test --no-interaction
   - php app/console doctrine:fixtures:load --env=test --no-interaction
