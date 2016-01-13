@@ -17,3 +17,7 @@ api_github_branches_live:
     path:     /my/api/gh/v1/branches/live
     defaults: { _controller: DevBoardCoreBundle:Branches:live }
 
+api_github_pullrequests_open:
+    path:     /my/api/gh/v1/pull-requests/open
+    defaults: { _controller: DevBoardCoreBundle:PullRequests:open }
+
