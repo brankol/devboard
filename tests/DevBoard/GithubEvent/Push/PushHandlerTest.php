@@ -1,5 +1,5 @@
 <?php
-namespace DevBoard\GithubEvent\Tests\Push;
+namespace tests\DevBoard\GithubEvent\Push;
 
 use DevBoard\GithubEvent\Payload\PushPayload;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;

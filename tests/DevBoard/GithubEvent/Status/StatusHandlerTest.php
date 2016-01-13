@@ -1,5 +1,5 @@
 <?php
-namespace DevBoard\GithubEvent\Tests\Status;
+namespace tests\DevBoard\GithubEvent\Status;
 
 use DevBoard\GithubEvent\Payload\StatusPayload;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;

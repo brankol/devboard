@@ -1,5 +1,5 @@
 <?php
-namespace DevBoard\GithubEvent\Tests\Payload;
+namespace tests\DevBoard\GithubEvent\Payload;
 
 use DevBoard\GithubEvent\Payload\PushPayload;
 
