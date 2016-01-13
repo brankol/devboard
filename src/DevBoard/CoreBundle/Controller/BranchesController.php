@@ -3,6 +3,7 @@ namespace DevBoard\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class BranchesController.
@@ -12,13 +13,19 @@ class BranchesController extends Controller
     /**
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function liveAction()
+    public function liveAction(Request $request)
     {
         $em = $this->getDoctrine();
 
+        $timeInHours = (int) $request->get('hours');
+
+        if (!$timeInHours) {
+            $timeInHours = 1;
+        }
+
         $projects = $this->getProjects();
         $repos    = $em->getRepository('GhRepo:GithubRepo')->getRepoIdsFromProjectIds($projects);
-        $branches = $em->getRepository('GhBranch:GithubBranch')->getLiveBranchesFromRepoIds($repos, 1);
+        $branches = $em->getRepository('GhBranch:GithubBranch')->getLiveBranchesFromRepoIds($repos, $timeInHours);
 
         $response = new JsonResponse();
         $response->setData($this->prepare($branches));
