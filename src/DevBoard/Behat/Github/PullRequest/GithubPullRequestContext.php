@@ -77,7 +77,7 @@ class GithubPullRequestContext extends DomainContext
     private function getTestSampleData($fileName)
     {
         $rootDir  = $this->getService('kernel')->getRootDir();
-        $filePath = $rootDir.'/../src/DevBoard/GithubEvent/Tests/sample-data/'.$fileName;
+        $filePath = $rootDir.'/../tests/DevBoard/GithubEvent/sample-data/'.$fileName;
 
         return file_get_contents($filePath);
     }

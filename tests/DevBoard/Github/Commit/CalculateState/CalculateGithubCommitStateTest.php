@@ -1,5 +1,5 @@
 <?php
-namespace DevBoard\Github\Tests\Commit\CalculateState;
+namespace tests\DevBoard\Github\Commit\CalculateState;
 
 use DevBoard\Github\Commit\CalculateState\CalculateGithubCommitState;
 use DevBoard\Github\Commit\Entity\GithubCommit;

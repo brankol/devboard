@@ -15,20 +15,15 @@
 
     <testsuites>
         <testsuite name="UnitTests">
-            <directory>src/*/Tests/Unit</directory>
-            <directory>src/*/*/Tests/Unit</directory>
+            <directory>tests/Unit</directory>
         </testsuite>
         <testsuite name="IntegrationTests">
-            <directory>src/*/Tests/Integration</directory>
-            <directory>src/*/*/Tests/Integration</directory>
+            <directory>tests/Integration</directory>
         </testsuite>
         <testsuite name="FunctionalTests">
-            <directory>src/*/Tests/Functional</directory>
-            <directory>src/*/*/Tests/Functional</directory>
+            <directory>tests/Functional</directory>
         </testsuite>
         <testsuite name="AllTests">
-            <directory>src/*/Tests/</directory>
-            <directory>src/*/*/Tests/</directory>
             <directory>tests/</directory>
         </testsuite>
     </testsuites>
