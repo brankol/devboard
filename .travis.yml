@@ -6,10 +6,16 @@ addons:
 
 sudo: false
 
-php:
-  - 5.5
-  - 5.6
-  - 7.0
+matrix:
+    include:
+        - php: 5.6
+          env: coverage=phpunit
+        - php: 5.6
+          env: coverage=phpspec
+        - php: 7.0
+        - php: 5.6
+        - php: 5.5
+    fast_finish: true
 
 cache:
   directories:
@@ -26,7 +32,7 @@ before_script:
   - cp etc/travis-ci/.coveralls.yml .coveralls.yml
   - cp etc/travis-ci/app/config/parameters.yml app/config/parameters.yml
   - cp etc/travis-ci/web/app_test.php web/app_test.php
-  - cp etc/ci/phpspec.yml phpspec.yml
+  - if [[ $coverage == 'phpspec' ]]; then cp etc/ci/phpspec.yml phpspec.yml; fi;
   - sed -i 's/https:\/\/test.devboardxyz.loc\//http:\/\/localhost:8000\/app_test.php\//' behat.yml
 
   - sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
@@ -37,18 +43,17 @@ before_script:
   - php app/console doctrine:fixtures:load --env=test --no-interaction
   - sed -i 's/FAKE-GITHUB-ID-TEST/"'$GITHUB_ID'"/' app/config/parameters.yml
   - sed -i 's/FAKE-GITHUB-SECRET-TEST/"'$GITHUB_SECRET'"/' app/config/parameters.yml
-  #- php app/console assetic:dump --env=prod --no-debug
   - php app/console server:start --env=test
 
 script:
-  - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
+  - if [[ $coverage == 'phpunit' ]]; then sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini; fi;
   - php -d 'xdebug.max_nesting_level=500' bin/phpunit --exclude-group GithubIntegration
-  - sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
-  - php bin/coveralls -v
-  - sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
+  - if [[ $coverage == 'phpunit' ]]; then sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini; fi;
+  - if [[ $coverage == 'phpunit' ]]; then php bin/coveralls -v; fi;
+  - if [[ $coverage == 'phpspec' ]]; then sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini; fi;
   - ./bin/phpspec run --no-interaction
-  - sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
-  - php bin/coveralls -v
+  - if [[ $coverage == 'phpspec' ]]; then sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini; fi;
+  - if [[ $coverage == 'phpspec' ]]; then php bin/coveralls -v; fi;
   - ./bin/behat
   - ./bin/phpmd src/ text phpmd.xml
   - ./bin/phpmd app/ text phpmd.xml
