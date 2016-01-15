@@ -10,14 +10,15 @@ addons:
 services:
   - selenium
 
-php: 
+php:
   - 5.5
   - 5.6
 
-before_script: 
+before_script:
+  - curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
   - sudo apt-get update
-  - sudo apt-get install php5-fpm
-  - sudo apt-get install nginx
+  - sudo apt-get install -y php5-fpm
+  - sudo apt-get install -y nginx nodejs
   - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
   - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
   - sudo cp -f etc/shippable-ci/www.test.ci.conf /etc/nginx/sites-available/site-nginx.conf
@@ -29,6 +30,7 @@ before_script:
   - ls -l /etc/nginx/sites-enabled/
   - sudo nginx -t
   - sudo service nginx restart
+  - npm install
 
   - "export DISPLAY=:99.0"
   - "/etc/init.d/xvfb start"

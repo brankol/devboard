@@ -1,14 +1,18 @@
 machine:
   php:
     version: 5.6.5
+  node:
+    version: 4.2.2
   hosts:
     www.test.ci: 127.0.0.1
 general:
   artifacts:
     - "build/"
     - "tmp/"
+    - "node_modules/"
 dependencies:
   pre:
+    - npm install
     - sudo apt-get update
     - sudo apt-get install nginx
 
