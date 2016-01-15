@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+var BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
     resolve: {
@@ -34,5 +35,16 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+    // plugins: [
+    //     new BrowserSyncPlugin({
+    //         proxy: 'https://www.devboardxyz.loc',
+    //         open: 'external',
+    //         injectChanges: false,
+    //         browser: 'google chrome canary',
+    //         files: [
+    //             __dirname + '/src/**/*.js',
+    //         ]
+    //     })
+    // ]
 };

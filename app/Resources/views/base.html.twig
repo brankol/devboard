@@ -10,25 +10,16 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {% block stylesheets %}
-        {% endblock %}
-
-
         {% stylesheets
-        'static/stylesheet/bootstrap.min.css'
-        'static/stylesheet/bootstrap-theme.min.css'
-        'static/stylesheet/main.css'
-        filter='cssrewrite'
+            'static/stylesheet/bootstrap.min.css'
+            'static/stylesheet/bootstrap-theme.min.css'
+            'static/stylesheet/main.css'
+            filter='cssrewrite'
         %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
+            <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
 
-        <style>
-            body {
-                padding-top: 50px;
-                padding-bottom: 20px;
-            }
-        </style>
+        {% block stylesheets %}{% endblock stylesheets %}
     </head>
     <body>
         <!--[if lt IE 7]>

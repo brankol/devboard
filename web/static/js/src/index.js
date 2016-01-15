@@ -1,20 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
-import axios from 'axios';
+import BranchesView from './components/BranchesView';
 
-function getData() {
-    return axios
-        .get('/my/api/gh/v1/branches/live?hours=30')
-        .then(function (response) {
-            console.log('branches', response.data);
-        })
-        .catch(function (response) {
-            console.error(response);
-        });
-}
-window.setInterval(getData, 10000);
 
 render(
-    <h1>Hello world</h1>,
+    <div className="container">
+        <div className="row">
+            <div className="col-sm-6">
+                <BranchesView />
+            </div>
+            <div className="col-sm-6">
+                <h2 className="h3">Pull requests</h2>
+                <p>todo</p>
+            </div>
+        </div>
+    </div>,
     document.getElementById('app')
 );
