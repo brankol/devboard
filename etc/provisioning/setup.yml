@@ -18,3 +18,4 @@
     #- beanstalkclient
     #- supervisord
     #- elasticsearch
+    - nodejs
