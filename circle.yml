@@ -47,7 +47,7 @@ dependencies:
 test:
   override:
     #- sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
-    - php -d 'xdebug.max_nesting_level=500' bin/phpunit --exclude-group GithubIntegration
+    - php -d 'xdebug.max_nesting_level=500' bin/phpunit --exclude-group GitHubMutable
     #- sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
     #- ./bin/coveralls
     #- sed -i 's/^;//' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
