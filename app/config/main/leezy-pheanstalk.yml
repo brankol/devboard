@@ -1,0 +1,5 @@
+leezy_pheanstalk:
+    pheanstalks:
+        primary:
+            server: 127.0.0.1
+            default: true
