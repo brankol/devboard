@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7c2eebb1368f3e51b5124fdae1fd1d05",
-    "content-hash": "9336403e0986a80eb3c4a9f461cd7f10",
+    "hash": "780243d2faec655f063ea84267dc7250",
+    "content-hash": "ca10721953c592812c271b1e640261ce",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1072,7 +1072,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/d008f958e99b4d45a69f7c2bdb895db28e54d521",
+                "url": "https://api.github.com/repos/hwi/HWIOAuthBundle/zipball/6e404aa32537274fecfe39da981ffa50281cb7fd",
                 "reference": "d008f958e99b4d45a69f7c2bdb895db28e54d521",
                 "shasum": ""
             },
@@ -1597,6 +1597,66 @@
             "time": "2015-06-25 17:26:56"
         },
         {
+            "name": "leezy/pheanstalk-bundle",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/armetiz/LeezyPheanstalkBundle.git",
+                "reference": "485c955e806b4982303de2306aba04cc208189a0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/armetiz/LeezyPheanstalkBundle/zipball/485c955e806b4982303de2306aba04cc208189a0",
+                "reference": "485c955e806b4982303de2306aba04cc208189a0",
+                "shasum": ""
+            },
+            "require": {
+                "pda/pheanstalk": "~3.0",
+                "php": ">=5.5.9",
+                "psr/log": "~1.0",
+                "symfony/console": "~2.3|~3.0",
+                "symfony/framework-bundle": "~2.3|~3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "phpunit/phpunit-mock-objects": "2.3.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Leezy\\PheanstalkBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Tourlourat",
+                    "email": "thomas@tourlourat.com",
+                    "homepage": "http://www.armetiz.info"
+                }
+            ],
+            "description": "The LeezyPheanstalkBundle is a Symfony2 Bundle that provides a command line interface for manage the Beanstalkd workqueue server & a pheanstalk integration.",
+            "homepage": "https://github.com/armetiz/LeezyPheanstalkBundle",
+            "keywords": [
+                "asynchronous",
+                "beanstalkd",
+                "bundle",
+                "messaging",
+                "pheanstalk",
+                "queueing",
+                "symfony"
+            ],
+            "time": "2016-01-14 12:44:27"
+        },
+        {
             "name": "monolog/monolog",
             "version": "1.17.2",
             "source": {
@@ -1720,6 +1780,56 @@
                 "random"
             ],
             "time": "2016-01-06 13:31:20"
+        },
+        {
+            "name": "pda/pheanstalk",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pda/pheanstalk.git",
+                "reference": "430e77c551479aad0c6ada0450ee844cf656a18b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pda/pheanstalk/zipball/430e77c551479aad0c6ada0450ee844cf656a18b",
+                "reference": "430e77c551479aad0c6ada0450ee844cf656a18b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Pheanstalk\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Paul Annesley",
+                    "email": "paul@annesley.cc",
+                    "homepage": "http://paul.annesley.cc/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP client for beanstalkd queue",
+            "homepage": "https://github.com/pda/pheanstalk",
+            "keywords": [
+                "beanstalkd"
+            ],
+            "time": "2015-08-07 21:42:41"
         },
         {
             "name": "psr/log",
