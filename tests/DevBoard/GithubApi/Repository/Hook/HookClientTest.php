@@ -29,7 +29,7 @@ class HookClientTest extends MyKernelTestCase
     }
 
     /**
-     * @group GithubIntegration
+     * @group GitHubMutable
      */
     public function testCreateHook()
     {
@@ -41,7 +41,7 @@ class HookClientTest extends MyKernelTestCase
     }
 
     /**
-     * @group GithubIntegration
+     * @group GitHubMutable
      */
     public function testFindHook()
     {
@@ -52,7 +52,7 @@ class HookClientTest extends MyKernelTestCase
     }
 
     /**
-     * @group GithubIntegration
+     * @group GitHubMutable
      */
     public function testFindHookNoneFound()
     {
@@ -63,7 +63,7 @@ class HookClientTest extends MyKernelTestCase
     }
 
     /**
-     * @group GithubIntegration
+     * @group GitHubMutable
      */
     public function testRemoveHook()
     {
@@ -74,7 +74,7 @@ class HookClientTest extends MyKernelTestCase
     }
 
     /**
-     * @group GithubIntegration
+     * @group GitHubMutable
      */
     public function testReadOnlyRepoWillThrowRunTimeExceptions()
     {
@@ -91,7 +91,7 @@ class HookClientTest extends MyKernelTestCase
     }
 
     /**
-     * @group GithubIntegration
+     * @group GitHubMutable
      */
     public function testUntouchableRepoWillThrowRunTimeExceptions()
     {
