@@ -7,25 +7,38 @@ body {
     padding-bottom: 20px;
 }
 
-.db-branch {
+.clr-def {
+    color: #333;
+}
+
+.db-item {
     padding: 20px 0;
     border-top: 1px solid #eee;
 }
-    .db-branch__hd {
+    .db-item__hd {
         padding-bottom: 5px;
         font-size: 16px;
     }
-    .db-branch__bd {
-        padding-bottom: 5px;
+    .db-item__bd {
+        padding-bottom: 7px;
         font-size: 12px;
     }
-    .db-branch__time {
+    .db-item__time {
         font-size: 14px;
         color: #aaa;
     }
 
+    .db-item--pr .db-item__hd {
+        font-size: 14px;
+    }
+
+    .db-item--pr .db-item__bd {
+        padding-bottom: 10px;
+        font-size: 16px;
+    }
+
     @media (min-width: 1200px) { /* lg */
-        .db-branch__time { text-align: right; }
+        .db-item__time { text-align: right; }
     }
 
 .db-status {
@@ -39,6 +52,7 @@ body {
 }
     .db-status--pending { background-color: #e4da4d; }
     .db-status--success { background-color: #4c1; }
+    .db-status--error,
     .db-status--failure { background-color: #e05d44; }
 
     .db-status__icon {

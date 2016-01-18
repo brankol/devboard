@@ -16,7 +16,7 @@ const Status = (props) => {
     });
     let icon;
 
-    if (stateText === 'failure') {
+    if (/(failure|error)/.test(stateText)) {
         icon = '✖';
     } else if (stateText === 'success') {
         icon = '✓'

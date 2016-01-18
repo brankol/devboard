@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import axios from 'axios';
-import Branch from './Branch';
+import PullRequest from './PullRequest';
 
 
-class BranchesView extends Component {
+class PullRequestsView extends Component {
     constructor(props) {
         super(props);
         this.state = { data: [] };
@@ -16,9 +16,9 @@ class BranchesView extends Component {
 
     getData() {
         return axios
-            .get('/my/api/gh/v1/branches/live?hours=150')
+            .get('/my/api/gh/v1/pull-requests/open?hours=150')
             .then(response => {
-                console.log('branches', response.data);
+                console.log('PRs', response.data);
                 this.setState({ data: response.data });
             })
             .catch(function (response) {
@@ -30,15 +30,15 @@ class BranchesView extends Component {
         let noDataMsg;
 
         if (!this.state.data.length) {
-            noDataMsg = <p>No recent activity in your branches</p>;
+            noDataMsg = <p>No recent activity in your pull requests</p>;
         }
 
         return (
             <div>
-                <h2 className="h3">Branches</h2>
+                <h2 className="h3">Pull requests</h2>
                 <br />
-                {this.state.data.map(branch => {
-                    return <Branch {...branch} key={branch.name + branch.updatedAt.date} />
+                {this.state.data.map(pr => {
+                    return <PullRequest {...pr} key={pr.title + pr.updatedAt.date} />
                 })}
                 {noDataMsg}
             </div>
@@ -46,4 +46,4 @@ class BranchesView extends Component {
     }
 }
 
-export default BranchesView;
+export default PullRequestsView;

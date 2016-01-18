@@ -1,6 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import BranchesView from './components/BranchesView';
+import PullRequestsView from './components/PullRequestsView';
 
 
 render(
@@ -10,8 +11,7 @@ render(
                 <BranchesView />
             </div>
             <div className="col-sm-6">
-                <h2 className="h3">Pull requests</h2>
-                <p>todo</p>
+                <PullRequestsView />
             </div>
         </div>
     </div>,

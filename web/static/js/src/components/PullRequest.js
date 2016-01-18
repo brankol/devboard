@@ -5,26 +5,27 @@ import Status from './Status';
 
 const propTypes = {
     lastCommit: PropTypes.object.isRequired,
-    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    number: PropTypes.number.isRequired,
     repo: PropTypes.object.isRequired,
     updatedAt: PropTypes.object.isRequired,
 };
 
-const Branch = (props) => {
-    const { lastCommit, name, repo, updatedAt } = props;
+const PullRequest = (props) => {
+    const { lastCommit, title, number, repo, updatedAt } = props;
 
     return (
-        <div className="db-item">
+        <div className="db-item db-item--pr">
             <div className="db-item__hd row">
-                <div className="db-item__title col-lg-8">
-                    <strong><a href={repo.htmlUrl} target="_blank" className="clr-def">{repo.owner + '/' + repo.name}</a></strong> in <code>{name}</code>
-                </div>
+                <a className="db-item__title col-lg-8 clr-def" href={repo.htmlUrl} target="_blank">
+                    <strong>{repo.owner + '/' + repo.name}</strong>
+                </a>
                 <div className="db-item__time col-lg-4">
                     {moment(updatedAt.date, 'YYYY-MM-DD HH:mm:ss').fromNow()}
                 </div>
             </div>
             <div className="db-item__bd">
-                {lastCommit.message}
+                <code>#{number}</code> <a href={repo.htmlUrl + '/pull/' + number} target="_blank">{title}</a>
             </div>
             <div className="db-item__ft">
                 {lastCommit.statuses.map(status => {
@@ -35,6 +36,6 @@ const Branch = (props) => {
     );
 };
 
-Branch.propTypes = propTypes;
+PullRequest.propTypes = propTypes;
 
-export default Branch;
+export default PullRequest;
