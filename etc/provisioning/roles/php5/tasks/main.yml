@@ -9,11 +9,11 @@
     - php5-mcrypt
     - php5-intl
     - php5-curl
-    #- php-apc
     - php5-memcached
     - php5-gd
     - php5-fpm
     - php5-imagick
+    - php-apcu
 - name: Activates php mods
   command: php5enmod mcrypt
   sudo: yes
