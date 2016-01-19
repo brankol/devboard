@@ -21,12 +21,9 @@ before_script:
   - sudo apt-get install -y php5-fpm nginx nodejs
   - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
   - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
-  - sudo cp -f etc/shippable-ci/www.test.ci.conf /etc/nginx/sites-available/site-nginx.conf
-  - sudo sed -e "s?%BUILD_DIR%?$(pwd)?g" --in-place /etc/nginx/sites-available/site-nginx.conf
-  - sudo rm -rf /etc/nginx/sites-enabled/site-nginx.conf
-  - sudo ln -s "/etc/nginx/sites-available/site-nginx.conf" "/etc/nginx/sites-enabled/site-nginx.conf"
-  - sudo rm -rf /etc/nginx/sites-enabled/default
-  - sudo rm -rf /etc/nginx/sites-available/default
+  - sudo cp -f etc/shippable-ci/www.test.ci.conf /etc/nginx/sites-enabled/site-nginx.conf
+  - sudo sed -e "s?%BUILD_DIR%?$(pwd)?g" --in-place /etc/nginx/sites-enabled/site-nginx.conf
+  - sudo rm -rf /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
   - sudo service nginx restart
   - npm install
 
@@ -38,10 +35,10 @@ before_script:
   - cp etc/ci/behat.yml behat.yml
 
   - composer self-update
-  - sudo chmod 777 -R app/cache/
-  - sudo chmod 777 -R app/logs/
   - sudo rm -rf app/cache/*
   - sudo rm -rf app/logs/*
+  - sudo chmod 777 -R app/cache/
+  - sudo chmod 777 -R app/logs/
   - composer install -n --prefer-source
 
   - php app/console doctrine:database:drop --env=dev --force --if-exists
