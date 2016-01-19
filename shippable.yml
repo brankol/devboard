@@ -18,8 +18,7 @@ before_script:
   - curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
   - yes '' | pecl install -f apcu-4.0.10
   - sudo apt-get update
-  - sudo apt-get install -y php5-fpm
-  - sudo apt-get install -y nginx nodejs
+  - sudo apt-get install -y php5-fpm nginx nodejs
   - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
   - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
   - sudo cp -f etc/shippable-ci/www.test.ci.conf /etc/nginx/sites-available/site-nginx.conf
@@ -28,8 +27,6 @@ before_script:
   - sudo ln -s "/etc/nginx/sites-available/site-nginx.conf" "/etc/nginx/sites-enabled/site-nginx.conf"
   - sudo rm -rf /etc/nginx/sites-enabled/default
   - sudo rm -rf /etc/nginx/sites-available/default
-  - ls -l /etc/nginx/sites-enabled/
-  - sudo nginx -t
   - sudo service nginx restart
   - npm install
 
@@ -56,10 +53,7 @@ before_script:
   - php app/console assetic:dump --env=prod --no-debug
 
   - chmod +x bin/phpunit  
-  - mkdir -p shippable/testresults
-  - mkdir -p shippable/codecoverage
-  - mkdir -p build/cov
-  - mkdir -p build/logs
+  - mkdir -p shippable/testresults shippable/codecoverage build/cov build/logs
 
 script:
   - php -d 'xdebug.max_nesting_level=500' bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage --coverage-php build/cov/coverage.cov tests/ --exclude-group GitHubMutable
