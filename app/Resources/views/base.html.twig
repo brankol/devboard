@@ -98,9 +98,11 @@
 
         {#
         <script src="{{ asset('/static/javascript/vendor/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
+        #}
+
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="{{ asset('/static/js/vendor/jquery-1.11.0.min.js') }}"><\/script>')</script>
-        #}
+
         {#
         {% javascripts
         'static/javascript/vendor/bootstrap.min.js'
@@ -109,6 +111,7 @@
         %}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
+        #}
 
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
@@ -118,7 +121,6 @@
                 r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-72522005-1');ga('send','pageview');
         </script>
-        #}
 
         {% block javascripts %}{% endblock %}
 
