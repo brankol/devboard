@@ -14,8 +14,8 @@
     #- phpmyadmin
     - symfony2
     - selenium
-    #- beanstalkdaemon
-    #- beanstalkclient
-    #- supervisord
+    - beanstalkdaemon
+    - beanstalkclient
+    - supervisord
     #- elasticsearch
     - nodejs

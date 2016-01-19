@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new NullDev\UserBundle\NullDevUserBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
+            new Leezy\PheanstalkBundle\LeezyPheanstalkBundle(),
             new NullDev\GithubApiBundle\NullDevGithubApiBundle(),
             new DevBoard\CoreBundle\DevBoardCoreBundle(),
             new DevBoard\GithubBundle\DevBoardGithubBundle(),
