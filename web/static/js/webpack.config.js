@@ -24,8 +24,8 @@ module.exports = {
                     path.resolve(__dirname, 'src'),
                 ],
 
-                // Only run `.js` and `.jsx` files through Babel
-                test: /\.jsx?$/,
+                // Only run `.js` files through Babel
+                test: /\.js$/,
 
                 // Options to configure babel with
                 query: {
