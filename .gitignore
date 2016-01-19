@@ -13,6 +13,10 @@
 /web/app_dev.php
 /web/app_test.php
 /web/bundles/
+/node_modules
+npm-debug.log
+/web/static/js/build/*
+!web/static/js/build/.gitkeep
 
 #PHPStorm folder
 /.idea

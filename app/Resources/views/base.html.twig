@@ -10,25 +10,16 @@
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        {% block stylesheets %}
-        {% endblock %}
-
-
         {% stylesheets
-        'static/stylesheet/bootstrap.min.css'
-        'static/stylesheet/bootstrap-theme.min.css'
-        'static/stylesheet/main.css'
-        filter='cssrewrite'
+            'static/stylesheet/bootstrap.min.css'
+            'static/stylesheet/bootstrap-theme.min.css'
+            'static/stylesheet/main.css'
+            filter='cssrewrite'
         %}
-        <link rel="stylesheet" href="{{ asset_url }}" />
+            <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
 
-        <style>
-            body {
-                padding-top: 50px;
-                padding-bottom: 20px;
-            }
-        </style>
+        {% block stylesheets %}{% endblock stylesheets %}
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -105,13 +96,12 @@
         </div>
         {% endblock %}
 
-
+        {#
         <script src="{{ asset('/static/javascript/vendor/modernizr-2.6.2-respond-1.1.0.min.js') }}"></script>
-
-
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="{{ asset('/static/js/vendor/jquery-1.11.0.min.js') }}"><\/script>')</script>
-
+        #}
+        {#
         {% javascripts
         'static/javascript/vendor/bootstrap.min.js'
         'static/javascript/plugins.js'
@@ -119,7 +109,7 @@
         %}
         <script src="{{ asset_url }}"></script>
         {% endjavascripts %}
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+
         <script>
             (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
                     function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
@@ -128,6 +118,7 @@
                 r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
             ga('create','UA-72522005-1');ga('send','pageview');
         </script>
+        #}
 
         {% block javascripts %}{% endblock %}
 
