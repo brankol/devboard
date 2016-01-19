@@ -1,25 +1,12 @@
 {% extends '::base.html.twig' %}
 {% block title %}Your devboard{% endblock %}
 {% block body -%}
-    <div class="clear-fix"> &nbsp;</div>
-    <div id="branches">
-        {{ render(controller( 'DevBoardCoreBundle:Dashboard:livebranches' )) }}
+    <br>
+    <div id="app">
+        <div class="container">Initing dashboard...</div>
     </div>
-{% endblock %}
+{% endblock body %}
 
 {% block javascripts %}
-
-    <script>
-        function getData() {
-            $.ajax({
-                url: '{{ path('dashboard_livebranches') }}',
-                type: 'get',
-                success: function (html) {
-                    //$('#branches2').replaceWith('<tr><td>as</td></tr>');
-                    $('#branches').replaceWith('<div id="branches">' + html + '</div>');
-                }
-            });
-        }
-        setInterval(function(){getData();}, 10000);
-    </script>
-{% endblock %}
+    <script src="/static/js/build/bundle.js"></script>
+{% endblock javascripts %}
