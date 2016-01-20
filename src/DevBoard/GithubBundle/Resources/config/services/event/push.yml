@@ -63,9 +63,3 @@ services:
       - "@github.commit.facade"
       - "@github.user.facade"
       - "@doctrine.orm.entity_manager"
-
-  github.event.push.handler:
-    class: DevBoard\GithubEvent\Push\PushHandler
-    arguments:
-      - "@github.event.push.branch.handler"
-      - "@github.event.push.tag.handler"
