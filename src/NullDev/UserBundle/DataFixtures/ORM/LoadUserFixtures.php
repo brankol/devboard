@@ -39,6 +39,24 @@ class LoadUserFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $visitor1->setRoles(['ROLE_USER']);
         $visitor1->setEnabled(true);
 
+        $msvrtan = new User();
+        $msvrtan->setUsername('msvrtan');
+        $msvrtan->setEmail('XXX');
+        $msvrtan->setPlainPassword('pass123');
+        $msvrtan->setGithubId('1780572');
+        $msvrtan->setGithubUserName('msvrtan');
+        $msvrtan->setRoles(['ROLE_USER']);
+        $msvrtan->setEnabled(true);
+
+        $brankol = new User();
+        $brankol->setUsername('brankol');
+        $brankol->setEmail('XX');
+        $brankol->setPlainPassword('pass123');
+        $brankol->setGithubId('1035759');
+        $brankol->setGithubUserName('brankol');
+        $brankol->setRoles(['ROLE_USER']);
+        $brankol->setEnabled(true);
+
         $disabledUser1 = new User();
         $disabledUser1->setUsername('disabledUser1');
         $disabledUser1->setEmail('testing+disabledUser1@nulldevelopment.hr');
@@ -49,12 +67,16 @@ class LoadUserFixtures extends AbstractFixture implements OrderedFixtureInterfac
         $manager->persist($superAdmin);
         $manager->persist($userAdmin);
         $manager->persist($visitor1);
+        $manager->persist($msvrtan);
+        $manager->persist($brankol);
         $manager->persist($disabledUser1);
         $manager->flush();
 
         $this->addReference('user-superadmin', $superAdmin);
         $this->addReference('user-admin', $userAdmin);
         $this->addReference('user-visitor1', $visitor1);
+        $this->addReference('user-msvrtan', $msvrtan);
+        $this->addReference('user-brankol', $brankol);
         $this->addReference('user-disabledUser1', $disabledUser1);
     }
 
