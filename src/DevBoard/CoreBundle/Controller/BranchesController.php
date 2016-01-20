@@ -11,6 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 class BranchesController extends Controller
 {
     /**
+     * @param Request $request
+     *
+     * @throws \Exception
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function liveAction(Request $request)

@@ -66,6 +66,9 @@ class LoadGithubRepoFixtures extends AbstractFixture implements OrderedFixtureIn
         return 20;
     }
 
+    /**
+     * @return GithubRepo
+     */
     private function getPublicMasterRepo()
     {
         $repo = new GithubRepo();
