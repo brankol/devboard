@@ -190,6 +190,7 @@ class GithubRepoSpec extends ObjectBehavior
 
         $this->getBranchByName('dev')->shouldReturn(null);
     }
+
     public function it_sets_created_and_updated_datetimes_when_creating_github_repo()
     {
         $this->getCreatedAt()->shouldReturn(null);

@@ -22,6 +22,7 @@ class CommitCommitterSpec extends ObjectBehavior
         $this->getEmail()->shouldReturn('email');
         $this->getUsername()->shouldReturn('username');
     }
+
     public function it_will_return_null_for_user_properties_not_supported_by_pus()
     {
         $this->getGithubId()->shouldReturn(null);
