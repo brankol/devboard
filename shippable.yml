@@ -16,19 +16,14 @@ php:
 
 before_script:
   - curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+  - yes '' | pecl install -f apcu-4.0.10
   - sudo apt-get update
-  - sudo apt-get install -y php5-fpm
-  - sudo apt-get install -y nginx nodejs
+  - sudo apt-get install -y php5-fpm nginx nodejs
   - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
   - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
-  - sudo cp -f etc/shippable-ci/www.test.ci.conf /etc/nginx/sites-available/site-nginx.conf
-  - sudo sed -e "s?%BUILD_DIR%?$(pwd)?g" --in-place /etc/nginx/sites-available/site-nginx.conf
-  - sudo rm -rf /etc/nginx/sites-enabled/site-nginx.conf
-  - sudo ln -s "/etc/nginx/sites-available/site-nginx.conf" "/etc/nginx/sites-enabled/site-nginx.conf"
-  - sudo rm -rf /etc/nginx/sites-enabled/default
-  - sudo rm -rf /etc/nginx/sites-available/default
-  - ls -l /etc/nginx/sites-enabled/
-  - sudo nginx -t
+  - sudo cp -f etc/shippable-ci/www.test.ci.conf /etc/nginx/sites-enabled/site-nginx.conf
+  - sudo sed -e "s?%BUILD_DIR%?$(pwd)?g" --in-place /etc/nginx/sites-enabled/site-nginx.conf
+  - sudo rm -rf /etc/nginx/sites-enabled/default /etc/nginx/sites-available/default
   - sudo service nginx restart
   - npm install
 
@@ -40,10 +35,10 @@ before_script:
   - cp etc/ci/behat.yml behat.yml
 
   - composer self-update
-  - sudo chmod 777 -R app/cache/
-  - sudo chmod 777 -R app/logs/
   - sudo rm -rf app/cache/*
   - sudo rm -rf app/logs/*
+  - sudo chmod 777 -R app/cache/
+  - sudo chmod 777 -R app/logs/
   - composer install -n --prefer-source
 
   - php app/console doctrine:database:drop --env=dev --force --if-exists
@@ -55,13 +50,10 @@ before_script:
   - php app/console assetic:dump --env=prod --no-debug
 
   - chmod +x bin/phpunit  
-  - mkdir -p shippable/testresults
-  - mkdir -p shippable/codecoverage
-  - mkdir -p build/cov
-  - mkdir -p build/logs
+  - mkdir -p shippable/testresults shippable/codecoverage build/cov build/logs
 
 script:
-  - php -d 'xdebug.max_nesting_level=500' bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage --coverage-php build/cov/coverage.cov src/ --exclude-group GitHubMutable
+  - php -d 'xdebug.max_nesting_level=500' bin/phpunit --log-junit shippable/testresults/junit.xml --coverage-xml shippable/codecoverage --coverage-php build/cov/coverage.cov tests/ --exclude-group GitHubMutable
   - sed -i 's/^/;/' ~/.phpenv/versions/$(phpenv global)/etc/conf.d/xdebug.ini
   #- ./bin/behat
   - ./bin/phpspec run --no-interaction
