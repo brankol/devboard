@@ -52,6 +52,7 @@ class StatusPayload
     {
         return $this->data['commit'];
     }
+
     public function getTargetUrl()
     {
         return $this->data['target_url'];

@@ -11,6 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 class PullRequestsController extends Controller
 {
     /**
+     * @param Request $request
+     *
+     * @throws \Exception
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function openAction(Request $request)
@@ -34,7 +38,7 @@ class PullRequestsController extends Controller
     }
 
     /**
-     * @param $branches
+     * @param $pullRequests
      *
      * @return array
      */

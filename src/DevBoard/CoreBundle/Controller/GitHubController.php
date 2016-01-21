@@ -287,6 +287,9 @@ class GitHubController extends Controller
         return $this->get('session')->set($key, $value);
     }
 
+    /**
+     * @return \Github\Client
+     */
     private function getClient()
     {
         if (null === $this->client) {

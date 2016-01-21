@@ -11,6 +11,7 @@ class CommitCommitterFactorySpec extends ObjectBehavior
     {
         $this->shouldHaveType('DevBoard\GithubEvent\Push\Tag\Data\CommitCommitterFactory');
     }
+
     public function it_will_create_remote_commit_committer_value_object(PushPayload $pushPayload)
     {
         $this->create($pushPayload)->shouldReturnAnInstanceOf('DevBoard\GithubRemote\ValueObject\User\CommitCommitter');

@@ -86,6 +86,7 @@ class GithubCommitSpec extends ObjectBehavior
         $this->setUpdatedAt($updated);
         $this->getUpdatedAt()->shouldReturn($updated);
     }
+
     public function it_sets_created_and_updated_datetimes_when_creating_github_commit()
     {
         $this->getCreatedAt()->shouldReturn(null);

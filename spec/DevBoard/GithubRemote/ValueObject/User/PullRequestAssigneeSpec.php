@@ -10,6 +10,7 @@ class PullRequestAssigneeSpec extends ObjectBehavior
     {
         $this->shouldHaveType('DevBoard\GithubRemote\ValueObject\User\PullRequestAssignee');
     }
+
     public function let()
     {
         $this->beConstructedWith('id', 'username', 'avatar_url');
