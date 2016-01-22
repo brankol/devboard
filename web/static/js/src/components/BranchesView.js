@@ -37,9 +37,11 @@ class BranchesView extends Component {
             <div>
                 <h2 className="h3">Branches</h2>
                 <br />
-                {this.state.data.map(branch => {
-                    return <Branch {...branch} key={branch.name + branch.updatedAt.date} />
-                })}
+                <div className="db-list">
+                    {this.state.data.map(branch => {
+                        return <Branch {...branch} key={branch.name + branch.updatedAt.date} />
+                    })}
+                </div>
                 {noDataMsg}
             </div>
         );

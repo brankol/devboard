@@ -37,9 +37,11 @@ class PullRequestsView extends Component {
             <div>
                 <h2 className="h3">Pull requests</h2>
                 <br />
-                {this.state.data.map(pr => {
-                    return <PullRequest {...pr} key={pr.title + pr.updatedAt.date} />
-                })}
+                <div className="db-list">
+                    {this.state.data.map(pr => {
+                        return <PullRequest {...pr} key={pr.title + pr.updatedAt.date} />
+                    })}
+                </div>
                 {noDataMsg}
             </div>
         );
