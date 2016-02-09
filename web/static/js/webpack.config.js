@@ -5,8 +5,10 @@ module.exports = {
     resolve: {
         root: __dirname + '/src'
     },
+    // babel-polyfill includes A LOT of polyfills and since we're using only Promises (for axios)
+    // I commented it out to make the bundle lighter. es6-promise is included manually instead.
     entry: [
-        'babel-polyfill',
+        // 'babel-polyfill',
         __dirname + '/src/index'
     ],
     output: {
@@ -24,8 +26,8 @@ module.exports = {
                     path.resolve(__dirname, 'src'),
                 ],
 
-                // Only run `.js` and `.jsx` files through Babel
-                test: /\.jsx?$/,
+                // Only run `.js` files through Babel
+                test: /\.js$/,
 
                 // Options to configure babel with
                 query: {

@@ -15,21 +15,23 @@ const Branch = (props) => {
 
     return (
         <div className="db-item">
-            <div className="db-item__hd row">
-                <div className="db-item__title col-lg-8">
-                    <strong><a href={repo.htmlUrl} target="_blank" className="clr-def">{repo.owner + '/' + repo.name}</a></strong> in <code>{name}</code>
+            <div className="db-item__inner">
+                <div className="db-item__hd row">
+                    <div className="db-item__title col-lg-8">
+                        <strong><a href={repo.htmlUrl} target="_blank" className="clr-def">{repo.owner + '/' + repo.name}</a></strong> in <code>{name}</code>
+                    </div>
+                    <div className="db-item__time col-lg-4">
+                        {moment(updatedAt.date, 'YYYY-MM-DD HH:mm:ss').fromNow()}
+                    </div>
                 </div>
-                <div className="db-item__time col-lg-4">
-                    {moment(updatedAt.date, 'YYYY-MM-DD HH:mm:ss').fromNow()}
+                <div className="db-item__bd">
+                    {lastCommit.message}
                 </div>
-            </div>
-            <div className="db-item__bd">
-                {lastCommit.message}
-            </div>
-            <div className="db-item__ft">
-                {lastCommit.statuses.map(status => {
-                    return <Status {...status} key={status.name} />
-                })}
+                <div className="db-item__ft">
+                    {lastCommit.statuses.map(status => {
+                        return <Status {...status} key={status.name} />
+                    })}
+                </div>
             </div>
         </div>
     );

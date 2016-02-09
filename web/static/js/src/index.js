@@ -1,8 +1,10 @@
 import React from 'react';
 import { render } from 'react-dom';
+import promise from 'es6-promise';
 import BranchesView from './components/BranchesView';
 import PullRequestsView from './components/PullRequestsView';
 
+promise.polyfill();
 
 render(
     <div className="container">
