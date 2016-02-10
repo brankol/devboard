@@ -12,13 +12,16 @@ const propTypes = {
 
 const Branch = (props) => {
     const { lastCommit, name, repo, updatedAt } = props;
+    const branchUrl = repo.htmlUrl + '/tree/' + name;
 
     return (
         <div className="db-item">
             <div className="db-item__inner">
                 <div className="db-item__hd row">
                     <div className="db-item__title col-lg-8">
-                        <strong><a href={repo.htmlUrl} target="_blank" className="clr-def">{repo.owner + '/' + repo.name}</a></strong> in <code>{name}</code>
+                        <strong><a href={repo.htmlUrl} target="_blank" className="clr-def">{repo.owner + '/' + repo.name}</a></strong>
+                        {' '}in{' '}
+                        <code><a href={branchUrl} target="_blank">{name}</a></code>
                     </div>
                     <div className="db-item__time col-lg-4">
                         {moment(updatedAt.date, 'YYYY-MM-DD HH:mm:ss').fromNow()}
