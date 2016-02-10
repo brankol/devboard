@@ -12,10 +12,8 @@ class GithubHookFactorySpec extends ObjectBehavior
         $this->shouldHaveType('DevBoard\Github\Hook\Entity\GithubHookFactory');
     }
 
-    public function it_will_create_instance_using_repo(
-        $mapper,
-        GithubRepo $githubRepo
-    ) {
+    public function it_will_create_instance_using_repo(GithubRepo $githubRepo)
+    {
         $result = $this->create($githubRepo);
 
         $result->shouldReturnAnInstanceOf('DevBoard\Github\Hook\Entity\GithubHook');

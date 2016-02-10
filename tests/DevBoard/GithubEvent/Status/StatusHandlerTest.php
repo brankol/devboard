@@ -31,7 +31,7 @@ class StatusHandlerTest extends WebTestCase
         $payload            = new StatusPayload($data);
         $statusEventHandler = $this->container->get('github.event.status.handler');
         $result             = $statusEventHandler->process($payload);
-        $this->assertTrue($result);
+        self::assertTrue($result);
     }
 
     /**

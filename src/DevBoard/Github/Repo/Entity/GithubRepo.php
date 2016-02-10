@@ -12,8 +12,6 @@ use Resources\Entity\BaseEntity;
 
 /**
  * GithubRepo.
- *
- * @UniqueEntity("fullName")
  */
 class GithubRepo extends BaseEntity implements GithubRepoDataInterface
 {

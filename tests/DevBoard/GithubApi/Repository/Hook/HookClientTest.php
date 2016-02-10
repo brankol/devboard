@@ -22,7 +22,7 @@ class HookClientTest extends MyKernelTestCase
 
     public function testFactoryWorks()
     {
-        $this->assertInstanceOf(
+        self::assertInstanceOf(
             'DevBoard\GithubApi\Repository\Hook\HookClient',
             $this->provideAccessibleRepoTestClient()
         );
@@ -37,7 +37,7 @@ class HookClientTest extends MyKernelTestCase
 
         $result = $this->provideAccessibleRepoTestClient()->createHook();
 
-        $this->assertTrue(is_array($result));
+        self::assertTrue(is_array($result));
     }
 
     /**
@@ -48,7 +48,7 @@ class HookClientTest extends MyKernelTestCase
         $this->givenThereIsHook();
         $result = $this->provideAccessibleRepoTestClient()->findHook();
 
-        $this->assertNotFalse($result);
+        self::assertNotFalse($result);
     }
 
     /**
@@ -59,7 +59,7 @@ class HookClientTest extends MyKernelTestCase
         $this->givenThereIsNoHook();
         $result = $this->provideAccessibleRepoTestClient()->findHook();
 
-        $this->assertFalse($result);
+        self::assertFalse($result);
     }
 
     /**
@@ -70,7 +70,7 @@ class HookClientTest extends MyKernelTestCase
         $this->givenThereIsHook();
         $result = $this->provideAccessibleRepoTestClient()->removeHook();
 
-        $this->assertTrue($result);
+        self::assertTrue($result);
     }
 
     /**
@@ -81,13 +81,13 @@ class HookClientTest extends MyKernelTestCase
         $readOnlyClient = $this->service->create($this->provideReadOnlyRepo());
 
         $resultCreate = $readOnlyClient->createHook();
-        $this->assertInstanceOf('Github\Exception\RuntimeException', $resultCreate);
+        self::assertInstanceOf('Github\Exception\RuntimeException', $resultCreate);
 
         $resultFind = $readOnlyClient->findHook();
-        $this->assertInstanceOf('Github\Exception\RuntimeException', $resultFind);
+        self::assertInstanceOf('Github\Exception\RuntimeException', $resultFind);
 
         $resultRemove = $readOnlyClient->removeHook();
-        $this->assertInstanceOf('Github\Exception\RuntimeException', $resultRemove);
+        self::assertInstanceOf('Github\Exception\RuntimeException', $resultRemove);
     }
 
     /**
@@ -98,13 +98,13 @@ class HookClientTest extends MyKernelTestCase
         $untochuableClient = $this->service->create($this->provideUntouchableRepo());
 
         $resultCreate = $untochuableClient->createHook();
-        $this->assertInstanceOf('Github\Exception\RuntimeException', $resultCreate);
+        self::assertInstanceOf('Github\Exception\RuntimeException', $resultCreate);
 
         $resultFind = $untochuableClient->findHook();
-        $this->assertInstanceOf('Github\Exception\RuntimeException', $resultFind);
+        self::assertInstanceOf('Github\Exception\RuntimeException', $resultFind);
 
         $resultRemove = $untochuableClient->removeHook();
-        $this->assertInstanceOf('Github\Exception\RuntimeException', $resultRemove);
+        self::assertInstanceOf('Github\Exception\RuntimeException', $resultRemove);
     }
 
     protected function givenThereIsNoHook()
@@ -131,7 +131,7 @@ class HookClientTest extends MyKernelTestCase
     }
 
     /**
-     * @return object
+     * @return \NullDev\GithubApi\Repo\GithubRepoDataInterface
      */
     private function provideAccessibleRepo()
     {
@@ -143,7 +143,7 @@ class HookClientTest extends MyKernelTestCase
     }
 
     /**
-     * @return object
+     * @return \NullDev\GithubApi\Repo\GithubRepoDataInterface
      */
     private function provideReadOnlyRepo()
     {
@@ -155,7 +155,7 @@ class HookClientTest extends MyKernelTestCase
     }
 
     /**
-     * @return object
+     * @return \NullDev\GithubApi\Repo\GithubRepoDataInterface
      */
     private function provideUntouchableRepo()
     {

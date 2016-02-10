@@ -31,7 +31,7 @@ class PushHandlerTest extends WebTestCase
         $payload          = new PushPayload($data);
         $pushEventHandler = $this->container->get('github.event.push.handler');
         $result           = $pushEventHandler->process($payload);
-        $this->assertTrue($result);
+        self::assertTrue($result);
     }
 
     /**
@@ -44,7 +44,7 @@ class PushHandlerTest extends WebTestCase
         $payload          = new PushPayload($data);
         $pushEventHandler = $this->container->get('github.event.push.handler');
         $result           = $pushEventHandler->process($payload);
-        $this->assertTrue($result);
+        self::assertTrue($result);
     }
 
     /**
@@ -57,7 +57,7 @@ class PushHandlerTest extends WebTestCase
         $payload          = new PushPayload($data);
         $pushEventHandler = $this->container->get('github.event.push.handler');
         $result           = $pushEventHandler->process($payload);
-        $this->assertTrue($result);
+        self::assertTrue($result);
     }
 
     /**
