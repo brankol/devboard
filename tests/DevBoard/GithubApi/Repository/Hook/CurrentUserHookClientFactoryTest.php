@@ -21,7 +21,7 @@ class CurrentUserHookClientFactoryTest extends MyKernelTestCase
 
     public function testHookClientFactoryAsServiceWork()
     {
-        $this->assertInstanceOf('DevBoard\GithubApi\Repository\Hook\CurrentUserHookClientFactory', $this->service);
+        self::assertInstanceOf('DevBoard\GithubApi\Repository\Hook\CurrentUserHookClientFactory', $this->service);
     }
 
     public function testCreate()
@@ -30,6 +30,6 @@ class CurrentUserHookClientFactoryTest extends MyKernelTestCase
 
         $result = $this->service->create($githubRepo);
 
-        $this->assertInstanceOf('DevBoard\GithubApi\Repository\Hook\HookClient', $result);
+        self::assertInstanceOf('DevBoard\GithubApi\Repository\Hook\HookClient', $result);
     }
 }

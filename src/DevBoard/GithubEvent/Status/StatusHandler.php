@@ -87,7 +87,7 @@ class StatusHandler
 
         $commitStatusValueObject = $this->commitStatusFactory->create($statusPayload);
         $githubCommitStatus      = $this->githubCommitStatusFacade
-            ->getOrCreate($githubCommit, $githubExternalService, $commitStatusValueObject);
+            ->getOrCreate($githubCommit, $githubExternalService);
 
         $githubCommitStatus->setState(GithubCommitStatusState::convert($statusPayload->getState()));
         $githubCommitStatus->setTargetUrl($commitStatusValueObject->getTargetUrl());

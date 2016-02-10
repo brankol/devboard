@@ -5,7 +5,6 @@ use DevBoard\Core\Project\Entity\Project;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-use NullDev\UserBundle\Entity\User;
 
 /**
  * Class LoadProjectFixtures.

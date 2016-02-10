@@ -92,7 +92,7 @@ class StatusHandlerSpec extends ObjectBehavior
         $externalServiceValueObject->getContext()->willReturn('external-service-context');
 
         $githubCommitStatusFacade
-            ->getOrCreate($githubCommitEntity, $githubExternalService, $commitStatusValueObject)
+            ->getOrCreate($githubCommitEntity, $githubExternalService)
             ->willReturn($githubCommitStatus);
 
         $githubCommitStatus->setState(GithubCommitStatusState::convert($commitStatusValueObject->getStatus()));

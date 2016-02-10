@@ -85,12 +85,8 @@ class WebHookFactorySpec extends ObjectBehavior
         $this->createFromQueueNotification($data)->shouldReturnAnInstanceOf('DevBoard\Github\WebHook\Data\PushEvent');
     }
 
-    public function it_will_create_status_event_from_queue_notification(
-        $signatureFactory,
-        WebHookSignature $signature,
-        Request $request,
-        HeaderBag $headerBag
-    ) {
+    public function it_will_create_status_event_from_queue_notification($signatureFactory, WebHookSignature $signature)
+    {
         $data = [
             'eventType' => 'status',
             'signature' => 'sha1=abc123',
@@ -103,9 +99,7 @@ class WebHookFactorySpec extends ObjectBehavior
 
     public function it_will_create_pull_request_event_from_queue_notification(
         $signatureFactory,
-        WebHookSignature $signature,
-        Request $request,
-        HeaderBag $headerBag
+        WebHookSignature $signature
     ) {
         $data = [
             'eventType' => 'pull_request',

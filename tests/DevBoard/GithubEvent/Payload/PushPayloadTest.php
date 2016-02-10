@@ -19,13 +19,13 @@ class PushPayloadTest extends \PHPUnit_Framework_TestCase
     {
         $payload = new PushPayload($data);
 
-        $this->assertTrue($payload->isBranch());
-        $this->assertTrue($payload->isCreate());
-        $this->assertSame(PushPayload::CREATED, $payload->getType());
+        self::assertTrue($payload->isBranch());
+        self::assertTrue($payload->isCreate());
+        self::assertSame(PushPayload::CREATED, $payload->getType());
 
-        $this->assertFalse($payload->isTag());
-        $this->assertFalse($payload->isUpdate());
-        $this->assertFalse($payload->isDelete());
+        self::assertFalse($payload->isTag());
+        self::assertFalse($payload->isUpdate());
+        self::assertFalse($payload->isDelete());
     }
 
     /**
@@ -39,13 +39,13 @@ class PushPayloadTest extends \PHPUnit_Framework_TestCase
     {
         $payload = new PushPayload($data);
 
-        $this->assertTrue($payload->isBranch());
-        $this->assertTrue($payload->isUpdate());
-        $this->assertSame(PushPayload::UPDATED, $payload->getType());
+        self::assertTrue($payload->isBranch());
+        self::assertTrue($payload->isUpdate());
+        self::assertSame(PushPayload::UPDATED, $payload->getType());
 
-        $this->assertFalse($payload->isTag());
-        $this->assertFalse($payload->isCreate());
-        $this->assertFalse($payload->isDelete());
+        self::assertFalse($payload->isTag());
+        self::assertFalse($payload->isCreate());
+        self::assertFalse($payload->isDelete());
     }
 
     /**
@@ -59,13 +59,13 @@ class PushPayloadTest extends \PHPUnit_Framework_TestCase
     {
         $payload = new PushPayload($data);
 
-        $this->assertTrue($payload->isBranch());
-        $this->assertTrue($payload->isDelete());
-        $this->assertSame(PushPayload::DELETED, $payload->getType());
+        self::assertTrue($payload->isBranch());
+        self::assertTrue($payload->isDelete());
+        self::assertSame(PushPayload::DELETED, $payload->getType());
 
-        $this->assertFalse($payload->isTag());
-        $this->assertFalse($payload->isCreate());
-        $this->assertFalse($payload->isUpdate());
+        self::assertFalse($payload->isTag());
+        self::assertFalse($payload->isCreate());
+        self::assertFalse($payload->isUpdate());
     }
 
     /**

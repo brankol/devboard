@@ -18,18 +18,18 @@ class HookSettingsTest extends MyKernelTestCase
 
     public function testBasicHookSettingsAsServiceWork()
     {
-        $this->assertInstanceOf('DevBoard\GithubApi\Repository\Hook\HookSettings', $this->service);
+        self::assertInstanceOf('DevBoard\GithubApi\Repository\Hook\HookSettings', $this->service);
     }
 
     public function testReturningData()
     {
-        $this->assertSame('web', $this->service->getName());
+        self::assertSame('web', $this->service->getName());
 
-        $this->assertArrayHasKey('url', $this->service->getConfigParams());
-        $this->assertArrayHasKey('content_type', $this->service->getConfigParams());
-        $this->assertArrayHasKey('insecure_ssl', $this->service->getConfigParams());
-        $this->assertArrayHasKey('secret', $this->service->getConfigParams());
+        self::assertArrayHasKey('url', $this->service->getConfigParams());
+        self::assertArrayHasKey('content_type', $this->service->getConfigParams());
+        self::assertArrayHasKey('insecure_ssl', $this->service->getConfigParams());
+        self::assertArrayHasKey('secret', $this->service->getConfigParams());
 
-        $this->assertSame(['push', 'pull_request', 'status'], $this->service->getEventParams());
+        self::assertSame(['push', 'pull_request', 'status'], $this->service->getEventParams());
     }
 }

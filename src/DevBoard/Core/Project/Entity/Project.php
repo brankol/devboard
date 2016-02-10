@@ -121,10 +121,14 @@ class Project extends BaseEntity
 
     /**
      * @param mixed $user
+     *
+     * @return $this
      */
     public function setUser($user)
     {
         $this->user = $user;
+
+        return $this;
     }
 
     /**

@@ -13,7 +13,7 @@
     - php5-gd
     - php5-fpm
     - php5-imagick
-    - php-apcu
+    - php-apc
 - name: Activates php mods
   command: php5enmod mcrypt
   sudo: yes

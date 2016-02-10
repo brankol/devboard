@@ -32,7 +32,7 @@ class CalculateGithubCommitStateTest extends \PHPUnit_Framework_TestCase
 
         $this->calculator->calculate($commit);
 
-        $this->assertNotSame(InternalStatus::UNKNOWN, $commit->getInternalStatus());
+        self::assertNotSame(InternalStatus::UNKNOWN, $commit->getInternalStatus());
     }
 
     /**
@@ -74,7 +74,7 @@ class CalculateGithubCommitStateTest extends \PHPUnit_Framework_TestCase
             [4],
         ];
 
-        $this->assertSame($expectedOutput, permutations($input, 1));
+        self::assertSame($expectedOutput, permutations($input, 1));
     }
 
     public function testDoublePermutations()
@@ -84,7 +84,7 @@ class CalculateGithubCommitStateTest extends \PHPUnit_Framework_TestCase
             [1, 1],
         ];
 
-        $this->assertSame($expectedOutput, permutations($input, 2));
+        self::assertSame($expectedOutput, permutations($input, 2));
     }
 
     public function testDoublePermutationsWithDoubleInput()
@@ -97,7 +97,7 @@ class CalculateGithubCommitStateTest extends \PHPUnit_Framework_TestCase
             [2, 2],
         ];
 
-        $this->assertSame($expectedOutput, permutations($input, 2));
+        self::assertSame($expectedOutput, permutations($input, 2));
     }
 
     public function testDoublePermutationsWithTripleInput()
@@ -115,7 +115,7 @@ class CalculateGithubCommitStateTest extends \PHPUnit_Framework_TestCase
             [3, 3],
         ];
 
-        $this->assertSame($expectedOutput, permutations($input, 2));
+        self::assertSame($expectedOutput, permutations($input, 2));
     }
 
     public function testTriplePermutationsWithDoubleInput()
@@ -132,7 +132,7 @@ class CalculateGithubCommitStateTest extends \PHPUnit_Framework_TestCase
             [2, 2, 2],
         ];
 
-        $this->assertSame($expectedOutput, permutations($input, 3));
+        self::assertSame($expectedOutput, permutations($input, 3));
     }
 }
 
@@ -147,7 +147,7 @@ function permutations($arr, $cnt)
     $res = [];
 
     foreach ($arr as $w) {
-        if ($cnt == 1) {
+        if ($cnt === 1) {
             $res[] = [$w];
         } else {
             $perms = permutations($arr, $cnt - 1);
