@@ -16,7 +16,7 @@ class PullRequestsView extends Component {
 
     getData() {
         return axios
-            .get('/my/api/gh/v1/pull-requests/open?hours=150')
+            .get('/my/api/gh/v1/pull-requests/open?hours=1')
             .then(response => {
                 console.log('PRs', response.data);
                 this.setState({ data: response.data });
