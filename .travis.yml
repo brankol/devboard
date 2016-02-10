@@ -28,7 +28,7 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - export DISPLAY=:99.0
 
-  - if [ ! -f bin/selenium.jar ]; then curl -L http://selenium-release.storage.googleapis.com/2.46/selenium-server-standalone-2.46.0.jar > bin/selenium.jar; fi
+  - if [ ! -f bin/selenium.jar ]; then curl -L http://selenium-release.storage.googleapis.com/2.50/selenium-server-standalone-2.50.1.jar > bin/selenium.jar; fi
   - java -jar bin/selenium.jar > selenium.log 2>&1 &
 
   - cp etc/travis-ci/.coveralls.yml .coveralls.yml
