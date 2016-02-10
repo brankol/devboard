@@ -21,7 +21,7 @@ const Branch = (props) => {
                         <strong><a href={repo.htmlUrl} target="_blank" className="clr-def">{repo.owner + '/' + repo.name}</a></strong> in <code>{name}</code>
                     </div>
                     <div className="db-item__time col-lg-4">
-                        {moment(updatedAt.date, 'YYYY-MM-DD HH:mm:ss').fromNow()}
+                        {moment.utc(updatedAt.date, 'YYYY-MM-DD HH:mm:ss').fromNow()}
                     </div>
                 </div>
                 <div className="db-item__bd">

@@ -22,7 +22,7 @@ const PullRequest = (props) => {
                         <strong>{repo.owner + '/' + repo.name}</strong>
                     </a>
                     <div className="db-item__time col-lg-4">
-                        {moment(updatedAt.date, 'YYYY-MM-DD HH:mm:ss').fromNow()}
+                        {moment.utc(updatedAt.date, 'YYYY-MM-DD HH:mm:ss').fromNow()}
                     </div>
                 </div>
                 <div className="db-item__bd">
