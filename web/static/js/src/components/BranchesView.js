@@ -16,7 +16,7 @@ class BranchesView extends Component {
 
     getData() {
         return axios
-            .get('/my/api/gh/v1/branches/live?hours=150')
+            .get('/my/api/gh/v1/branches/live?hours=1')
             .then(response => {
                 console.log('branches', response.data);
                 this.setState({ data: response.data });
